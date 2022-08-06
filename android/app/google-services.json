@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "998672278480",
+    "project_id": "flutter-postman",
+    "storage_bucket": "flutter-postman.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998672278480:android:1811585055095cd56c4fd5",
+        "android_client_info": {
+          "package_name": "com.example.flutter_postman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "998672278480-j79jvckke3ejif2334jnl3lspf04i2me.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAx8C8OcEsi4XWxVTSoWZLjB5jFnnpHsSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "998672278480-j79jvckke3ejif2334jnl3lspf04i2me.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

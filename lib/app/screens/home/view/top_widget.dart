@@ -28,7 +28,7 @@ class _TopWidget extends StatelessWidget {
                   ),
                   child: const Icon(
                     Icons.person_outline,
-                    size: 32,
+                    size: 24,
                     color: Colors.white,
                   ),
                 ),
@@ -37,7 +37,6 @@ class _TopWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     'Syed Murtaza'.body1,
-                    4.height,
                     'User'.body2,
                   ],
                 ),

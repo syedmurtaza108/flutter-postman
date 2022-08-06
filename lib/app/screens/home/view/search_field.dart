@@ -5,22 +5,22 @@ class _SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final border = OutlineInputBorder(
-      borderSide: const BorderSide(color: Colors.transparent),
-      borderRadius: BorderRadius.circular(24),
-    );
     return SizedBox(
-      height: 40,
+      height: 30,
       child: TextField(
-        style: const TextStyle(fontSize: 14, color: Colors.white),
+        style: Theme.of(context).textTheme.caption,
         cursorColor: Colors.white,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
+          contentPadding: EdgeInsets.symmetric(horizontal: 16),
           fillColor: AppColors.black400,
+          hintText: 'Search',
+          hintStyle: TextStyle(fontSize: 12, color: Colors.grey),
+          prefixIcon: Icon(
+            Icons.search_outlined,
+            color: Colors.white,
+            size: 14,
+          ),
           filled: true,
-          enabledBorder: border,
-          focusedBorder: border,
-          border: border,
-          disabledBorder: border,
         ),
       ),
     );
