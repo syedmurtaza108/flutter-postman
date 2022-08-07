@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_postman/app/utils/colors.dart';
+import 'package:flutter_postman/app/screens/widgets/widgets.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
 class LoginPage extends StatelessWidget {
@@ -129,104 +129,64 @@ class _Body extends StatelessWidget {
             ],
           ),
         ),
-
         Image.asset(
           'assets/login_illustration.png',
           width: 300,
         ),
-        // MediaQuery.of(context).size.width >= 1300 //Responsive
-        //     ? Image.asset(
-        //         'images/illustration-1.png',
-        //         width: 300,
-        //       )
-        //     : SizedBox(),
         Padding(
           padding: EdgeInsets.symmetric(
             vertical: MediaQuery.of(context).size.height / 6,
           ),
           child: SizedBox(
             width: 320,
-            child: _formLogin(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                TextField(
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        color: AppColors.black400,
+                      ),
+                  decoration: InputDecoration(
+                    hintText: 'Enter email or Phone number',
+                    filled: true,
+                    fillColor: Colors.blueGrey[50],
+                    contentPadding: const EdgeInsets.only(left: 30),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.blueGrey[50] ?? Colors.grey,
+                      ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.blueGrey[50] ?? Colors.grey,
+                      ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                ),
+                30.height,
+                const PasswordTextField(),
+                16.height,
+                InkWell(
+                  onTap: () {},
+                  borderRadius: 4.border,
+                  child: Padding(
+                    padding: 4.padding,
+                    child: 'Forgot Password?'.body1.withColor(
+                          AppColors.black400,
+                        ),
+                  ),
+                ),
+                40.height,
+                PrimaryButton(
+                  text: 'Login',
+                  onPressed: () {},
+                )
+              ],
+            ),
           ),
         )
-      ],
-    );
-  }
-
-  Widget _formLogin() {
-    return Column(
-      children: [
-        TextField(
-          decoration: InputDecoration(
-            hintText: 'Enter email or Phone number',
-            filled: true,
-            fillColor: Colors.blueGrey[50],
-            labelStyle: const TextStyle(fontSize: 12),
-            contentPadding: const EdgeInsets.only(left: 30),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blueGrey[50] ?? Colors.grey),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blueGrey[50] ?? Colors.grey),
-              borderRadius: BorderRadius.circular(15),
-            ),
-          ),
-        ),
-        30.height,
-        TextField(
-          decoration: InputDecoration(
-            hintText: 'Password',
-            counterText: 'Forgot password?',
-            suffixIcon: const Icon(
-              Icons.visibility_off_outlined,
-              color: Colors.grey,
-            ),
-            filled: true,
-            fillColor: Colors.blueGrey[50],
-            labelStyle: const TextStyle(fontSize: 12),
-            contentPadding: const EdgeInsets.only(left: 30),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blueGrey[50] ?? Colors.grey),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blueGrey[50] ?? Colors.grey),
-              borderRadius: BorderRadius.circular(15),
-            ),
-          ),
-        ),
-        40.height,
-        DecoratedBox(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(30),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.deepPurple[100] ?? Colors.purple,
-                spreadRadius: 10,
-                blurRadius: 20,
-              ),
-            ],
-          ),
-          child: ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              primary: Colors.deepPurple,
-              onPrimary: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-            ),
-            child: const SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: Center(
-                child: Text('Sign In'),
-              ),
-            ),
-          ),
-        ),
       ],
     );
   }
