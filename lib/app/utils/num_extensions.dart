@@ -6,4 +6,5 @@ extension NumX on num {
   EdgeInsets get padding => EdgeInsets.all(toDouble());
   EdgeInsets get horizontal => EdgeInsets.symmetric(horizontal: toDouble());
   EdgeInsets get vertical => EdgeInsets.symmetric(vertical: toDouble());
+  BorderRadius get border => BorderRadius.circular(toDouble());
 }

@@ -10,12 +10,14 @@ class _SearchField extends StatelessWidget {
       child: TextField(
         style: Theme.of(context).textTheme.caption,
         cursorColor: Colors.white,
-        decoration: const InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 16),
+        decoration: InputDecoration(
+          contentPadding: 16.horizontal,
           fillColor: AppColors.black400,
           hintText: 'Search',
-          hintStyle: TextStyle(fontSize: 12, color: Colors.grey),
-          prefixIcon: Icon(
+          hintStyle: Theme.of(context).textTheme.caption?.copyWith(
+                color: Colors.grey,
+              ),
+          prefixIcon: const Icon(
             Icons.search_outlined,
             color: Colors.white,
             size: 14,

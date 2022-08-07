@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_postman/app/utils/colors.dart';
+import 'package:flutter_postman/app/utils/utils.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -23,83 +25,59 @@ class _Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 30),
+      padding: 30.vertical,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              _menuItem(title: 'Home'),
-              _menuItem(title: 'About us'),
-              _menuItem(title: 'Contact us'),
-              _menuItem(title: 'Help'),
-            ],
-          ),
-          Row(
-            children: [
-              _menuItem(title: 'Sign In', isActive: true),
-              _registerButton()
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _menuItem({String title = 'Title Menu', bool isActive = false}) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 75),
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: Column(
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: isActive ? Colors.deepPurple : Colors.grey,
-              ),
-            ),
-            const SizedBox(
-              height: 6,
-            ),
-            if (isActive)
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 2,
+              Padding(
+                padding: 16.horizontal,
+                child: Column(
+                  children: [
+                    'Login'.body1.withColor(Colors.black),
+                    6.height,
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 2,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.black400,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    )
+                  ],
                 ),
+              ),
+              DecoratedBox(
                 decoration: BoxDecoration(
-                  color: Colors.deepPurple,
-                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.blueGrey[50] ?? Colors.grey,
+                      spreadRadius: 2,
+                      blurRadius: 12,
+                    ),
+                  ],
+                ),
+                child: Material(
+                  borderRadius: BorderRadius.circular(14),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(14),
+                    onTap: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 30,
+                        vertical: 8,
+                      ),
+                      child: 'Sign Up'.body1.withColor(AppColors.black400),
+                    ),
+                  ),
                 ),
               )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _registerButton() {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.grey,
-            spreadRadius: 10,
-            blurRadius: 12,
+            ],
           ),
         ],
-      ),
-      child: const Text(
-        'Register',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Colors.black54,
-        ),
       ),
     );
   }
@@ -118,44 +96,28 @@ class _Body extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Sign In to \nMy Application',
-                style: TextStyle(
-                  fontSize: 45,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              const Text(
-                "If you don't have an account",
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
+              'Sign In to \nFlutter Postman'
+                  .body1
+                  .withColor(AppColors.black400)
+                  .withFont(45),
+              30.height,
+              "If you don't have an account"
+                  .body1
+                  .withColor(AppColors.black400),
+              10.height,
               Row(
                 children: [
-                  const Text(
-                    'You can',
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(width: 15),
-                  GestureDetector(
+                  'You can'.body1.withColor(AppColors.black400),
+                  4.width,
+                  InkWell(
                     onTap: () {},
-                    child: const Text(
-                      'Register here!',
-                      style: TextStyle(
-                        color: Colors.deepPurple,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    borderRadius: 8.border,
+                    child: Padding(
+                      padding: 8.padding,
+                      child: 'Register here!'
+                          .body1
+                          .withColor(AppColors.black400)
+                          .bold,
                     ),
                   ),
                 ],
@@ -211,7 +173,7 @@ class _Body extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 30),
+        30.height,
         TextField(
           decoration: InputDecoration(
             hintText: 'Password',
@@ -234,7 +196,7 @@ class _Body extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 40),
+        40.height,
         DecoratedBox(
           decoration: BoxDecoration(
             color: Colors.white,

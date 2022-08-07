@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_postman/app/utils/utils.dart';
 
 extension StringX on String {
   static const _emailRegix = r'^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+';
@@ -7,12 +8,20 @@ extension StringX on String {
 
   Text get body1 => Text(
         this,
-        style: const TextStyle(fontSize: 14, color: Colors.white),
+        style: const TextStyle(
+          fontSize: 14,
+          color: Colors.white,
+          fontFamily: AppFonts.roboto,
+        ),
       );
 
   Text get body2 => Text(
         this,
-        style: const TextStyle(fontSize: 12, color: Colors.grey),
+        style: const TextStyle(
+          fontSize: 12,
+          color: Colors.grey,
+          fontFamily: AppFonts.roboto,
+        ),
       );
 
   bool isConfirmPasswordValid(String password) {
