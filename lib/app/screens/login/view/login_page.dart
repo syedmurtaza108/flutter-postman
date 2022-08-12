@@ -93,7 +93,13 @@ class _LoginPageState extends State<LoginPage> {
                                       .body1
                                       .withColor(const Color(0xff878a99)),
                                   32.height,
-                                  const AppTextField(),
+                                  AppTextField(
+                                    title: 'Email',
+                                    hint: 'Enter Email Address',
+                                    onChanged: (_) {},
+                                    content: 'state.email.content',
+                                    error: 'state.email.error',
+                                  ),
                                   16.height,
                                   const PasswordTextField(),
                                   32.height,

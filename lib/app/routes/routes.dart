@@ -13,7 +13,10 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
       );
     case SignupPage.route:
       return FadeTransitionRoute(
-        child: const SignupPage(),
+        child: BlocProvider(
+          create: (context) => SignupCubit(),
+          child: const SignupPage(),
+        ),
         settings: settings,
       );
     case HomePage.route:
