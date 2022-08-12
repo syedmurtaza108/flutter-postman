@@ -11,9 +11,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  final firebaseAuth = FirebaseAuth.instance;
-
-  await firebaseAuth.useAuthEmulator('localhost', 58224);
+  final firebaseAuth = FirebaseAuth.instance; 
 
   runApp(MyApp(userSignedIn: firebaseAuth.currentUser.isNotNull));
 }

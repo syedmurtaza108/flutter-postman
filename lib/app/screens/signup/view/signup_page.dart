@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_postman/app/mixins/mixins.dart';
 import 'package:flutter_postman/app/screens/login/login.dart';
 import 'package:flutter_postman/app/screens/signup/signup.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
@@ -14,8 +15,15 @@ class SignupPage extends StatefulWidget {
   State<SignupPage> createState() => _SignupPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _SignupPageState extends State<SignupPage> with Loading, Message {
   late final cubit = context.read<SignupCubit>();
+  @override
+  void initState() {
+    super.initState();
+
+    initLoadingListener(cubit.loader, context);
+    initMessageListener(cubit.message, context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,8 +125,9 @@ class _SignupPageState extends State<SignupPage> {
                                       32.height,
                                       PrimaryButton(
                                         text: 'Sign Up',
-                                        onPressed:
-                                            state.enableNext ? () {} : null,
+                                        onPressed: state.enableNext
+                                            ? cubit.signup
+                                            : null,
                                       ),
                                     ],
                                   ),

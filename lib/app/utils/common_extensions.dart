@@ -121,4 +121,24 @@ extension NumX on num {
 extension ContextX on BuildContext {
   MediaQueryData get mediaQuery => MediaQuery.of(this);
   NavigatorState get navigator => Navigator.of(this);
+  ThemeData get theme => Theme.of(this);
+
+  void showSnackBar(String message, {bool isError = true}) {
+    final snackBar = SnackBar(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+      behavior: SnackBarBehavior.floating,
+      backgroundColor: const Color(0xfff06548),
+      margin: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+      duration: const Duration(seconds: 1),
+      content: Text(
+        message,
+        style: theme.textTheme.bodyText1!.copyWith(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
+        textAlign: TextAlign.center,
+      ),
+    );
+    ScaffoldMessenger.of(this).showSnackBar(snackBar);
+  }
 }

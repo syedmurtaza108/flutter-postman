@@ -11,6 +11,9 @@ class LoginCubit extends Cubit<LoginState> {
   final _loader = StreamController<bool>.broadcast();
   Stream<bool> get loader => _loader.stream;
 
+  final _message = StreamController<String>.broadcast();
+  Stream<String> get message => _message.stream;
+
   void onEmailChanged(String email) {
     emit(
       state.copyWith(
@@ -39,9 +42,17 @@ class LoginCubit extends Cubit<LoginState> {
     emit(state.copyWith(enableNext: state.isFormValid && !isLoading));
   }
 
+  Future<void> login() async {
+    // _loader.add(true);
+    // await Future.delayed(const Duration(seconds: 5), () {});
+    // _loader.add(false);
+    _message.add('Hello');
+  }
+
   @override
   Future<void> close() {
     _loader.close();
+    _message.close();
     return super.close();
   }
 }

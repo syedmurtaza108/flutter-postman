@@ -8,7 +8,10 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     case LoginPage.route:
       return FadeTransitionRoute(
-        child: const LoginPage(),
+        child: BlocProvider(
+          create: (context) => LoginCubit(),
+          child: const LoginPage(),
+        ),
         settings: settings,
       );
     case SignupPage.route:

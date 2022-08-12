@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_postman/app/mixins/mixins.dart';
+import 'package:flutter_postman/app/screens/login/login.dart';
 import 'package:flutter_postman/app/screens/signup/signup.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
@@ -12,7 +15,16 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> with Loading, Message {
+  late final cubit = context.read<LoginCubit>();
+  @override
+  void initState() {
+    super.initState();
+
+    initLoadingListener(cubit.loader, context);
+    initMessageListener(cubit.message, context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                                   32.height,
                                   PrimaryButton(
                                     text: 'Login',
-                                    onPressed: () {},
+                                    onPressed: cubit.login,
                                   ),
                                 ],
                               ),
