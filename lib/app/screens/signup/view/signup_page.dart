@@ -109,11 +109,16 @@ class _SignupPageState extends State<SignupPage> {
                                         error: state.email.error,
                                       ),
                                       16.height,
-                                      const PasswordTextField(),
+                                      PasswordTextField(
+                                        onChanged: cubit.onPasswordChanged,
+                                        content: state.password.content,
+                                        error: state.password.error,
+                                      ),
                                       32.height,
                                       PrimaryButton(
                                         text: 'Sign Up',
-                                        onPressed: () {},
+                                        onPressed:
+                                            state.enableNext ? () {} : null,
                                       ),
                                     ],
                                   ),

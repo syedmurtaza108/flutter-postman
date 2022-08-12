@@ -11,13 +11,12 @@ class LoginCubit extends Cubit<LoginState> {
   final _loader = StreamController<bool>.broadcast();
   Stream<bool> get loader => _loader.stream;
 
-   void onEmailChanged(String email) {
+  void onEmailChanged(String email) {
     emit(
       state.copyWith(
         email: state.email.copyWith(
           content: email.trim(),
           error: email.trim().emailError,
-          showError: true,
         ),
       ),
     );
@@ -30,7 +29,6 @@ class LoginCubit extends Cubit<LoginState> {
         password: state.password.copyWith(
           content: password.trim(),
           error: password.trim().passwordError,
-          showError: true,
         ),
       ),
     );

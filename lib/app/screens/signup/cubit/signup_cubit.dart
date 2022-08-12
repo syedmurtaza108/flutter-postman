@@ -17,7 +17,6 @@ class SignupCubit extends Cubit<SignupState> {
         email: state.email.copyWith(
           content: email.trim(),
           error: email.trim().emailError,
-          showError: true,
         ),
       ),
     );
@@ -30,7 +29,6 @@ class SignupCubit extends Cubit<SignupState> {
         password: state.password.copyWith(
           content: password.trim(),
           error: password.trim().passwordError,
-          showError: true,
         ),
       ),
     );

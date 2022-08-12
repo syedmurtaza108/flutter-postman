@@ -101,7 +101,11 @@ class _LoginPageState extends State<LoginPage> {
                                     error: 'state.email.error',
                                   ),
                                   16.height,
-                                  const PasswordTextField(),
+                                  PasswordTextField(
+                                    onChanged: (_) {},
+                                    content: 'state.email.content',
+                                    error: 'state.email.error',
+                                  ),
                                   32.height,
                                   PrimaryButton(
                                     text: 'Login',

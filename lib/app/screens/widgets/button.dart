@@ -4,7 +4,7 @@ import 'package:flutter_postman/app/utils/utils.dart';
 class PrimaryButton extends StatefulWidget {
   const PrimaryButton({required this.text, required this.onPressed, super.key});
 
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final String text;
 
   @override
@@ -17,10 +17,19 @@ class _PrimaryButtonState extends State<PrimaryButton> {
     return ElevatedButton(
       onPressed: widget.onPressed,
       style: ElevatedButton.styleFrom(
-        primary: const Color(0xff099885),
+        enabledMouseCursor: SystemMouseCursors.click,
         onPrimary: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6),
+        ),
+      ).copyWith(
+        backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.disabled)) {
+              return Colors.grey;
+            }
+            return const Color(0xff099885); // Use the component's default.
+          },
         ),
       ),
       child: SizedBox(
