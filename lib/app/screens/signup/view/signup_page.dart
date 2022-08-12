@@ -62,23 +62,7 @@ class _SignupPageState extends State<SignupPage> with Loading, Message {
                 height: context.mediaQuery.size.height,
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        'Flutter'.body1.withFont(32),
-                        const Padding(
-                          padding: EdgeInsets.only(bottom: 6),
-                          child: Icon(
-                            Icons.circle_rounded,
-                            size: 8,
-                            color: Color(0xffffae00),
-                          ),
-                        ),
-                        8.width,
-                        'Postman'.body1.withFont(32),
-                      ],
-                    ),
+                    const AppLogo(),
                     32.height,
                     Expanded(
                       child: Center(

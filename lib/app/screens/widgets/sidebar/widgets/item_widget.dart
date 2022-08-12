@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
+part of '../sidebar.dart';
 
-class CollapsibleItemWidget extends StatefulWidget {
-  const CollapsibleItemWidget({
-    super.key,
+class _ItemWidget extends StatefulWidget {
+  const _ItemWidget({
     required this.onHoverPointer,
     required this.leading,
     required this.title,
@@ -21,25 +20,13 @@ class CollapsibleItemWidget extends StatefulWidget {
   final VoidCallback? onTap;
 
   @override
-  State<CollapsibleItemWidget> createState() => _CollapsibleItemWidgetState();
+  State<_ItemWidget> createState() => _ItemWidgetState();
 }
 
-class _CollapsibleItemWidgetState extends State<CollapsibleItemWidget> {
-  bool _underline = false;
-
+class _ItemWidgetState extends State<_ItemWidget> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-      onEnter: (event) {
-        setState(() {
-          _underline = true && widget.onTap != null;
-        });
-      },
-      onExit: (event) {
-        setState(() {
-          _underline = false;
-        });
-      },
       cursor: widget.onHoverPointer,
       child: GestureDetector(
         onTap: widget.onTap,
@@ -48,10 +35,7 @@ class _CollapsibleItemWidgetState extends State<CollapsibleItemWidget> {
           padding: EdgeInsets.all(widget.padding),
           child: Stack(
             alignment: Alignment.centerLeft,
-            children: [
-              widget.leading,
-              _title,
-            ],
+            children: [widget.leading, _title],
           ),
         ),
       ),
@@ -69,13 +53,7 @@ class _CollapsibleItemWidgetState extends State<CollapsibleItemWidget> {
             width: double.infinity,
             child: Text(
               widget.title,
-              style: _underline
-                  ? widget.textStyle.merge(
-                      const TextStyle(
-                        decoration: TextDecoration.underline,
-                      ),
-                    )
-                  : widget.textStyle,
+              style: widget.textStyle,
               softWrap: false,
               overflow: TextOverflow.fade,
             ),

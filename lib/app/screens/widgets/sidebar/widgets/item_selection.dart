@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
+part of '../sidebar.dart';
 
-class CollapsibleItemSelection extends StatefulWidget {
-  const CollapsibleItemSelection({
-    super.key,
+class _ItemSelection extends StatefulWidget {
+  const _ItemSelection({
     required this.height,
     required this.offsetY,
     required this.color,
@@ -16,11 +15,10 @@ class CollapsibleItemSelection extends StatefulWidget {
   final Curve curve;
 
   @override
-  State<CollapsibleItemSelection> createState() =>
-      _CollapsibleItemSelectionState();
+  State<_ItemSelection> createState() => _ItemSelectionState();
 }
 
-class _CollapsibleItemSelectionState extends State<CollapsibleItemSelection>
+class _ItemSelectionState extends State<_ItemSelection>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _offsetYAnimation;
@@ -50,7 +48,7 @@ class _CollapsibleItemSelectionState extends State<CollapsibleItemSelection>
   }
 
   @override
-  void didUpdateWidget(CollapsibleItemSelection oldWidget) {
+  void didUpdateWidget(_ItemSelection oldWidget) {
     if (_oldOffsetY == widget.offsetY) return;
 
     _offsetYAnimation = _createAnimation(_oldOffsetY, widget.offsetY);
