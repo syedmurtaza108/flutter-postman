@@ -3,8 +3,8 @@ import 'package:flutter_postman/app/utils/utils.dart';
 
 class SignupState {
   SignupState({
-    required this.email,
-    required this.password,
+    this.email = const FormField(),
+    this.password = const FormField(),
     this.enableNext = false,
   });
 
@@ -12,7 +12,7 @@ class SignupState {
   final FormField password;
   final bool enableNext;
 
-   bool get isFormValid {
+  bool get isFormValid {
     return email.content.isEmailValid && password.content.isPasswordValid;
   }
 

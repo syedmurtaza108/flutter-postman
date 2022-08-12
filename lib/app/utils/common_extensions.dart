@@ -31,6 +31,13 @@ extension AutoSizeTextX on AutoSizeText {
         maxLines: lines,
         textAlign: textAlign,
       );
+
+  AutoSizeText withAlign(TextAlign align) => AutoSizeText(
+        data ?? '',
+        style: style,
+        maxLines: maxLines,
+        textAlign: align,
+      );
 }
 
 extension StringX on String {
@@ -91,6 +98,14 @@ extension StringX on String {
 
     if (!isPasswordValid) {
       return 'Password is not valid';
+    }
+
+    return null;
+  }
+
+  String? get nameError {
+    if (isEmpty) {
+      return 'This is a required field';
     }
 
     return null;

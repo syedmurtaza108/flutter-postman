@@ -76,7 +76,7 @@ class _ItemSelectionState extends State<_ItemSelection>
         height: widget.height,
         decoration: BoxDecoration(
           color: widget.color,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(2),
         ),
       ),
     );

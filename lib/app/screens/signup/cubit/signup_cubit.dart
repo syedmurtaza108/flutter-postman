@@ -3,12 +3,11 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_postman/app/models/models.dart';
 import 'package:flutter_postman/app/screens/signup/signup.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
 class SignupCubit extends Cubit<SignupState> {
-  SignupCubit() : super(SignupState(email: FormField(), password: FormField()));
+  SignupCubit() : super(SignupState());
 
   final _loader = StreamController<bool>.broadcast();
   Stream<bool> get loader => _loader.stream;

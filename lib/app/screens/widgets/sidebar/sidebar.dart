@@ -36,8 +36,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
   final maxWidth = 270.0;
   final borderRadius = 15.0;
   final iconSize = 24.0;
-  final padding = 10.0;
-  final itemPadding = 10.0;
+  final padding = 24.0;
   final topPadding = 16.0;
   final bottomPadding = 0.0;
   final screenPadding = 4.0;
@@ -62,7 +61,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
     _delta1By4 = _delta * 0.25;
     _delta3by4 = _delta * 0.75;
     _maxOffsetX = padding * 2 + iconSize;
-    _maxOffsetY = itemPadding * 2 + iconSize;
+    _maxOffsetY = 16 + iconSize;
     for (var i = 0; i < widget.items.length; i++) {
       if (!widget.items[i].isSelected) continue;
       _selectedItemIndex = i;
@@ -145,59 +144,58 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
       alignment: Alignment.topLeft,
       children: [
         Padding(
-          padding: EdgeInsets.only(left: minWidth * 1.1),
+          padding: EdgeInsets.only(left: !_isCollapsed ? maxWidth : minWidth),
           child: widget.body,
         ),
-        Padding(
-          padding: EdgeInsets.all(screenPadding),
-          child: GestureDetector(
-            onHorizontalDragUpdate: _onHorizontalDragUpdate,
-            onHorizontalDragEnd: _onHorizontalDragEnd,
-            child: Container(
-              height: height,
-              width: _currWidth,
-              padding: padding.padding,
-              color: const Color(0xff212529),
-              child: Column(
-                crossAxisAlignment: _isCollapsed
-                    ? CrossAxisAlignment.center
-                    : CrossAxisAlignment.start,
-                children: [
-                  topPadding.height,
-                  SizedBox(
-                    height: 40,
-                    child: Visibility(
-                      visible: !_isCollapsed,
-                      replacement: 'FP'.body1.withFont(20),
-                      child: const Center(
-                        child: AppLogo(size: 20, dotPadding: 3),
-                      ),
+        GestureDetector(
+          onHorizontalDragUpdate: _onHorizontalDragUpdate,
+          onHorizontalDragEnd: _onHorizontalDragEnd,
+          child: Container(
+            height: height,
+            width: _currWidth,
+            color: const Color(0xff212529),
+            child: Column(
+              crossAxisAlignment: _isCollapsed
+                  ? CrossAxisAlignment.center
+                  : CrossAxisAlignment.start,
+              children: [
+                topPadding.height,
+                SizedBox(
+                  height: 40,
+                  child: Visibility(
+                    visible: !_isCollapsed,
+                    replacement: 'FP'.body1.withFont(20),
+                    child: const Center(
+                      child: AppLogo(size: 20, dotPadding: 3),
                     ),
                   ),
-                  32.height,
-                  'MENU'.body2.withColor(const Color(0xff5f6270)),
-                  24.height,
-                  Expanded(
-                    child: SingleChildScrollView(
-                      physics: const BouncingScrollPhysics(),
-                      child: Stack(
-                        children: [
-                          _ItemSelection(
-                            height: _maxOffsetY,
-                            offsetY: _maxOffsetY * _selectedItemIndex,
-                            color: const Color(0xff2f4047),
-                            duration: const Duration(milliseconds: 500),
-                            curve: Curves.fastLinearToSlowEaseIn,
-                          ),
-                          Column(children: _items),
-                        ],
-                      ),
+                ),
+                32.height,
+                Padding(
+                  padding: 16.horizontal,
+                  child: 'MENU'.body2.withColor(const Color(0xff5f6270)),
+                ),
+                24.height,
+                Expanded(
+                  child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: Stack(
+                      children: [
+                        _ItemSelection(
+                          height: _maxOffsetY,
+                          offsetY: _maxOffsetY * _selectedItemIndex,
+                          color: const Color(0xff2f4047),
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.fastLinearToSlowEaseIn,
+                        ),
+                        Column(children: _items),
+                      ],
                     ),
                   ),
-                  bottomPadding.height,
-                  _toggleButton,
-                ],
-              ),
+                ),
+                bottomPadding.height,
+                _toggleButton,
+              ],
             ),
           ),
         ),
@@ -210,8 +208,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
       final item = widget.items[index];
       return _ItemWidget(
         onHoverPointer: SystemMouseCursors.click,
-        padding: itemPadding,
-        offsetX: _offsetX,
+        offsetX: 36,
         scale: _fraction,
         leading: Icon(
           item.icon,
@@ -219,6 +216,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
           color: Colors.white,
         ),
         title: item.text,
+        alignment: _isCollapsed ? Alignment.center : Alignment.centerLeft,
         textStyle: context.theme.textTheme.bodyText1!,
         onTap: () {
           if (item.isSelected) return;
@@ -234,7 +232,6 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
   Widget get _toggleButton {
     return _ItemWidget(
       onHoverPointer: SystemMouseCursors.click,
-      padding: itemPadding,
       offsetX: _offsetX,
       scale: _fraction,
       leading: Transform.rotate(
@@ -245,6 +242,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
           color: Colors.white,
         ),
       ),
+      alignment: _isCollapsed ? Alignment.center : Alignment.centerLeft,
       title: '',
       textStyle: context.theme.textTheme.bodyText1!,
       onTap: () {

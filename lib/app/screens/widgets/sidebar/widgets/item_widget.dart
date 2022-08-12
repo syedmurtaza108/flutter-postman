@@ -6,9 +6,9 @@ class _ItemWidget extends StatefulWidget {
     required this.leading,
     required this.title,
     required this.textStyle,
-    required this.padding,
     required this.offsetX,
     required this.scale,
+    required this.alignment,
     this.onTap,
   });
 
@@ -16,8 +16,9 @@ class _ItemWidget extends StatefulWidget {
   final Widget leading;
   final String title;
   final TextStyle textStyle;
-  final double offsetX, scale, padding;
+  final double offsetX, scale;
   final VoidCallback? onTap;
+  final Alignment alignment;
 
   @override
   State<_ItemWidget> createState() => _ItemWidgetState();
@@ -32,9 +33,9 @@ class _ItemWidgetState extends State<_ItemWidget> {
         onTap: widget.onTap,
         child: Container(
           color: Colors.transparent,
-          padding: EdgeInsets.all(widget.padding),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Stack(
-            alignment: Alignment.centerLeft,
+            alignment: widget.alignment,
             children: [widget.leading, _title],
           ),
         ),

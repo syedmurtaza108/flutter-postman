@@ -1,5 +1,5 @@
 class FormField {
-  FormField({this.content = '', this.error});
+  const FormField({this.content = '', this.error});
 
   final String content;
   final String? error;

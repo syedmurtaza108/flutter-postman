@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_postman/app/screens/home/home.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
-part './search_field.dart';
-part './top_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -37,69 +35,66 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {},
           ),
         ],
-        body: const Text('data'),
+        body: Column(
+          children: [
+            Container(
+              color: const Color(0xff292e32),
+              height: 70,
+              child: Row(
+                children: [
+                  const Expanded(child: SizedBox.shrink()),
+                  Container(
+                    color: const Color(0xff31373c),
+                    padding: 16.padding,
+                    child: Row(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(24),
+                          child: const ColoredBox(
+                            color: Color(0xfffecd66),
+                            child: Icon(
+                              Icons.person,
+                              size: 32,
+                            ),
+                          ),
+                        ),
+                        8.width,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            'Syed Murtaza'.body1,
+                            4.height,
+                            'User'.body2,
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  16.width,
+                  Material(
+                    color: const Color(0xff292e32),
+                    child: InkWell(
+                      onTap: () {},
+                      borderRadius: BorderRadius.circular(24),
+                      child: Padding(
+                        padding: 8.padding,
+                        child: const Icon(Icons.logout, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  24.width,
+                ],
+              ),
+            ),
+            Container(
+              color: const Color(0xff212529),
+              width: double.maxFinite,
+              padding: 16.padding,
+              child: 'NEW REQUEST'.body1.withAlign(TextAlign.start).bold,
+            )
+          ],
+        ),
       ),
-      // body: BlocBuilder<HomeCubit, HomeState>(
-      //   builder: (context, state) {
-      //     return Column(
-      //       children: [
-      //         const _TopWidget(),
-      //         Expanded(
-      //           child: Row(
-      //             children: [
-      //               16.width,
-      //               NavigationRail(
-      //                 onDestinationSelected: cubit.selectScreen,
-      //                 backgroundColor: AppColors.black300,
-      //                 destinations: [
-      //                   NavigationRailDestination(
-      //                     icon: Image.asset(
-      //                       'assets/code.png',
-      //                       color: const Color(0xff3b3b3f),
-      //                       width: 26,
-      //                       height: 26,
-      //                     ),
-      //                     selectedIcon: Image.asset(
-      //                       'assets/code_selected.png',
-      //                       width: 26,
-      //                       height: 26,
-      //                     ),
-      //                     label: 'Home'.body1,
-      //                   ),
-      //                   NavigationRailDestination(
-      //                     icon: Image.asset(
-      //                       'assets/collection.png',
-      //                       color: const Color(0xff3b3b3f),
-      //                       width: 26,
-      //                       height: 26,
-      //                     ),
-      //                     selectedIcon: Image.asset(
-      //                       'assets/collection_selected.png',
-      //                       width: 26,
-      //                       height: 26,
-      //                     ),
-      //                     label: 'Collection'.body1,
-      //                   ),
-      //                 ],
-      //                 selectedIndex: state.selectedScreenIndex,
-      //               ),
-      //               Expanded(
-      //                 child: Container(
-      //                   color: AppColors.black400,
-      //                   width: double.maxFinite,
-      //                   height: double.maxFinite,
-      //                   margin: 16.horizontal,
-      //                   padding: 16.padding,
-      //                   child: 'Hello'.body1,
-      //                 ),
-      //               ),
-      //             ],
-      //           ),
-      //         )
-      //       ],
-      //     );
-      //   },
-      // ),
     );
   }
 }
