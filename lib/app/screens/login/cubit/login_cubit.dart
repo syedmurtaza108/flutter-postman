@@ -16,6 +16,9 @@ class LoginCubit extends Cubit<LoginState> {
   final _message = StreamController<String>.broadcast();
   Stream<String> get message => _message.stream;
 
+  final _navigate = StreamController<bool>.broadcast();
+  Stream<bool> get navigate => _navigate.stream;
+
   void onEmailChanged(String email) {
     emit(
       state.copyWith(
@@ -51,6 +54,8 @@ class LoginCubit extends Cubit<LoginState> {
         email: state.email.content,
         password: state.password.content,
       );
+
+      _navigate.add(true);
     } on FirebaseAuthException catch (e) {
       if (e.message != null) {
         _message.add(e.message!);
@@ -69,6 +74,7 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> close() {
     _loader.close();
     _message.close();
+    _navigate.close();
     return super.close();
   }
 }

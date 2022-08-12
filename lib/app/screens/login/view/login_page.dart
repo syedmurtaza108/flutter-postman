@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_postman/app/mixins/mixins.dart';
+import 'package:flutter_postman/app/screens/home/home.dart';
 import 'package:flutter_postman/app/screens/login/login.dart';
 import 'package:flutter_postman/app/screens/signup/signup.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
@@ -23,6 +24,14 @@ class _LoginPageState extends State<LoginPage> with Loading, Message {
 
     initLoadingListener(cubit.loader, context);
     initMessageListener(cubit.message, context);
+    cubit.navigate.listen(
+      (event) {
+        context.navigator.pushNamedAndRemoveUntil(
+          HomePage.route,
+          (_) => false,
+        );
+      },
+    );
   }
 
   @override
