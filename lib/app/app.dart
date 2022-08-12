@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_postman/app/routes/routes.dart';
 import 'package:flutter_postman/app/screens/home/home.dart';
 import 'package:flutter_postman/app/screens/login/login.dart';
 import 'package:flutter_postman/app/theme/theme.dart';
@@ -14,12 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: AppTheme.lightTheme,
       themeMode: ThemeMode.light,
-      home: userSignedIn
-          ? BlocProvider(
-              create: (context) => HomeCubit(),
-              child: const HomePage(),
-            )
-          : const LoginPage(),
+      initialRoute: userSignedIn ? HomePage.route : LoginPage.route,
+      onGenerateRoute: onGenerateRoute,
     );
   }
 }

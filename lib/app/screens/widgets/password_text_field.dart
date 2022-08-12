@@ -1,26 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
-class AppTextField extends StatefulWidget {
-  const AppTextField({super.key});
+class PasswordTextField extends StatefulWidget {
+  const PasswordTextField({super.key});
 
   @override
-  State<AppTextField> createState() => AppTextFieldState();
+  State<PasswordTextField> createState() => _PasswordTextFieldState();
 }
 
-class AppTextFieldState extends State<AppTextField> {
+class _PasswordTextFieldState extends State<PasswordTextField> {
+  var _showPassword = false;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        'Email'.body1,
+        'Password'.body1,
         16.height,
         TextField(
           style: Theme.of(context).textTheme.bodyText1,
           cursorColor: Colors.white,
+          obscureText: _showPassword,
           decoration: InputDecoration(
-            hintText: 'Enter email address',
+            hintText: 'Password',
+            suffixIcon: IconButton(
+              splashRadius: 16,
+              onPressed: () {
+                setState(() => _showPassword = !_showPassword);
+              },
+              icon: Icon(
+                _showPassword
+                    ? Icons.visibility_off_outlined
+                    : Icons.visibility_outlined,
+                color: Colors.grey,
+              ),
+            ),
             filled: true,
             fillColor: const Color(0xff262a2f),
             enabledBorder: OutlineInputBorder(

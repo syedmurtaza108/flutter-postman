@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_postman/app/screens/signup/signup.dart';
+import 'package:flutter_postman/app/screens/login/login.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 import 'package:lottie/lottie.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
-  static const route = 'login';
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
+  static const route = 'signup';
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,13 +83,13 @@ class _LoginPageState extends State<LoginPage> {
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  'Welcome Back!'
+                                  'Create New Account'
                                       .body1
                                       .withFont(18)
                                       .withColor(const Color(0xff405189))
                                       .bold,
                                   16.height,
-                                  'Login to continue'
+                                  'Get your free account now'
                                       .body1
                                       .withColor(const Color(0xff878a99)),
                                   32.height,
@@ -98,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                                   const PasswordTextField(),
                                   32.height,
                                   PrimaryButton(
-                                    text: 'Login',
+                                    text: 'Sign Up',
                                     onPressed: () {},
                                   ),
                                 ],
@@ -109,13 +109,13 @@ class _LoginPageState extends State<LoginPage> {
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              "Don't have an account?"
+                              'Already have an account?'
                                   .body1
                                   .withColor(const Color(0xffced4da)),
                               2.width,
                               AppTextButton(
-                                text: 'Sign Up',
-                                onPressed: _navigateToSignup,
+                                text: 'Login',
+                                onPressed: _navigateToLogin,
                               ),
                             ],
                           ),
@@ -132,37 +132,10 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _navigateToSignup() {
+  void _navigateToLogin() {
     context.navigator.pushNamedAndRemoveUntil(
-      SignupPage.route,
+      LoginPage.route,
       (route) => false,
     );
-  }
-}
-
-class ArcClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    return Path()
-      ..lineTo(0, size.height - 100)
-      ..quadraticBezierTo(
-        size.width / 4,
-        size.height,
-        size.width / 2,
-        size.height,
-      )
-      ..quadraticBezierTo(
-        size.width * 3 / 4,
-        size.height,
-        size.width,
-        size.height - 100,
-      )
-      ..lineTo(size.width, 0)
-      ..close();
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    return oldClipper != this;
   }
 }

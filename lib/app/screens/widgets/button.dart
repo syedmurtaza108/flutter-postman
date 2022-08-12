@@ -14,32 +14,19 @@ class PrimaryButton extends StatefulWidget {
 class _PrimaryButtonState extends State<PrimaryButton> {
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(30),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.deepPurple[100] ?? Colors.black,
-            spreadRadius: 10,
-            blurRadius: 20,
-          ),
-        ],
+    return ElevatedButton(
+      onPressed: widget.onPressed,
+      style: ElevatedButton.styleFrom(
+        primary: const Color(0xff099885),
+        onPrimary: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(6),
+        ),
       ),
-      child: ElevatedButton(
-        onPressed: widget.onPressed,
-        style: ElevatedButton.styleFrom(
-          primary: Colors.deepPurple,
-          onPrimary: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-        ),
-        child: SizedBox(
-          width: double.infinity,
-          height: 50,
-          child: Center(child: widget.text.body1),
-        ),
+      child: SizedBox(
+        width: double.infinity,
+        height: 50,
+        child: Center(child: widget.text.body1),
       ),
     );
   }
