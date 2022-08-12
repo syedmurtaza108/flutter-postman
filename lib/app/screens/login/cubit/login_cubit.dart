@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_postman/app/models/models.dart';
 import 'package:flutter_postman/app/screens/login/login.dart';
@@ -43,10 +45,24 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<void> login() async {
-    // _loader.add(true);
-    // await Future.delayed(const Duration(seconds: 5), () {});
-    // _loader.add(false);
-    _message.add('Hello');
+    try {
+      _loader.add(true);
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: state.email.content,
+        password: state.password.content,
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.message != null) {
+        _message.add(e.message!);
+      } else {
+        _message.add('Unexpected error occurred');
+      }
+    } catch (e) {
+      _message.add('Unexpected error occurred');
+      log(e.toString());
+    }
+
+    _loader.add(false);
   }
 
   @override

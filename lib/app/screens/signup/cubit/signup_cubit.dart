@@ -52,12 +52,13 @@ class SignupCubit extends Cubit<SignupState> {
         password: state.password.content,
       );
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        _message.add('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        _message.add('The account already exists for this email.');
+      if (e.message != null) {
+        _message.add(e.message!);
+      } else {
+        _message.add('Unexpected error occurred');
       }
     } catch (e) {
+      _message.add('Unexpected error occurred');
       log(e.toString());
     }
 

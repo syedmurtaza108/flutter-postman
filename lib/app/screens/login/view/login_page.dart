@@ -29,127 +29,135 @@ class _LoginPageState extends State<LoginPage> with Loading, Message {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xff1a1d21),
-      body: Stack(
-        children: [
-          ClipPath(
-            clipper: ArcClipper(),
-            child: Stack(
-              children: [
-                Image.asset(
-                  'assets/computers.jpg',
-                  width: context.mediaQuery.size.width,
-                  height: context.mediaQuery.size.height * 0.5,
-                  fit: BoxFit.cover,
-                ),
-                DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: const Color(0xff3d4c81).withOpacity(0.7),
-                  ),
-                  child: Lottie.asset(
-                    'snow.json',
-                    width: context.mediaQuery.size.width,
-                    height: context.mediaQuery.size.height * 0.5,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: 64.padding,
-            width: context.mediaQuery.size.width,
-            height: context.mediaQuery.size.height,
-            child: Column(
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.end,
+      body: BlocBuilder<LoginCubit, LoginState>(
+        builder: (context, state) {
+          return Stack(
+            children: [
+              ClipPath(
+                clipper: ArcClipper(),
+                child: Stack(
                   children: [
-                    'Flutter'.body1.withFont(32),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 6),
-                      child: Icon(
-                        Icons.circle_rounded,
-                        size: 8,
-                        color: Color(0xffffae00),
+                    Image.asset(
+                      'assets/computers.jpg',
+                      width: context.mediaQuery.size.width,
+                      height: context.mediaQuery.size.height * 0.5,
+                      fit: BoxFit.cover,
+                    ),
+                    DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: const Color(0xff3d4c81).withOpacity(0.7),
+                      ),
+                      child: Lottie.asset(
+                        'snow.json',
+                        width: context.mediaQuery.size.width,
+                        height: context.mediaQuery.size.height * 0.5,
                       ),
                     ),
-                    8.width,
-                    'Postman'.body1.withFont(32),
                   ],
                 ),
-                32.height,
-                Expanded(
-                  child: Center(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: const Color(0xff212529),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            constraints: const BoxConstraints(maxWidth: 450),
-                            child: Padding(
-                              padding: 32.padding,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
+              ),
+              Container(
+                margin: 64.padding,
+                width: context.mediaQuery.size.width,
+                height: context.mediaQuery.size.height,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        'Flutter'.body1.withFont(32),
+                        const Padding(
+                          padding: EdgeInsets.only(bottom: 6),
+                          child: Icon(
+                            Icons.circle_rounded,
+                            size: 8,
+                            color: Color(0xffffae00),
+                          ),
+                        ),
+                        8.width,
+                        'Postman'.body1.withFont(32),
+                      ],
+                    ),
+                    32.height,
+                    Expanded(
+                      child: Center(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: const Color(0xff212529),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                constraints:
+                                    const BoxConstraints(maxWidth: 450),
+                                child: Padding(
+                                  padding: 32.padding,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      'Welcome Back!'
+                                          .body1
+                                          .withFont(18)
+                                          .withColor(const Color(0xff405189))
+                                          .bold,
+                                      16.height,
+                                      'Login to continue'
+                                          .body1
+                                          .withColor(const Color(0xff878a99)),
+                                      32.height,
+                                      AppTextField(
+                                        title: 'Email',
+                                        hint: 'Enter Email Address',
+                                        onChanged: cubit.onEmailChanged,
+                                        content: state.email.content,
+                                        error: state.email.error,
+                                      ),
+                                      16.height,
+                                      PasswordTextField(
+                                        onChanged: cubit.onPasswordChanged,
+                                        content: state.password.content,
+                                        error: state.password.error,
+                                      ),
+                                      32.height,
+                                      PrimaryButton(
+                                        text: 'Login',
+                                        onPressed: state.enableNext
+                                            ? cubit.login
+                                            : null,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              24.height,
+                              Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  'Welcome Back!'
+                                  "Don't have an account?"
                                       .body1
-                                      .withFont(18)
-                                      .withColor(const Color(0xff405189))
-                                      .bold,
-                                  16.height,
-                                  'Login to continue'
-                                      .body1
-                                      .withColor(const Color(0xff878a99)),
-                                  32.height,
-                                  AppTextField(
-                                    title: 'Email',
-                                    hint: 'Enter Email Address',
-                                    onChanged: (_) {},
-                                    content: 'state.email.content',
-                                    error: 'state.email.error',
-                                  ),
-                                  16.height,
-                                  PasswordTextField(
-                                    onChanged: (_) {},
-                                    content: 'state.email.content',
-                                    error: 'state.email.error',
-                                  ),
-                                  32.height,
-                                  PrimaryButton(
-                                    text: 'Login',
-                                    onPressed: cubit.login,
+                                      .withColor(const Color(0xffced4da)),
+                                  2.width,
+                                  AppTextButton(
+                                    text: 'Sign Up',
+                                    onPressed: _navigateToSignup,
                                   ),
                                 ],
                               ),
-                            ),
-                          ),
-                          24.height,
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              "Don't have an account?"
-                                  .body1
-                                  .withColor(const Color(0xffced4da)),
-                              2.width,
-                              AppTextButton(
-                                text: 'Sign Up',
-                                onPressed: _navigateToSignup,
-                              ),
                             ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
-          )
-        ],
+              )
+            ],
+          );
+        },
       ),
     );
   }

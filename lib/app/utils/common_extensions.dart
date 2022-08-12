@@ -129,7 +129,7 @@ extension ContextX on BuildContext {
       behavior: SnackBarBehavior.floating,
       backgroundColor: const Color(0xfff06548),
       margin: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
-      duration: const Duration(seconds: 1),
+      duration: const Duration(seconds: 2),
       content: Text(
         message,
         style: theme.textTheme.bodyText1!.copyWith(
