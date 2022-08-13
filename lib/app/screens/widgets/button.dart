@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
 class PrimaryButton extends StatefulWidget {
-  const PrimaryButton({required this.text, required this.onPressed, super.key});
+  const PrimaryButton({
+    required this.text,
+    required this.onPressed,
+    this.backColor,
+    super.key,
+  });
 
   final VoidCallback? onPressed;
   final String text;
+  final Color? backColor;
 
   @override
   State<PrimaryButton> createState() => _PrimaryButtonState();
@@ -28,14 +34,19 @@ class _PrimaryButtonState extends State<PrimaryButton> {
             if (states.contains(MaterialState.disabled)) {
               return Colors.grey;
             }
-            return const Color(0xff099885); // Use the component's default.
+            return widget.backColor ?? const Color(0xff099885);
           },
         ),
       ),
       child: SizedBox(
         width: double.infinity,
         height: 50,
-        child: Center(child: widget.text.body1),
+        child: Center(
+          child: Text(
+            widget.text,
+            style: context.theme.textTheme.bodyText1,
+          ),
+        ),
       ),
     );
   }

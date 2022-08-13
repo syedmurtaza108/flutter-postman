@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_postman/app/screens/home/home.dart';
+import 'package:flutter_postman/app/screens/login/view/login_page.dart';
+import 'package:flutter_postman/app/screens/logout/logout.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
@@ -74,7 +77,18 @@ class _HomePageState extends State<HomePage> {
                   Material(
                     color: const Color(0xff292e32),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () async {
+                        final logout = await context.showDialog<bool>(
+                          const LogoutDialog(),
+                        );
+
+                        if (logout == true) {
+                          await context.navigator.pushNamedAndRemoveUntil(
+                            LoginPage.route,
+                            (_) => false,
+                          );
+                        }
+                      },
                       borderRadius: BorderRadius.circular(24),
                       child: Padding(
                         padding: 8.padding,
@@ -91,7 +105,13 @@ class _HomePageState extends State<HomePage> {
               width: double.maxFinite,
               padding: 16.padding,
               child: 'NEW REQUEST'.body1.withAlign(TextAlign.start).bold,
-            )
+            ),
+            Container(
+              color: const Color(0xff212529),
+              width: double.maxFinite,
+              margin: 16.padding,
+              child: 'NEW REQUEST'.body1.withAlign(TextAlign.start).bold,
+            ),
           ],
         ),
       ),

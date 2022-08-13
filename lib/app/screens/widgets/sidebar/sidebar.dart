@@ -166,7 +166,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
                     visible: !_isCollapsed,
                     replacement: 'FP'.body1.withFont(20),
                     child: const Center(
-                      child: AppLogo(size: 20, dotPadding: 3),
+                      child: AppLogo(size: 20, dotPadding: 3, dotHeight: 25),
                     ),
                   ),
                 ),

@@ -67,6 +67,28 @@ extension StringX on String {
         textAlign: TextAlign.center,
       );
 
+  AutoSizeText get headline1 => AutoSizeText(
+        this,
+        style: const TextStyle(
+          fontSize: 22,
+          color: Colors.white,
+          fontFamily: AppFonts.roboto,
+        ),
+        maxLines: 2,
+        textAlign: TextAlign.center,
+      );
+
+  AutoSizeText get headline2 => AutoSizeText(
+        this,
+        style: const TextStyle(
+          fontSize: 18,
+          color: Colors.white,
+          fontFamily: AppFonts.roboto,
+        ),
+        maxLines: 2,
+        textAlign: TextAlign.center,
+      );
+
   bool isConfirmPasswordValid(String password) {
     return compareTo(password) == 0;
   }
@@ -155,5 +177,20 @@ extension ContextX on BuildContext {
       ),
     );
     ScaffoldMessenger.of(this).showSnackBar(snackBar);
+  }
+
+  Future<T?> showDialog<T>(Widget widget) {
+    return showGeneralDialog<T>(
+      context: this,
+      pageBuilder: (_, __, ___) => widget,
+      barrierDismissible: false,
+      transitionBuilder: (_, animation, __, child) {
+        return Transform.scale(
+          scale: Curves.easeInOut.transform(animation.value),
+          child: child,
+        );
+      },
+      transitionDuration: const Duration(milliseconds: 300),
+    );
   }
 }

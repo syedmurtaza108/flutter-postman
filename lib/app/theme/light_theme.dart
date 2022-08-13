@@ -21,7 +21,7 @@ class AppTheme {
   static final _textTheme = TextTheme(
     headline1: TextStyle(
       fontFamily: AppFonts.roboto,
-      color: _colorScheme.primary,
+      color: _colorScheme.onBackground,
       fontSize: 22,
     ),
     headline2: TextStyle(
