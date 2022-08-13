@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
         isCollapsed: MediaQuery.of(context).size.width <= 800,
         items: [
           CollapsibleItem(
-            text: 'NEW REQUEST',
+            text: 'NEW REQUEST BITRISE',
             icon: Icons.add,
             onPressed: () {},
             isSelected: true,
