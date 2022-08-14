@@ -95,6 +95,10 @@ class _ApiViewState extends State<ApiView> {
                       onChanged: (_) {},
                       content: '',
                       error: null,
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(4),
+                        bottomRight: Radius.circular(4),
+                      ),
                     ),
                   ),
                   16.width,
@@ -109,6 +113,14 @@ class _ApiViewState extends State<ApiView> {
               ),
               16.height,
               'QUERY PARAMS'
+                  .body1
+                  .withAlign(TextAlign.start)
+                  .bold
+                  .withColor(const Color(0xffced4da)),
+              16.height,
+              const JsonTextField(),
+              16.height,
+              'HEADERS'
                   .body1
                   .withAlign(TextAlign.start)
                   .bold

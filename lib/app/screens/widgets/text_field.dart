@@ -8,6 +8,7 @@ class AppTextField extends StatefulWidget {
     required this.onChanged,
     required this.content,
     required this.error,
+    this.borderRadius,
     super.key,
   });
 
@@ -16,6 +17,7 @@ class AppTextField extends StatefulWidget {
   final void Function(String) onChanged;
   final String content;
   final String? error;
+  final BorderRadius? borderRadius;
 
   @override
   State<AppTextField> createState() => AppTextFieldState();
@@ -44,19 +46,19 @@ class AppTextFieldState extends State<AppTextField> {
                 ),
             enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Color(0xff2a2f34)),
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: widget.borderRadius ?? BorderRadius.circular(4),
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Color(0xff2a2f34)),
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: widget.borderRadius ?? BorderRadius.circular(4),
             ),
             errorBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Color(0xfff06548)),
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: widget.borderRadius ?? BorderRadius.circular(4),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Color(0xfff06548)),
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: widget.borderRadius ?? BorderRadius.circular(4),
             ),
           ),
         ),

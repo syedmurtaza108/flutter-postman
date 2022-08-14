@@ -34,6 +34,7 @@ class JsonTextFieldState extends State<JsonTextField> {
         ),
         ...fields.map(
           (e) => TableRow(
+            key: ValueKey(e.id),
             children: [
               Padding(
                 padding: 8.padding,
@@ -43,7 +44,7 @@ class JsonTextFieldState extends State<JsonTextField> {
                   child: Checkbox(
                     value: e.selected,
                     activeColor: Colors.white,
-                    onChanged: (_) {},
+                    onChanged: (_) => _selectKey(e.id),
                     checkColor: const Color(0xff099885),
                   ),
                 ),
@@ -104,10 +105,6 @@ class JsonTextFieldState extends State<JsonTextField> {
           ),
         ),
       );
-
-      fields.forEach((element) {
-        print(element.id);
-      }); 
       setState(() {});
     }
   }
@@ -116,7 +113,16 @@ class JsonTextFieldState extends State<JsonTextField> {
     final index = fields.indexWhere((item) => item.id == id);
 
     fields.removeAt(index);
-    print(index);
+    setState(() {});
+  }
+
+  void _selectKey(String id) {
+    final updatedList = fields
+        .map((e) => e.id == id ? e.copyWith(selected: !e.selected) : e)
+        .toList();
+    fields
+      ..clear()
+      ..addAll(updatedList);
     setState(() {});
   }
 }
@@ -132,4 +138,17 @@ class JsonFieldState {
   final bool selected;
   final String key;
   final String value;
+
+  JsonFieldState copyWith({
+    bool? selected,
+    String? key,
+    String? value,
+  }) {
+    return JsonFieldState(
+      id: id,
+      selected: selected ?? this.selected,
+      key: key ?? this.key,
+      value: value ?? this.value,
+    );
+  }
 }

@@ -38,11 +38,13 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {},
           ),
         ],
-        body: SingleChildScrollView(
+        body: CustomScrollView(
           controller: ScrollController(),
-          child: Column(
-            children: [
-              Container(
+          slivers: [
+            SliverAppBar(
+              snap: true,
+              floating: true,
+              title: Container(
                 color: const Color(0xff292e32),
                 height: 70,
                 child: Row(
@@ -102,21 +104,25 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              Container(
-                color: const Color(0xff212529),
-                width: double.maxFinite,
-                padding: 16.padding,
-                child: 'NEW REQUEST'
-                    .body1
-                    .withAlign(TextAlign.start)
-                    .bold
-                    .withColor(const Color(0xffced4da)),
+            ),
+            SliverList(
+              delegate: SliverChildListDelegate.fixed(
+                [
+                  Container(
+                    color: const Color(0xff212529),
+                    width: double.maxFinite,
+                    padding: 16.padding,
+                    child: 'NEW REQUEST'
+                        .body1
+                        .withAlign(TextAlign.start)
+                        .bold
+                        .withColor(const Color(0xffced4da)),
+                  ),
+                  const ApiView(title: 'UNTITLED REQUEST'),
+                ],
               ),
-              const ApiView(
-                title: 'UNTITLED REQUEST',
-              ),
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );
