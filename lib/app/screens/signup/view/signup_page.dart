@@ -48,7 +48,7 @@ class _SignupPageState extends State<SignupPage> with Loading, Message {
                         color: const Color(0xff3d4c81).withOpacity(0.7),
                       ),
                       child: Lottie.asset(
-                        'snow.json',
+                        'assets/snow.json',
                         width: context.mediaQuery.size.width,
                         height: context.mediaQuery.size.height * 0.5,
                       ),

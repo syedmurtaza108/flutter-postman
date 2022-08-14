@@ -27,8 +27,8 @@ class AppTextFieldState extends State<AppTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        widget.title.body1,
-        16.height,
+        if (widget.title.isNotEmpty) widget.title.body1,
+        if (widget.title.isNotEmpty) 16.height,
         TextFormField(
           initialValue: widget.content,
           style: Theme.of(context).textTheme.bodyText1,

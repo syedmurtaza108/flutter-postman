@@ -110,6 +110,7 @@ class AppTheme {
       inputDecorationTheme: _inputDecorationTheme,
       progressIndicatorTheme: _progressBarTheme,
       dialogBackgroundColor: _colorScheme.background,
+      unselectedWidgetColor: const Color(0xff5a6670),
     );
   }
 }
