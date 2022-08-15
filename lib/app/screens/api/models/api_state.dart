@@ -2,13 +2,14 @@ import 'package:flutter_postman/app/models/models.dart';
 
 class ApiState {
   ApiState({
-    this.name = const FormField(),
+    this.name = const FormField(content: 'UNTITLED REQUEST'),
     this.type = 'GET',
     this.url = const FormField(),
     this.params = const <String, String>{},
     this.authorization = const FormField(),
     this.body = '',
-    this.enableNext = false,
+    this.enableSend = false,
+    this.showNameEdit = false,
   });
 
   final FormField name;
@@ -17,7 +18,8 @@ class ApiState {
   final Map<String, String> params;
   final FormField authorization;
   final dynamic body;
-  final bool enableNext;
+  final bool enableSend;
+  final bool showNameEdit;
 
   bool get isFormValid {
     return name.content.isNotEmpty && url.content.isNotEmpty;
@@ -30,7 +32,8 @@ class ApiState {
     final Map<String, String>? params,
     final FormField? authorization,
     final dynamic body,
-    final bool? enableNext,
+    final bool? enableSend,
+    final bool? showNameEdit,
   }) {
     return ApiState(
       name: name ?? this.name,
@@ -39,7 +42,8 @@ class ApiState {
       params: params ?? this.params,
       authorization: authorization ?? this.authorization,
       body: body ?? this.body,
-      enableNext: enableNext ?? this.enableNext,
+      enableSend: enableSend ?? this.enableSend,
+      showNameEdit: showNameEdit ?? this.showNameEdit,
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_postman/app/screens/api/api.dart';
 import 'package:flutter_postman/app/screens/home/home.dart';
 import 'package:flutter_postman/app/screens/login/login.dart';
 import 'package:flutter_postman/app/screens/signup/signup.dart';
@@ -24,8 +25,11 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
       );
     case HomePage.route:
       return FadeTransitionRoute(
-        child: BlocProvider(
-          create: (context) => HomeCubit(),
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (context) => HomeCubit()),
+            BlocProvider(create: (context) => ApiCubit()),
+          ],
           child: const HomePage(),
         ),
         settings: settings,

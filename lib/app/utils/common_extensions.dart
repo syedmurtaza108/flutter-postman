@@ -42,6 +42,8 @@ extension AutoSizeTextX on AutoSizeText {
 
 extension StringX on String {
   static const _emailRegix = r'^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+';
+  static const _urlRegix =
+      r'[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)';
 
   static const _minPasswordLength = 6;
 
@@ -101,6 +103,10 @@ extension StringX on String {
     return length >= _minPasswordLength;
   }
 
+  bool get isUrlValid {
+    return RegExp(_urlRegix).hasMatch(this);
+  }
+
   String? get emailError {
     if (isEmpty) {
       return 'This is a required field';
@@ -125,9 +131,13 @@ extension StringX on String {
     return null;
   }
 
-  String? get nameError {
+  String? get urlError {
     if (isEmpty) {
       return 'This is a required field';
+    }
+
+    if (!isUrlValid) {
+      return 'URL is not valid';
     }
 
     return null;

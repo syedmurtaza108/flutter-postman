@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                         .bold
                         .withColor(const Color(0xffced4da)),
                   ),
-                  const ApiView(title: 'UNTITLED REQUEST'),
+                  const ApiView(),
                 ],
               ),
             )
