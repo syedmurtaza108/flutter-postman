@@ -36,7 +36,6 @@ class _ApiViewState extends State<ApiView> {
                   Expanded(
                     child: state.showNameEdit
                         ? AppTextField(
-                            title: '',
                             hint: 'Enter request name here',
                             onChanged: cubit.onNameChanged,
                             content: state.name.content,
@@ -105,7 +104,6 @@ class _ApiViewState extends State<ApiView> {
                       ),
                       Expanded(
                         child: AppTextField(
-                          title: '',
                           hint: 'Enter request URL',
                           onChanged: cubit.onUrlChanged,
                           content: state.url.content,
@@ -127,15 +125,23 @@ class _ApiViewState extends State<ApiView> {
                     ],
                   ),
                   16.height,
+                  'HEADERS'
+                      .body1
+                      .withAlign(TextAlign.start)
+                      .bold
+                      .withColor(const Color(0xffced4da)),
+                  16.height,
+                  const JsonKeyValue(),
+                  16.height,
                   'QUERY PARAMS'
                       .body1
                       .withAlign(TextAlign.start)
                       .bold
                       .withColor(const Color(0xffced4da)),
                   16.height,
-                  const JsonTextField(),
+                  const JsonKeyValue(),
                   16.height,
-                  'HEADERS'
+                  'REQUEST BODY'
                       .body1
                       .withAlign(TextAlign.start)
                       .bold

@@ -3,7 +3,7 @@ import 'package:flutter_postman/app/utils/utils.dart';
 
 class AppTextField extends StatefulWidget {
   const AppTextField({
-    required this.title,
+    this.title = '',
     required this.hint,
     required this.onChanged,
     required this.content,
