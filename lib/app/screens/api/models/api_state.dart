@@ -22,7 +22,7 @@ class ApiState {
   final bool showNameEdit;
 
   bool get isFormValid {
-    return name.content.isNotEmpty && url.content.isNotEmpty;
+    return name.error == null && url.error == null;
   }
 
   ApiState copyWith({

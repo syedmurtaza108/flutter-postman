@@ -154,6 +154,18 @@ extension StringX on String {
 
     return null;
   }
+
+  String? get nameError {
+    if (isEmpty) {
+      return 'This is a required field';
+    }
+
+    if (length < 6) {
+      return 'Request Name is not valid';
+    }
+
+    return null;
+  }
 }
 
 extension NumX on num {

@@ -29,23 +29,23 @@ class _ApiViewState extends State<ApiView> {
               margin: 16.padding,
               padding: 16.padding,
               child: Row(
+                crossAxisAlignment: state.showNameEdit
+                    ? CrossAxisAlignment.start
+                    : CrossAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 300),
-                      child: state.showNameEdit
-                          ? AppTextField(
-                              title: '',
-                              hint: 'Enter request name here',
-                              onChanged: (_) {},
-                              content: state.name.content,
-                              error: state.name.error,
-                            )
-                          : state.name.content.body1
-                              .withAlign(TextAlign.start)
-                              .bold
-                              .withColor(color),
-                    ),
+                    child: state.showNameEdit
+                        ? AppTextField(
+                            title: '',
+                            hint: 'Enter request name here',
+                            onChanged: cubit.onNameChanged,
+                            content: state.name.content,
+                            error: state.name.error,
+                          )
+                        : state.name.content.body1
+                            .withAlign(TextAlign.start)
+                            .bold
+                            .withColor(color),
                   ),
                   8.width,
                   Material(
@@ -72,7 +72,7 @@ class _ApiViewState extends State<ApiView> {
                     borderRadius: BorderRadius.circular(2),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(2),
-                      onTap: () {},
+                      onTap: cubit.hideNameEdit,
                       child: Padding(
                         padding: 16.padding,
                         child: Row(
@@ -97,6 +97,7 @@ class _ApiViewState extends State<ApiView> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       HttpMethodsMenu(
                         httpMethod: HttpMethod.get,
@@ -106,9 +107,9 @@ class _ApiViewState extends State<ApiView> {
                         child: AppTextField(
                           title: '',
                           hint: 'Enter request URL',
-                          onChanged: (_) {},
-                          content: '',
-                          error: null,
+                          onChanged: cubit.onUrlChanged,
+                          content: state.url.content,
+                          error: state.url.error,
                           borderRadius: const BorderRadius.only(
                             topRight: Radius.circular(4),
                             bottomRight: Radius.circular(4),
