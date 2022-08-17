@@ -9,6 +9,7 @@ class AppTextField extends StatefulWidget {
     required this.content,
     required this.error,
     this.borderRadius,
+    this.maxLines,
     super.key,
   });
 
@@ -18,6 +19,7 @@ class AppTextField extends StatefulWidget {
   final String content;
   final String? error;
   final BorderRadius? borderRadius;
+  final int? maxLines;
 
   @override
   State<AppTextField> createState() => AppTextFieldState();
@@ -36,6 +38,7 @@ class AppTextFieldState extends State<AppTextField> {
           style: Theme.of(context).textTheme.bodyText1,
           cursorColor: Colors.white,
           onChanged: widget.onChanged,
+          maxLines: widget.maxLines,
           decoration: InputDecoration(
             hintText: widget.hint,
             filled: true,

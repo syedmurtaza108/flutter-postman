@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_postman/app/screens/api/api.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
+import 'package:json_editor/json_editor.dart';
 
 class ApiView extends StatefulWidget {
   const ApiView({
@@ -147,7 +148,29 @@ class _ApiViewState extends State<ApiView> {
                       .bold
                       .withColor(const Color(0xffced4da)),
                   16.height,
-                  const JsonTextField(),
+                  SizedBox(
+                    height: 300,
+                    child: JsonEditorTheme(
+                      themeData: JsonEditorThemeData(
+                        lightTheme: JsonTheme(
+                          defaultStyle: context.theme.textTheme.bodyText1,
+                          bracketStyle: context.theme.textTheme.bodyText1,
+                          boolStyle: context.theme.textTheme.bodyText1,
+                          commentStyle: context.theme.textTheme.bodyText1,
+                          numberStyle: context.theme.textTheme.bodyText1,
+                          stringStyle: context.theme.textTheme.bodyText1,
+                          keyStyle: context.theme.textTheme.bodyText1?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                          errorStyle:
+                              context.theme.textTheme.bodyText1?.copyWith(
+                            color: const Color(0xfff06548),
+                          ),
+                        ),
+                      ),
+                      child: JsonEditor.string(),
+                    ),
+                  ),
                 ],
               ),
             ),

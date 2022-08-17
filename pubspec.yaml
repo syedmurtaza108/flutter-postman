@@ -16,6 +16,7 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^8.0.1
   http: ^0.13.5
+  json_editor: ^0.0.8
   lottie: ^1.4.1
   shared_preferences: ^2.0.15
   uuid: ^3.0.6

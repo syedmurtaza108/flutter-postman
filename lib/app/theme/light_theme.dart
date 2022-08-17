@@ -39,6 +39,11 @@ class AppTheme {
       color: _colorScheme.onBackground,
       fontSize: 16,
     ),
+    subtitle2: TextStyle(
+      fontFamily: AppFonts.roboto,
+      color: _colorScheme.onBackground,
+      fontSize: 16,
+    ),
     bodyText1: TextStyle(
       fontFamily: AppFonts.roboto,
       color: _colorScheme.onBackground,
@@ -72,30 +77,11 @@ class AppTheme {
     linearTrackColor: _colorScheme.background,
   );
 
-  static final _inputDecorationTheme = InputDecorationTheme(
-    fillColor: _colorScheme.surface,
+  static const _inputDecorationTheme = InputDecorationTheme(
+    fillColor: Color(0xff262a2f),
     errorMaxLines: 2,
+    contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
     filled: true,
-    border: OutlineInputBorder(
-      borderSide: const BorderSide(color: Colors.transparent),
-      borderRadius: BorderRadius.circular(24),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderSide: const BorderSide(color: Colors.transparent),
-      borderRadius: BorderRadius.circular(24),
-    ),
-    contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-    errorBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: _colorScheme.error),
-      borderRadius: BorderRadius.circular(24),
-    ),
-    focusedErrorBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: _colorScheme.error),
-    ),
-    hintStyle: _textTheme.bodyText1!.copyWith(color: Colors.grey),
-    labelStyle: _textTheme.bodyText1!.copyWith(
-      color: _colorScheme.onBackground,
-    ),
   );
 
   static ThemeData get lightTheme {
@@ -111,6 +97,9 @@ class AppTheme {
       progressIndicatorTheme: _progressBarTheme,
       dialogBackgroundColor: _colorScheme.background,
       unselectedWidgetColor: const Color(0xff5a6670),
+      textSelectionTheme: const TextSelectionThemeData(
+        cursorColor: Colors.white,
+      ),
     );
   }
 }
