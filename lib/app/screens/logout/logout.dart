@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
+import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 import 'package:lottie/lottie.dart';
 
@@ -17,7 +18,7 @@ class _LogoutDialogState extends State<LogoutDialog> {
     return WillPopScope(
       onWillPop: () async => false,
       child: AlertDialog(
-        backgroundColor: const Color(0xff212529),
+        backgroundColor: themeColors.componentBackColor,
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,

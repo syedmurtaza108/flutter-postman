@@ -5,6 +5,7 @@ import 'package:flutter_postman/app/screens/home/home.dart';
 import 'package:flutter_postman/app/screens/login/login.dart';
 import 'package:flutter_postman/app/screens/signup/signup.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
+import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 import 'package:lottie/lottie.dart';
 
@@ -80,7 +81,7 @@ class _LoginPageState extends State<LoginPage> with Loading, Message {
                             children: [
                               Container(
                                 decoration: BoxDecoration(
-                                  color: const Color(0xff212529),
+                                  color: themeColors.componentBackColor,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 constraints:

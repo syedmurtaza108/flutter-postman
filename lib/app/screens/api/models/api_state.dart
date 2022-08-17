@@ -7,7 +7,7 @@ class ApiState {
     this.url = const FormField(),
     this.params = const <String, String>{},
     this.authorization = const FormField(),
-    this.body = '',
+    this.body,
     this.enableSend = false,
     this.showNameEdit = false,
   });

@@ -4,6 +4,7 @@ import 'package:flutter_postman/app/mixins/mixins.dart';
 import 'package:flutter_postman/app/screens/login/login.dart';
 import 'package:flutter_postman/app/screens/signup/signup.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
+import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 import 'package:lottie/lottie.dart';
 
@@ -71,7 +72,7 @@ class _SignupPageState extends State<SignupPage> with Loading, Message {
                             children: [
                               Container(
                                 decoration: BoxDecoration(
-                                  color: const Color(0xff212529),
+                                  color: themeColors.componentBackColor,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 constraints:

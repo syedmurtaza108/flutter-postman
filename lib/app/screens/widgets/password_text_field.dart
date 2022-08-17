@@ -36,6 +36,9 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
           decoration: InputDecoration(
             hintText: 'Password',
             errorText: widget.error,
+            hintStyle: context.theme.textTheme.bodyText1?.copyWith(
+              color: const Color(0xff626571),
+            ),
             suffixIcon: IconButton(
               splashRadius: 16,
               onPressed: () {

@@ -5,6 +5,7 @@ import 'package:flutter_postman/app/screens/home/home.dart';
 import 'package:flutter_postman/app/screens/login/view/login_page.dart';
 import 'package:flutter_postman/app/screens/logout/logout.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
+import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
 class HomePage extends StatefulWidget {
@@ -109,7 +110,7 @@ class _HomePageState extends State<HomePage> {
               delegate: SliverChildListDelegate.fixed(
                 [
                   Container(
-                    color: const Color(0xff212529),
+                    color: themeColors.componentBackColor,
                     width: double.maxFinite,
                     padding: 16.padding,
                     child: 'NEW REQUEST'

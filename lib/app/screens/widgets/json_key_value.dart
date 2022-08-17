@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_postman/app/screens/widgets/text_field.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
+import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 import 'package:uuid/uuid.dart';
 
@@ -65,7 +66,7 @@ class JsonKeyValueState extends State<JsonKeyValue> {
                 visible: fields.length > 1,
                 child: Material(
                   borderRadius: BorderRadius.circular(24),
-                  color: const Color(0xff212529),
+                  color: themeColors.componentBackColor,
                   child: Padding(
                     padding: 8.horizontal,
                     child: InkWell(

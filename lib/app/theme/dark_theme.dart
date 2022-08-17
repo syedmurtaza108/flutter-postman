@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
-class LightTheme extends ThemeColors {
+class DarkTheme {
+  DarkTheme._();
+
   static const _textTheme = TextTheme(
     headline1: TextStyle(
       fontFamily: AppFonts.roboto,
@@ -60,13 +61,4 @@ class LightTheme extends ThemeColors {
       ),
     );
   }
-
-  @override
-  Color get componentBackColor => AppColors.darkGunmetal;
-
-  @override
-  Color get textIconButtonBorderColor => AppColors.cadet;
-
-  @override
-  Color get headingTextColor => AppColors.lightGray;
 }

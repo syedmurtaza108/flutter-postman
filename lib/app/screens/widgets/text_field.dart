@@ -44,6 +44,9 @@ class AppTextFieldState extends State<AppTextField> {
             filled: true,
             fillColor: const Color(0xff262a2f),
             errorText: widget.error,
+            hintStyle: context.theme.textTheme.bodyText1?.copyWith(
+              color: const Color(0xff626571),
+            ),
             errorStyle: Theme.of(context).textTheme.bodyText1?.copyWith(
                   color: const Color(0xfff06548),
                 ),

@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_postman/app/screens/api/api.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
@@ -5,6 +8,8 @@ import 'package:http/http.dart' as http;
 
 class ApiCubit extends Cubit<ApiState> {
   ApiCubit() : super(ApiState());
+
+  final _httpClient = CustomHttpClient(http.Client());
 
   void onNameChanged(String name) {
     emit(
@@ -30,6 +35,10 @@ class ApiCubit extends Cubit<ApiState> {
     _enableSend();
   }
 
+  void onBodyChanged(dynamic body) {
+    emit(state.copyWith(body: body));
+  }
+
   void _enableSend({bool isLoading = false}) {
     emit(state.copyWith(enableSend: state.isFormValid && !isLoading));
   }
@@ -45,12 +54,38 @@ class ApiCubit extends Cubit<ApiState> {
   Future<void> send() async {
     try {
       final url = Uri.parse(state.url.content);
-      final response =
-          await http.post(url, body: {'name': 'doodle', 'color': 'blue'});
-      print('Response status: ${response.statusCode}');
-      print('Response body: ${response.body}');
+      dynamic body = state.body;
+      if (state.body != null) {
+        body = jsonDecode(state.body.toString());
+      }
+      await _httpClient.post(url, body: body);
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+}
 
-      print(await http.read(Uri.https('example.com', 'foobar.txt')));
-    } catch (e) {}
+class CustomHttpClient extends http.BaseClient {
+  CustomHttpClient(this._client);
+  final http.Client _client;
+
+  @override
+  Future<http.StreamedResponse> send(http.BaseRequest request) async {
+    final response = await _client.send(request);
+    final bytes = await response.stream.toBytes();
+    dynamic responseBody = '';
+
+    try {
+      final a = utf8.decode(bytes);
+      responseBody = jsonDecode(a);
+    } catch (e) {
+      log(e.toString());
+    }
+
+    print(responseBody);
+    return http.StreamedResponse(
+      http.ByteStream.fromBytes(bytes),
+      response.statusCode,
+    );
   }
 }

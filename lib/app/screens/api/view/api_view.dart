@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_postman/app/screens/api/api.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
+import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 import 'package:json_editor/json_editor.dart';
 
@@ -25,7 +26,7 @@ class _ApiViewState extends State<ApiView> {
         return Column(
           children: [
             Container(
-              color: const Color(0xff212529),
+              color: themeColors.componentBackColor,
               width: double.maxFinite,
               margin: 16.padding,
               padding: 16.padding,
@@ -49,7 +50,7 @@ class _ApiViewState extends State<ApiView> {
                   ),
                   8.width,
                   Material(
-                    color: const Color(0xff5e6a75),
+                    color: themeColors.textIconButtonBorderColor,
                     borderRadius: BorderRadius.circular(2),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(2),
@@ -68,7 +69,7 @@ class _ApiViewState extends State<ApiView> {
                   ),
                   8.width,
                   Material(
-                    color: const Color(0xff5e6a75),
+                    color: themeColors.textIconButtonBorderColor,
                     borderRadius: BorderRadius.circular(2),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(2),
@@ -89,7 +90,7 @@ class _ApiViewState extends State<ApiView> {
               ),
             ),
             Container(
-              color: const Color(0xff212529),
+              color: themeColors.componentBackColor,
               width: double.maxFinite,
               margin: 16.horizontal,
               padding: 16.padding,
@@ -120,7 +121,7 @@ class _ApiViewState extends State<ApiView> {
                         width: 100,
                         child: PrimaryButton(
                           text: 'SEND',
-                          onPressed: !state.enableSend ? null : () {},
+                          onPressed: !state.enableSend ? null : cubit.send,
                         ),
                       ),
                     ],
@@ -168,7 +169,9 @@ class _ApiViewState extends State<ApiView> {
                           ),
                         ),
                       ),
-                      child: JsonEditor.string(),
+                      child: JsonEditor.string(
+                        onValueChanged: cubit.onBodyChanged,
+                      ),
                     ),
                   ),
                 ],

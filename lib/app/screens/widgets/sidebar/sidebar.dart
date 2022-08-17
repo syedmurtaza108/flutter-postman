@@ -4,6 +4,7 @@ import 'dart:math' as math show pi;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
+import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
 part './widgets/item_selection.dart';
@@ -153,7 +154,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
           child: Container(
             height: height,
             width: _currWidth,
-            color: const Color(0xff212529),
+            color: themeColors.componentBackColor,
             child: Column(
               crossAxisAlignment: _isCollapsed
                   ? CrossAxisAlignment.center
