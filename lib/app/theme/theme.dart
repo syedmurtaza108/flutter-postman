@@ -5,4 +5,10 @@ export './dark_theme.dart';
 export './light_theme.dart';
 export './theme_colors.dart';
 
-final ThemeColors themeColors = LightTheme() ;
+ThemeColors _themeColors = LightTheme();
+
+ThemeColors get themeColors => _themeColors;
+
+void setThemeColors(ThemeColors themeColors) {
+  _themeColors = themeColors;
+}

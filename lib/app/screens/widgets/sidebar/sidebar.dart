@@ -155,7 +155,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
           child: Container(
             height: height,
             width: _currWidth,
-            color: themeColors.componentBackColor,
+            color: themeColors.sideBarColor,
             child: Column(
               crossAxisAlignment: _isCollapsed
                   ? CrossAxisAlignment.center
@@ -173,7 +173,11 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
                       ),
                     ),
                     child: const Center(
-                      child: AppLogo(size: 20, dotPadding: 3, dotHeight: 25),
+                      child: AppLogo(
+                        size: 20,
+                        dotPadding: 3,
+                        dotHeight: 25,
+                      ),
                     ),
                   ),
                 ),
@@ -183,7 +187,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
                   child: AutoSizeText(
                     'MENU',
                     style: context.theme.textTheme.bodyText2?.copyWith(
-                      color: const Color(0xff5f6270),
+                      color: themeColors.sidebarHeadingColor,
                     ),
                   ),
                 ),
@@ -196,7 +200,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
                         _ItemSelection(
                           height: _maxOffsetY,
                           offsetY: _maxOffsetY * _selectedItemIndex,
-                          color: const Color(0xff2f4047),
+                          color: themeColors.sideBarSelectedColor,
                           duration: const Duration(milliseconds: 500),
                           curve: Curves.fastLinearToSlowEaseIn,
                         ),

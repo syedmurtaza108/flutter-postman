@@ -9,7 +9,9 @@ class AppColors {
   static const blue400 = Color(0xff26a5a6);
   static const cultured = Color(0xfff3f3f9);
   static const onyx = Color(0xff33373a);
+  static const antiFlashWhite = Color(0xfff2f2f2);
   static const darkGunmetal = Color(0xff212529);
+  static const davysGrey = Color(0xff495057);
   static const cadet = Color(0xff5e6a75);
   static const lightGray = Color(0xffced4da);
   static const fireOpal = Color(0xfff06548);
@@ -24,4 +26,7 @@ class AppColors {
   static const paoloVeroneseGreen = Color(0xff099885);
   static const charlestonGreen = Color(0xff262a2f);
   static const gunmetal500 = Color(0xff2a2f34);
+  static const japaneseIndigo = Color(0xff2f4047);
+  static const blackCoral = Color(0xff5f6270);
+  static const azureishWhite = Color(0xffdbecf0);
 }

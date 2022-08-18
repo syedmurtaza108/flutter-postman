@@ -80,13 +80,13 @@ class LightTheme extends ThemeColors {
   Color get errorColor => AppColors.fireOpal;
 
   @override
-  Color get dashboardTopContainerColor => AppColors.gunmetal;
+  Color get dashboardTopContainerColor => Colors.white;
 
   @override
   Color get pageBackColor => AppColors.cultured;
 
   @override
-  Color get userNameBackColor => AppColors.outerSpaceCrayola;
+  Color get userNameBackColor => AppColors.cultured;
 
   @override
   Color get authCardBackColor => AppColors.metallicBlue;
@@ -111,7 +111,19 @@ class LightTheme extends ThemeColors {
 
   @override
   Color get textFieldBorderColor => AppColors.lightGray;
-  
+
   @override
   Color get cursorColor => Colors.black;
+
+  @override
+  Color get sideBarColor => AppColors.chineseBlue;
+
+  @override
+  Color get logoutIconColor => AppColors.davysGrey;
+
+  @override
+  Color get sideBarSelectedColor => AppColors.lightGray;
+
+  @override
+  Color get sidebarHeadingColor => AppColors.lightGray;
 }

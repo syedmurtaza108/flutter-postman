@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_postman/app/app.dart';
 import 'package:flutter_postman/app/screens/api/api.dart';
 import 'package:flutter_postman/app/screens/home/home.dart';
 import 'package:flutter_postman/app/screens/login/view/login_page.dart';
@@ -46,15 +47,48 @@ class _HomePageState extends State<HomePage> {
             SliverAppBar(
               snap: true,
               floating: true,
+              backgroundColor: themeColors.dashboardTopContainerColor,
               title: Container(
                 color: themeColors.dashboardTopContainerColor,
-                height: 70,
+                height: 100,
                 child: Row(
                   children: [
+                    Material(
+                      color: themeColors.dashboardTopContainerColor,
+                      child: InkWell(
+                        onTap: () {
+                          final cubit = context.read<ThemeCubit>();
+                          switch (cubit.state) {
+                            case ThemeMode.system:
+                              break;
+                            case ThemeMode.light:
+                              cubit.switchToDark();
+                              break;
+                            case ThemeMode.dark:
+                              cubit.switchToLight();
+                              break;
+                          }
+                        },
+                        borderRadius: BorderRadius.circular(24),
+                        child: Padding(
+                          padding: 8.padding,
+                          child: Icon(
+                            context.theme.brightness == Brightness.light
+                                ? Icons.brightness_medium_rounded
+                                : Icons.brightness_medium_outlined,
+                            color: themeColors.logoutIconColor,
+                          ),
+                        ),
+                      ),
+                    ),
                     const Expanded(child: SizedBox.shrink()),
                     Container(
                       color: themeColors.userNameBackColor,
-                      padding: 16.padding,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 32,
+                      ),
+                      alignment: Alignment.center,
                       child: Row(
                         children: [
                           ClipRRect(
@@ -70,6 +104,7 @@ class _HomePageState extends State<HomePage> {
                           8.width,
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               AutoSizeText(
                                 'Syed Murtaza',
@@ -104,11 +139,13 @@ class _HomePageState extends State<HomePage> {
                         borderRadius: BorderRadius.circular(24),
                         child: Padding(
                           padding: 8.padding,
-                          child: const Icon(Icons.logout, color: Colors.white),
+                          child: Icon(
+                            Icons.logout,
+                            color: themeColors.logoutIconColor,
+                          ),
                         ),
                       ),
                     ),
-                    24.width,
                   ],
                 ),
               ),
@@ -121,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                     width: double.maxFinite,
                     padding: 16.padding,
                     child: AutoSizeText(
-                      'Syed Murtaza',
+                      'Dashboard',
                       style: context.theme.textTheme.bodyText1?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: themeColors.headingTextColor,

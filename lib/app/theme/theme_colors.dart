@@ -17,4 +17,8 @@ abstract class ThemeColors {
   Color get textFieldBackColor;
   Color get textFieldBorderColor;
   Color get cursorColor;
+  Color get sideBarColor;
+  Color get sideBarSelectedColor;
+  Color get logoutIconColor;
+  Color get sidebarHeadingColor;
 }

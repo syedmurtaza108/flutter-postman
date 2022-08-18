@@ -3,8 +3,6 @@ import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
 class DarkTheme extends ThemeColors {
-  DarkTheme._();
-
   static const _textTheme = TextTheme(
     headline1: TextStyle(
       fontFamily: AppFonts.roboto,
@@ -110,4 +108,16 @@ class DarkTheme extends ThemeColors {
 
   @override
   Color get cursorColor => Colors.black;
+
+  @override
+  Color get sideBarColor => AppColors.darkGunmetal;
+
+  @override
+  Color get logoutIconColor => Colors.white;
+
+  @override
+  Color get sideBarSelectedColor => AppColors.japaneseIndigo;
+  
+  @override
+  Color get sidebarHeadingColor => AppColors.blackCoral;
 }
