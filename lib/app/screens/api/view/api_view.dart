@@ -59,7 +59,7 @@ class _ApiViewState extends State<ApiView> {
                         padding: 16.padding,
                         child: Row(
                           children: [
-                             Icon(Icons.edit, color: color, size: 16),
+                            Icon(Icons.edit, color: color, size: 16),
                             4.width,
                             'EDIT'.body1,
                           ],
@@ -78,7 +78,7 @@ class _ApiViewState extends State<ApiView> {
                         padding: 16.padding,
                         child: Row(
                           children: [
-                             Icon(Icons.save, color: color, size: 16),
+                            Icon(Icons.save, color: color, size: 16),
                             4.width,
                             'SAVE'.body1,
                           ],
@@ -165,7 +165,7 @@ class _ApiViewState extends State<ApiView> {
                           ),
                           errorStyle:
                               context.theme.textTheme.bodyText1?.copyWith(
-                            color: const Color(0xfff06548),
+                            color: themeColors.errorColor,
                           ),
                         ),
                       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
 class AppTextField extends StatefulWidget {
@@ -48,7 +49,7 @@ class AppTextFieldState extends State<AppTextField> {
               color: const Color(0xff626571),
             ),
             errorStyle: Theme.of(context).textTheme.bodyText1?.copyWith(
-                  color: const Color(0xfff06548),
+                  color: themeColors.errorColor,
                 ),
             enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Color(0xff2a2f34)),
@@ -59,11 +60,11 @@ class AppTextFieldState extends State<AppTextField> {
               borderRadius: widget.borderRadius ?? BorderRadius.circular(4),
             ),
             errorBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Color(0xfff06548)),
+              borderSide: BorderSide(color: themeColors.errorColor),
               borderRadius: widget.borderRadius ?? BorderRadius.circular(4),
             ),
             focusedErrorBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Color(0xfff06548)),
+              borderSide: BorderSide(color: themeColors.errorColor),
               borderRadius: widget.borderRadius ?? BorderRadius.circular(4),
             ),
           ),

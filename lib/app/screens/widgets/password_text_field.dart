@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
 class PasswordTextField extends StatefulWidget {
@@ -62,11 +63,11 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
               borderRadius: BorderRadius.circular(4),
             ),
             errorBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Color(0xfff06548)),
+              borderSide: BorderSide(color: themeColors.errorColor),
               borderRadius: BorderRadius.circular(4),
             ),
             focusedErrorBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Color(0xfff06548)),
+              borderSide:  BorderSide(color: themeColors.errorColor),
               borderRadius: BorderRadius.circular(4),
             ),
           ),

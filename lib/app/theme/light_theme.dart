@@ -69,4 +69,7 @@ class LightTheme extends ThemeColors {
 
   @override
   Color get headingTextColor => AppColors.lightGray;
+  
+  @override
+  Color get errorColor => AppColors.fireOpal;
 }

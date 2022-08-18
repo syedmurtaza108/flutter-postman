@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
 extension ObjectX on Object? {
@@ -186,7 +187,7 @@ extension ContextX on BuildContext {
     final snackBar = SnackBar(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       behavior: SnackBarBehavior.floating,
-      backgroundColor: const Color(0xfff06548),
+      backgroundColor: themeColors.errorColor,
       margin: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
       duration: const Duration(seconds: 2),
       content: Text(
