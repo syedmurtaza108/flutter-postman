@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
@@ -32,7 +33,12 @@ class AppTextFieldState extends State<AppTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (widget.title.isNotEmpty) widget.title.body1,
+        if (widget.title.isNotEmpty)
+          AutoSizeText(
+            widget.title,
+            style: context.theme.textTheme.bodyText1,
+          ),
+        
         if (widget.title.isNotEmpty) 16.height,
         TextFormField(
           initialValue: widget.content,

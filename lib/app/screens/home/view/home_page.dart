@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_postman/app/screens/api/api.dart';
@@ -70,9 +71,15 @@ class _HomePageState extends State<HomePage> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              'Syed Murtaza'.body1,
+                              AutoSizeText(
+                                'Syed Murtaza',
+                                style: context.theme.textTheme.bodyText1,
+                              ),
                               4.height,
-                              'User'.body2,
+                              AutoSizeText(
+                                'User',
+                                style: context.theme.textTheme.bodyText2,
+                              ),
                             ],
                           ),
                         ],
@@ -113,11 +120,13 @@ class _HomePageState extends State<HomePage> {
                     color: themeColors.componentBackColor,
                     width: double.maxFinite,
                     padding: 16.padding,
-                    child: 'NEW REQUEST'
-                        .body1
-                        .withAlign(TextAlign.start)
-                        .bold
-                        .withColor(themeColors.headingTextColor),
+                    child: AutoSizeText(
+                      'Syed Murtaza',
+                      style: context.theme.textTheme.bodyText1?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: themeColors.headingTextColor,
+                      ),
+                    ),
                   ),
                   const ApiView(),
                 ],

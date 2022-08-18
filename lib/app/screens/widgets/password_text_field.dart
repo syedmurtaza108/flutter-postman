@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
@@ -26,7 +27,10 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        'Password'.body1,
+        AutoSizeText(
+          'Password',
+          style: context.theme.textTheme.bodyText1,
+        ),
         16.height,
         TextFormField(
           initialValue: widget.content,
@@ -40,6 +44,9 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
             hintStyle: context.theme.textTheme.bodyText1?.copyWith(
               color: const Color(0xff626571),
             ),
+            errorStyle: Theme.of(context).textTheme.bodyText1?.copyWith(
+                  color: themeColors.errorColor,
+                ),
             suffixIcon: IconButton(
               splashRadius: 16,
               onPressed: () {

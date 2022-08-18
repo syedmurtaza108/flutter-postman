@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_postman/app/screens/widgets/text_field.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
@@ -27,9 +28,15 @@ class JsonKeyValueState extends State<JsonKeyValue> {
             const SizedBox.shrink(),
             Padding(
               padding: 12.vertical,
-              child: 'KEY'.body1,
+              child: AutoSizeText(
+                'KEY',
+                style: context.theme.textTheme.bodyText1,
+              ),
             ),
-            'VALUE'.body1,
+            AutoSizeText(
+              'VALUE',
+              style: context.theme.textTheme.bodyText1,
+            ),
             const SizedBox.shrink(),
           ],
         ),

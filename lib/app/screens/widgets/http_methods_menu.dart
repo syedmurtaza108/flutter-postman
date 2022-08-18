@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
@@ -37,7 +38,10 @@ class _HttpMethodsMenuState extends State<HttpMethodsMenu> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              methodName.body1,
+              AutoSizeText(
+                methodName,
+                style: context.theme.textTheme.bodyText1,
+              ),
               8.width,
               const Icon(
                 Icons.arrow_drop_down,

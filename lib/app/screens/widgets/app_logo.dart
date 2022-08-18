@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
@@ -18,7 +19,12 @@ class AppLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return OverflowBar(
       children: [
-        'Flutter'.body1.withFont(size),
+        AutoSizeText(
+          'Flutter',
+          style: context.theme.textTheme.bodyText1?.copyWith(
+            fontSize: size,
+          ),
+        ),
         SizedBox(
           width: size / 4,
           height: dotHeight ?? size / 4 * 3,
@@ -35,7 +41,12 @@ class AppLogo extends StatelessWidget {
           ),
         ),
         8.width,
-        'Postman'.body1.withFont(size),
+        AutoSizeText(
+          'Postman',
+          style: context.theme.textTheme.bodyText1?.copyWith(
+            fontSize: size,
+          ),
+        ),
       ],
     );
   }

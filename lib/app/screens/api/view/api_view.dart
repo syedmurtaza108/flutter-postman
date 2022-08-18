@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_postman/app/screens/api/api.dart';
@@ -43,10 +44,12 @@ class _ApiViewState extends State<ApiView> {
                             content: state.name.content,
                             error: state.name.error,
                           )
-                        : state.name.content.body1
-                            .withAlign(TextAlign.start)
-                            .bold
-                            .withColor(color),
+                        : AutoSizeText(
+                            state.name.content,
+                            style: context.theme.textTheme.bodyText1,
+                            maxLines: 2,
+                            textAlign: TextAlign.center,
+                          ),
                   ),
                   8.width,
                   Material(
@@ -61,7 +64,11 @@ class _ApiViewState extends State<ApiView> {
                           children: [
                             Icon(Icons.edit, color: color, size: 16),
                             4.width,
-                            'EDIT'.body1,
+                            AutoSizeText(
+                              'EDIT',
+                              style: context.theme.textTheme.bodyText1,
+                              textAlign: TextAlign.center,
+                            )
                           ],
                         ),
                       ),
@@ -80,7 +87,11 @@ class _ApiViewState extends State<ApiView> {
                           children: [
                             Icon(Icons.save, color: color, size: 16),
                             4.width,
-                            'SAVE'.body1,
+                            AutoSizeText(
+                              'SAVE',
+                              style: context.theme.textTheme.bodyText1,
+                              textAlign: TextAlign.center,
+                            )
                           ],
                         ),
                       ),
@@ -127,27 +138,33 @@ class _ApiViewState extends State<ApiView> {
                     ],
                   ),
                   16.height,
-                  'HEADERS'
-                      .body1
-                      .withAlign(TextAlign.start)
-                      .bold
-                      .withColor(color),
+                  AutoSizeText(
+                    'HEADERS',
+                    style: context.theme.textTheme.bodyText1?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: color,
+                    ),
+                  ),
                   16.height,
                   const JsonKeyValue(),
                   16.height,
-                  'QUERY PARAMS'
-                      .body1
-                      .withAlign(TextAlign.start)
-                      .bold
-                      .withColor(color),
+                  AutoSizeText(
+                    'QUERY PARAMS',
+                    style: context.theme.textTheme.bodyText1?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: color,
+                    ),
+                  ),
                   16.height,
                   const JsonKeyValue(),
                   16.height,
-                  'REQUEST BODY'
-                      .body1
-                      .withAlign(TextAlign.start)
-                      .bold
-                      .withColor(color),
+                  AutoSizeText(
+                    'REQUEST BODY',
+                    style: context.theme.textTheme.bodyText1?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: color,
+                    ),
+                  ),
                   16.height,
                   SizedBox(
                     height: 300,

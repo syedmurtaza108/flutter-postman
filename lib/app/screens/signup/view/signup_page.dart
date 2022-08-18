@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_postman/app/mixins/mixins.dart';
@@ -84,20 +85,25 @@ class _SignupPageState extends State<SignupPage> with Loading, Message {
                                         CrossAxisAlignment.stretch,
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      'Create New Account'
-                                          .body1
-                                          .withFont(18)
-                                          .withColor(
-                                            themeColors.textButtonFrontColor,
-                                          )
-                                          .bold,
+                                      AutoSizeText(
+                                        'Create New Account',
+                                        style: context.theme.textTheme.bodyText1
+                                            ?.copyWith(
+                                          fontSize: 18,
+                                          color:
+                                              themeColors.textButtonFrontColor,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                       16.height,
-                                      'Get your free account now'
-                                          .body1
-                                          .withColor(
-                                            themeColors
-                                                .loginNavigationHintColor,
-                                          ),
+                                      AutoSizeText(
+                                        'Get your free account now',
+                                        style: context.theme.textTheme.bodyText1
+                                            ?.copyWith(
+                                          color: themeColors
+                                              .loginNavigationHintColor,
+                                        ),
+                                      ),
                                       32.height,
                                       AppTextField(
                                         title: 'Email',
@@ -127,9 +133,13 @@ class _SignupPageState extends State<SignupPage> with Loading, Message {
                               Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  'Already have an account?'
-                                      .body1
-                                      .withColor(themeColors.headingTextColor),
+                                  AutoSizeText(
+                                    'Already have an account?',
+                                    style: context.theme.textTheme.bodyText1
+                                        ?.copyWith(
+                                      color: themeColors.headingTextColor,
+                                    ),
+                                  ),
                                   2.width,
                                   AppTextButton(
                                     text: 'Login',

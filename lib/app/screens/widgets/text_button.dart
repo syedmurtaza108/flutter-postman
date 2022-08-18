@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
@@ -20,11 +21,13 @@ class _AppTextButtonState extends State<AppTextButton> {
       borderRadius: 4.border,
       child: Padding(
         padding: 8.padding,
-        child: widget.text.body1
-            .withColor(
-              themeColors.textButtonFrontColor,
-            )
-            .bold,
+        child: AutoSizeText(
+          widget.text,
+          style: context.theme.textTheme.bodyText1?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: themeColors.textButtonFrontColor,
+          ),
+        ),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_postman/app/mixins/mixins.dart';
@@ -93,18 +94,27 @@ class _LoginPageState extends State<LoginPage> with Loading, Message {
                                         CrossAxisAlignment.stretch,
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      'Welcome Back!'
-                                          .body1
-                                          .withFont(18)
-                                          .withColor(
-                                            themeColors.textButtonFrontColor,
-                                          )
-                                          .bold,
+                                      AutoSizeText(
+                                        'Welcome Back!',
+                                        style: context.theme.textTheme.bodyText1
+                                            ?.copyWith(
+                                          fontSize: 18,
+                                          color:
+                                              themeColors.textButtonFrontColor,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
                                       16.height,
-                                      'Login to continue'.body1.withColor(
-                                            themeColors
-                                                .loginNavigationHintColor,
-                                          ),
+                                      AutoSizeText(
+                                        'Login to continue',
+                                        style: context.theme.textTheme.bodyText1
+                                            ?.copyWith(
+                                          color: themeColors
+                                              .loginNavigationHintColor,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
                                       32.height,
                                       AppTextField(
                                         title: 'Email',
@@ -134,9 +144,13 @@ class _LoginPageState extends State<LoginPage> with Loading, Message {
                               Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  "Don't have an account?"
-                                      .body1
-                                      .withColor(themeColors.headingTextColor),
+                                  AutoSizeText(
+                                    "Don't have an account?",
+                                    style: context.theme.textTheme.bodyText1
+                                        ?.copyWith(
+                                      color: themeColors.headingTextColor,
+                                    ),
+                                  ),
                                   2.width,
                                   AppTextButton(
                                     text: 'Sign Up',

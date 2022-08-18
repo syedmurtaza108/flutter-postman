@@ -2,6 +2,7 @@ library collapsible_sidebar;
 
 import 'dart:math' as math show pi;
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
 import 'package:flutter_postman/app/theme/theme.dart';
@@ -165,7 +166,12 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
                   height: 40,
                   child: Visibility(
                     visible: !_isCollapsed,
-                    replacement: 'FP'.body1.withFont(20),
+                    replacement: AutoSizeText(
+                      'FP',
+                      style: context.theme.textTheme.bodyText1?.copyWith(
+                        fontSize: 20,
+                      ),
+                    ),
                     child: const Center(
                       child: AppLogo(size: 20, dotPadding: 3, dotHeight: 25),
                     ),
@@ -174,7 +180,12 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
                 32.height,
                 Padding(
                   padding: 16.horizontal,
-                  child: 'MENU'.body2.withColor(const Color(0xff5f6270)),
+                  child: AutoSizeText(
+                    'MENU',
+                    style: context.theme.textTheme.bodyText2?.copyWith(
+                      color: const Color(0xff5f6270),
+                    ),
+                  ),
                 ),
                 24.height,
                 Expanded(
