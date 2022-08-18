@@ -46,7 +46,7 @@ class _SignupPageState extends State<SignupPage> with Loading, Message {
                     ),
                     DecoratedBox(
                       decoration: BoxDecoration(
-                        color: const Color(0xff3d4c81).withOpacity(0.7),
+                        color: themeColors.authCardBackColor.withOpacity(0.7),
                       ),
                       child: Lottie.asset(
                         'assets/snow.json',
@@ -87,12 +87,17 @@ class _SignupPageState extends State<SignupPage> with Loading, Message {
                                       'Create New Account'
                                           .body1
                                           .withFont(18)
-                                          .withColor(const Color(0xff405189))
+                                          .withColor(
+                                            themeColors.textButtonFrontColor,
+                                          )
                                           .bold,
                                       16.height,
                                       'Get your free account now'
                                           .body1
-                                          .withColor(const Color(0xff878a99)),
+                                          .withColor(
+                                            themeColors
+                                                .loginNavigationHintColor,
+                                          ),
                                       32.height,
                                       AppTextField(
                                         title: 'Email',

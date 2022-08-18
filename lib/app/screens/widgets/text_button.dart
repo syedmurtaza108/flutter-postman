@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
 class AppTextButton extends StatefulWidget {
@@ -19,7 +20,11 @@ class _AppTextButtonState extends State<AppTextButton> {
       borderRadius: 4.border,
       child: Padding(
         padding: 8.padding,
-        child: widget.text.body1.withColor(const Color(0xff405189)).bold,
+        child: widget.text.body1
+            .withColor(
+              themeColors.textButtonFrontColor,
+            )
+            .bold,
       ),
     );
   }

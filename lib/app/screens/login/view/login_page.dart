@@ -55,7 +55,7 @@ class _LoginPageState extends State<LoginPage> with Loading, Message {
                     ),
                     DecoratedBox(
                       decoration: BoxDecoration(
-                        color: const Color(0xff3d4c81).withOpacity(0.7),
+                        color: themeColors.authCardBackColor.withOpacity(0.7),
                       ),
                       child: Lottie.asset(
                         'assets/snow.json',
@@ -96,12 +96,15 @@ class _LoginPageState extends State<LoginPage> with Loading, Message {
                                       'Welcome Back!'
                                           .body1
                                           .withFont(18)
-                                          .withColor(const Color(0xff405189))
+                                          .withColor(
+                                            themeColors.textButtonFrontColor,
+                                          )
                                           .bold,
                                       16.height,
-                                      'Login to continue'
-                                          .body1
-                                          .withColor(const Color(0xff878a99)),
+                                      'Login to continue'.body1.withColor(
+                                            themeColors
+                                                .loginNavigationHintColor,
+                                          ),
                                       32.height,
                                       AppTextField(
                                         title: 'Email',

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
 class AppLogo extends StatelessWidget {
@@ -28,7 +29,7 @@ class AppLogo extends StatelessWidget {
               child: Icon(
                 Icons.circle_rounded,
                 size: size / 4,
-                color: const Color(0xffffae00),
+                color: themeColors.logoDotColor,
               ),
             ),
           ),

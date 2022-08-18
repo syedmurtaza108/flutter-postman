@@ -42,10 +42,10 @@ class LightTheme extends ThemeColors {
     ),
   );
 
-  static const _inputDecorationTheme = InputDecorationTheme(
-    fillColor: Color(0xff262a2f),
+  static final _inputDecorationTheme = InputDecorationTheme(
+    fillColor: themeColors.textFieldBackColor,
     errorMaxLines: 2,
-    contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+    contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
     filled: true,
   );
 
@@ -69,16 +69,37 @@ class LightTheme extends ThemeColors {
 
   @override
   Color get headingTextColor => AppColors.lightGray;
-  
+
   @override
   Color get errorColor => AppColors.fireOpal;
-  
+
   @override
   Color get dashboardTopContainerColor => AppColors.gunmetal;
-  
+
   @override
   Color get pageBackColor => AppColors.eerieBlack;
-  
+
   @override
   Color get userNameBackColor => AppColors.outerSpaceCrayola;
+
+  @override
+  Color get authCardBackColor => AppColors.metallicBlue;
+
+  @override
+  Color get textButtonFrontColor => AppColors.chineseBlue;
+
+  @override
+  Color get loginNavigationHintColor => AppColors.romanSilver;
+
+  @override
+  Color get noButtonBackColor => AppColors.auroMetalSaurus;
+
+  @override
+  Color get logoDotColor => AppColors.chineseYellow;
+
+  @override
+  Color get buttonColor => AppColors.paoloVeroneseGreen;
+
+  @override
+  Color get textFieldBackColor => AppColors.charlestonGreen;
 }

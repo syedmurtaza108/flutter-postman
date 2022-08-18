@@ -42,7 +42,7 @@ class _LogoutDialogState extends State<LogoutDialog> {
                   Expanded(
                     child: PrimaryButton(
                       text: 'No',
-                      backColor: const Color(0xf16f767e),
+                      backColor: themeColors.noButtonBackColor,
                       onPressed: _noPressed,
                     ),
                   ),

@@ -46,7 +46,7 @@ class JsonKeyValueState extends State<JsonKeyValue> {
                     value: e.selected,
                     activeColor: Colors.white,
                     onChanged: (_) => _selectKey(e.id),
-                    checkColor: const Color(0xff099885),
+                    checkColor: themeColors.buttonColor,
                   ),
                 ),
               ),

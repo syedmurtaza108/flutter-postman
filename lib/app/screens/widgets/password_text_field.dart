@@ -53,7 +53,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
               ),
             ),
             filled: true,
-            fillColor: const Color(0xff262a2f),
+            fillColor: themeColors.textFieldBackColor,
             enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Color(0xff2a2f34)),
               borderRadius: BorderRadius.circular(4),

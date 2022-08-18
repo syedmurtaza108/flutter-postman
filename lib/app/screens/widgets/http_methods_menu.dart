@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
 class HttpMethodsMenu extends StatefulWidget {
@@ -20,7 +21,7 @@ class _HttpMethodsMenuState extends State<HttpMethodsMenu> {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
-      color: const Color(0xff262a2f),
+      color: themeColors.textFieldBackColor,
       position: PopupMenuPosition.under,
       child: Container(
         height: 48,
@@ -69,7 +70,7 @@ class _HttpMethodsMenuState extends State<HttpMethodsMenu> {
         mouseCursor: SystemMouseCursors.click,
         contentPadding: const EdgeInsets.all(8),
         dense: true,
-        tileColor: const Color(0xff262a2f),
+        tileColor: themeColors.textFieldBackColor,
         title: Text(text, style: context.theme.textTheme.bodyText1),
       ),
     );

@@ -43,7 +43,7 @@ class AppTextFieldState extends State<AppTextField> {
           decoration: InputDecoration(
             hintText: widget.hint,
             filled: true,
-            fillColor: const Color(0xff262a2f),
+            fillColor: themeColors.textFieldBackColor,
             errorText: widget.error,
             hintStyle: context.theme.textTheme.bodyText1?.copyWith(
               color: const Color(0xff626571),

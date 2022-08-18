@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
 class PrimaryButton extends StatefulWidget {
@@ -34,7 +35,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
             if (states.contains(MaterialState.disabled)) {
               return Colors.grey;
             }
-            return widget.backColor ?? const Color(0xff099885);
+            return widget.backColor ?? themeColors.buttonColor;
           },
         ),
       ),
