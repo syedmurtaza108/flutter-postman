@@ -21,4 +21,6 @@ abstract class ThemeColors {
   Color get sideBarSelectedColor;
   Color get logoutIconColor;
   Color get sidebarHeadingColor;
+  Color get sideBarSelectedTextColor;
+  Color get sideBarUnselectedTextColor;
 }

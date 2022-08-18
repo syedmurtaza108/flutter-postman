@@ -229,13 +229,19 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
         leading: Icon(
           item.icon,
           size: iconSize,
-          color: Colors.white,
+          color: item.isSelected
+              ? themeColors.sideBarSelectedTextColor
+              : themeColors.sideBarUnselectedTextColor,
         ),
         title: item.text,
         alignment: _isCollapsed ? Alignment.center : Alignment.centerLeft,
-        textStyle: context.theme.textTheme.bodyText1!,
+        textStyle: context.theme.textTheme.bodyText1!.copyWith(
+          color: item.isSelected
+              ? themeColors.sideBarSelectedTextColor
+              : themeColors.sideBarUnselectedTextColor,
+        ),
         onTap: () {
-          if (item.isSelected) return;
+          // if (item.isSelected) return;
           item.onPressed();
           item.isSelected = true;
           widget.items[_selectedItemIndex].isSelected = false;

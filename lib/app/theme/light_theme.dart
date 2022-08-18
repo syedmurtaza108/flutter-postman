@@ -126,4 +126,10 @@ class LightTheme extends ThemeColors {
 
   @override
   Color get sidebarHeadingColor => AppColors.lightGray;
+  
+  @override
+  Color get sideBarSelectedTextColor => Colors.black;
+  
+  @override
+  Color get sideBarUnselectedTextColor => Colors.white;
 }

@@ -117,7 +117,13 @@ class DarkTheme extends ThemeColors {
 
   @override
   Color get sideBarSelectedColor => AppColors.japaneseIndigo;
-  
+
   @override
   Color get sidebarHeadingColor => AppColors.blackCoral;
+
+  @override
+  Color get sideBarSelectedTextColor => Colors.white;
+
+  @override
+  Color get sideBarUnselectedTextColor => Colors.white;
 }
