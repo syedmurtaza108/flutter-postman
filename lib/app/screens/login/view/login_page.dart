@@ -133,7 +133,7 @@ class _LoginPageState extends State<LoginPage> with Loading, Message {
                                 children: [
                                   "Don't have an account?"
                                       .body1
-                                      .withColor(const Color(0xffced4da)),
+                                      .withColor(themeColors.headingTextColor),
                                   2.width,
                                   AppTextButton(
                                     text: 'Sign Up',

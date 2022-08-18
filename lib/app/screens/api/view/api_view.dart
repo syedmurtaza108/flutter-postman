@@ -20,7 +20,7 @@ class _ApiViewState extends State<ApiView> {
 
   @override
   Widget build(BuildContext context) {
-    const color = Color(0xffced4da);
+    final color = themeColors.headingTextColor;
     return BlocBuilder<ApiCubit, ApiState>(
       builder: (context, state) {
         return Column(
@@ -59,7 +59,7 @@ class _ApiViewState extends State<ApiView> {
                         padding: 16.padding,
                         child: Row(
                           children: [
-                            const Icon(Icons.edit, color: color, size: 16),
+                             Icon(Icons.edit, color: color, size: 16),
                             4.width,
                             'EDIT'.body1,
                           ],
@@ -78,7 +78,7 @@ class _ApiViewState extends State<ApiView> {
                         padding: 16.padding,
                         child: Row(
                           children: [
-                            const Icon(Icons.save, color: color, size: 16),
+                             Icon(Icons.save, color: color, size: 16),
                             4.width,
                             'SAVE'.body1,
                           ],
@@ -131,7 +131,7 @@ class _ApiViewState extends State<ApiView> {
                       .body1
                       .withAlign(TextAlign.start)
                       .bold
-                      .withColor(const Color(0xffced4da)),
+                      .withColor(color),
                   16.height,
                   const JsonKeyValue(),
                   16.height,
@@ -139,7 +139,7 @@ class _ApiViewState extends State<ApiView> {
                       .body1
                       .withAlign(TextAlign.start)
                       .bold
-                      .withColor(const Color(0xffced4da)),
+                      .withColor(color),
                   16.height,
                   const JsonKeyValue(),
                   16.height,
@@ -147,7 +147,7 @@ class _ApiViewState extends State<ApiView> {
                       .body1
                       .withAlign(TextAlign.start)
                       .bold
-                      .withColor(const Color(0xffced4da)),
+                      .withColor(color),
                   16.height,
                   SizedBox(
                     height: 300,

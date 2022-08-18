@@ -124,7 +124,7 @@ class _SignupPageState extends State<SignupPage> with Loading, Message {
                                 children: [
                                   'Already have an account?'
                                       .body1
-                                      .withColor(const Color(0xffced4da)),
+                                      .withColor(themeColors.headingTextColor),
                                   2.width,
                                   AppTextButton(
                                     text: 'Login',

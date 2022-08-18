@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                         .body1
                         .withAlign(TextAlign.start)
                         .bold
-                        .withColor(const Color(0xffced4da)),
+                        .withColor(themeColors.headingTextColor),
                   ),
                   const ApiView(),
                 ],
