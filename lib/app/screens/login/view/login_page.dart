@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> with Loading, Message {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff1a1d21),
+      backgroundColor: themeColors.pageBackColor,
       body: BlocBuilder<LoginCubit, LoginState>(
         builder: (context, state) {
           return Stack(

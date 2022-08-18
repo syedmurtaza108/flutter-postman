@@ -5,4 +5,5 @@ abstract class ThemeColors {
   Color get textIconButtonBorderColor;
   Color get headingTextColor;
   Color get errorColor;
+  Color get pageBackColor;
 }

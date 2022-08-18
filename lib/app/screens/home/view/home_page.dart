@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff1a1d21),
+      backgroundColor: themeColors.pageBackColor,
       body: Sidebar(
         isCollapsed: MediaQuery.of(context).size.width <= 800,
         items: [

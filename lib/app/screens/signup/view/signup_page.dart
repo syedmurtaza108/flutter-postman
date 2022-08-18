@@ -29,7 +29,7 @@ class _SignupPageState extends State<SignupPage> with Loading, Message {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff1a1d21),
+      backgroundColor: themeColors.pageBackColor,
       body: BlocBuilder<SignupCubit, SignupState>(
         builder: (context, state) {
           return Stack(
