@@ -46,13 +46,13 @@ class _HomePageState extends State<HomePage> {
               snap: true,
               floating: true,
               title: Container(
-                color: const Color(0xff292e32),
+                color: themeColors.dashboardTopContainerColor,
                 height: 70,
                 child: Row(
                   children: [
                     const Expanded(child: SizedBox.shrink()),
                     Container(
-                      color: const Color(0xff31373c),
+                      color: themeColors.userNameBackColor,
                       padding: 16.padding,
                       child: Row(
                         children: [
@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     16.width,
                     Material(
-                      color: const Color(0xff292e32),
+                      color: themeColors.dashboardTopContainerColor,
                       child: InkWell(
                         onTap: () async {
                           final logout = await context.showDialog<bool>(

@@ -72,4 +72,13 @@ class LightTheme extends ThemeColors {
   
   @override
   Color get errorColor => AppColors.fireOpal;
+  
+  @override
+  Color get dashboardTopContainerColor => AppColors.gunmetal;
+  
+  @override
+  Color get pageBackColor => AppColors.eerieBlack;
+  
+  @override
+  Color get userNameBackColor => AppColors.outerSpaceCrayola;
 }
