@@ -15,4 +15,5 @@ abstract class ThemeColors {
   Color get logoDotColor;
   Color get buttonColor;
   Color get textFieldBackColor;
+  Color get textFieldBorderColor;
 }

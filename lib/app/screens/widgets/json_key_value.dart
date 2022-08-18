@@ -18,7 +18,7 @@ class JsonKeyValueState extends State<JsonKeyValue> {
   @override
   Widget build(BuildContext context) {
     return Table(
-      border: TableBorder.all(color: const Color(0xff2a2f34)),
+      border: TableBorder.all(color: themeColors.textFieldBorderColor),
       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
       columnWidths: const {0: FixedColumnWidth(100), 3: FixedColumnWidth(50)},
       children: [

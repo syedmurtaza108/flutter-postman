@@ -52,11 +52,11 @@ class AppTextFieldState extends State<AppTextField> {
                   color: themeColors.errorColor,
                 ),
             enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Color(0xff2a2f34)),
+              borderSide: BorderSide(color: themeColors.textFieldBorderColor),
               borderRadius: widget.borderRadius ?? BorderRadius.circular(4),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Color(0xff2a2f34)),
+              borderSide: BorderSide(color: themeColors.textFieldBorderColor),
               borderRadius: widget.borderRadius ?? BorderRadius.circular(4),
             ),
             errorBorder: OutlineInputBorder(

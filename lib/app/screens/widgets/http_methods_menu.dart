@@ -26,7 +26,7 @@ class _HttpMethodsMenuState extends State<HttpMethodsMenu> {
       child: Container(
         height: 48,
         decoration: BoxDecoration(
-          border: Border.all(color: const Color(0xff2a2f34)),
+          border: Border.all(color: themeColors.textFieldBorderColor),
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(4),
             bottomLeft: Radius.circular(4),

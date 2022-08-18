@@ -102,4 +102,7 @@ class LightTheme extends ThemeColors {
 
   @override
   Color get textFieldBackColor => AppColors.charlestonGreen;
+  
+  @override
+  Color get textFieldBorderColor => AppColors.gunmetal500;
 }
