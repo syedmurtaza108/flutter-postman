@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
-class DarkTheme {
+class DarkTheme extends ThemeColors {
   DarkTheme._();
 
   static const _textTheme = TextTheme(
@@ -56,9 +57,57 @@ class DarkTheme {
       textTheme: _textTheme,
       inputDecorationTheme: _inputDecorationTheme,
       unselectedWidgetColor: const Color(0xff5a6670),
-      textSelectionTheme: const TextSelectionThemeData(
-        cursorColor: Colors.white,
+      textSelectionTheme: TextSelectionThemeData(
+        cursorColor: themeColors.cursorColor,
       ),
     );
   }
+
+  @override
+  Color get componentBackColor => AppColors.darkGunmetal;
+
+  @override
+  Color get textIconButtonBorderColor => AppColors.cadet;
+
+  @override
+  Color get headingTextColor => AppColors.lightGray;
+
+  @override
+  Color get errorColor => AppColors.fireOpal;
+
+  @override
+  Color get dashboardTopContainerColor => AppColors.gunmetal;
+
+  @override
+  Color get pageBackColor => AppColors.eerieBlack;
+
+  @override
+  Color get userNameBackColor => AppColors.outerSpaceCrayola;
+
+  @override
+  Color get authCardBackColor => AppColors.metallicBlue;
+
+  @override
+  Color get textButtonFrontColor => AppColors.chineseBlue;
+
+  @override
+  Color get loginNavigationHintColor => AppColors.romanSilver;
+
+  @override
+  Color get noButtonBackColor => AppColors.auroMetalSaurus;
+
+  @override
+  Color get logoDotColor => AppColors.chineseYellow;
+
+  @override
+  Color get buttonColor => AppColors.paoloVeroneseGreen;
+
+  @override
+  Color get textFieldBackColor => AppColors.charlestonGreen;
+
+  @override
+  Color get textFieldBorderColor => AppColors.gunmetal500;
+
+  @override
+  Color get cursorColor => Colors.black;
 }

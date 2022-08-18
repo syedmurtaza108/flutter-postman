@@ -74,7 +74,7 @@ class _SignupPageState extends State<SignupPage> with Loading, Message {
                               Container(
                                 decoration: BoxDecoration(
                                   color: themeColors.componentBackColor,
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(4),
                                 ),
                                 constraints:
                                     const BoxConstraints(maxWidth: 450),
@@ -94,6 +94,7 @@ class _SignupPageState extends State<SignupPage> with Loading, Message {
                                               themeColors.textButtonFrontColor,
                                           fontWeight: FontWeight.bold,
                                         ),
+                                        textAlign: TextAlign.center,
                                       ),
                                       16.height,
                                       AutoSizeText(
@@ -103,6 +104,7 @@ class _SignupPageState extends State<SignupPage> with Loading, Message {
                                           color: themeColors
                                               .loginNavigationHintColor,
                                         ),
+                                        textAlign: TextAlign.center,
                                       ),
                                       32.height,
                                       AppTextField(

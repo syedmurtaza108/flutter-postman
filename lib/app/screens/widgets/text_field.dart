@@ -43,7 +43,7 @@ class AppTextFieldState extends State<AppTextField> {
         TextFormField(
           initialValue: widget.content,
           style: Theme.of(context).textTheme.bodyText1,
-          cursorColor: Colors.white,
+          cursorColor: themeColors.cursorColor,
           onChanged: widget.onChanged,
           maxLines: widget.maxLines,
           decoration: InputDecoration(

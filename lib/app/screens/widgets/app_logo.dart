@@ -23,6 +23,7 @@ class AppLogo extends StatelessWidget {
           'Flutter',
           style: context.theme.textTheme.bodyText1?.copyWith(
             fontSize: size,
+            color: Colors.white,
           ),
         ),
         SizedBox(
@@ -45,6 +46,7 @@ class AppLogo extends StatelessWidget {
           'Postman',
           style: context.theme.textTheme.bodyText1?.copyWith(
             fontSize: size,
+            color: Colors.white,
           ),
         ),
       ],

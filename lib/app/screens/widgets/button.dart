@@ -45,7 +45,9 @@ class _PrimaryButtonState extends State<PrimaryButton> {
         child: Center(
           child: Text(
             widget.text,
-            style: context.theme.textTheme.bodyText1,
+            style: context.theme.textTheme.bodyText1?.copyWith(
+              color: Colors.white,
+            ),
           ),
         ),
       ),

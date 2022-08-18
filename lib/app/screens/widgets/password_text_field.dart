@@ -35,7 +35,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         TextFormField(
           initialValue: widget.content,
           style: Theme.of(context).textTheme.bodyText1,
-          cursorColor: Colors.white,
+          cursorColor: themeColors.cursorColor,
           obscureText: _hidePassword,
           onChanged: widget.onChanged,
           decoration: InputDecoration(

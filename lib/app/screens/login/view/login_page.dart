@@ -83,7 +83,10 @@ class _LoginPageState extends State<LoginPage> with Loading, Message {
                               Container(
                                 decoration: BoxDecoration(
                                   color: themeColors.componentBackColor,
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(4),
+                                  boxShadow: const [
+                                    BoxShadow(color: Colors.grey)
+                                  ],
                                 ),
                                 constraints:
                                     const BoxConstraints(maxWidth: 450),

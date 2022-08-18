@@ -6,44 +6,44 @@ class LightTheme extends ThemeColors {
   static const _textTheme = TextTheme(
     headline1: TextStyle(
       fontFamily: AppFonts.roboto,
-      color: Colors.white,
+      color: AppColors.onyx,
       fontSize: 22,
     ),
     headline2: TextStyle(
       fontFamily: AppFonts.roboto,
-      color: Colors.white,
+      color: AppColors.onyx,
       fontSize: 18,
     ),
     headline3: TextStyle(
       fontFamily: AppFonts.roboto,
-      color: Colors.white,
+      color: AppColors.onyx,
       fontSize: 18,
     ),
     subtitle1: TextStyle(
       fontFamily: AppFonts.roboto,
-      color: Colors.white,
+      color: AppColors.onyx,
       fontSize: 16,
     ),
     subtitle2: TextStyle(
       fontFamily: AppFonts.roboto,
-      color: Colors.white,
+      color: AppColors.onyx,
       fontSize: 16,
     ),
     bodyText1: TextStyle(
       fontFamily: AppFonts.roboto,
-      color: Colors.white,
+      color: AppColors.onyx,
       fontSize: 14,
       fontWeight: FontWeight.normal,
     ),
     bodyText2: TextStyle(
       fontFamily: AppFonts.roboto,
-      color: Colors.white,
+      color: AppColors.onyx,
       fontSize: 12,
       fontWeight: FontWeight.normal,
     ),
     caption: TextStyle(
       fontFamily: AppFonts.roboto,
-      color: Colors.white,
+      color: AppColors.onyx,
       fontSize: 12,
     ),
   );
@@ -61,20 +61,20 @@ class LightTheme extends ThemeColors {
       textTheme: _textTheme,
       inputDecorationTheme: _inputDecorationTheme,
       unselectedWidgetColor: const Color(0xff5a6670),
-      textSelectionTheme: const TextSelectionThemeData(
-        cursorColor: Colors.white,
+      textSelectionTheme: TextSelectionThemeData(
+        cursorColor: themeColors.cursorColor,
       ),
     );
   }
 
   @override
-  Color get componentBackColor => AppColors.darkGunmetal;
+  Color get componentBackColor => Colors.white;
 
   @override
   Color get textIconButtonBorderColor => AppColors.cadet;
 
   @override
-  Color get headingTextColor => AppColors.lightGray;
+  Color get headingTextColor => AppColors.onyx;
 
   @override
   Color get errorColor => AppColors.fireOpal;
@@ -83,7 +83,7 @@ class LightTheme extends ThemeColors {
   Color get dashboardTopContainerColor => AppColors.gunmetal;
 
   @override
-  Color get pageBackColor => AppColors.eerieBlack;
+  Color get pageBackColor => AppColors.cultured;
 
   @override
   Color get userNameBackColor => AppColors.outerSpaceCrayola;
@@ -107,8 +107,11 @@ class LightTheme extends ThemeColors {
   Color get buttonColor => AppColors.paoloVeroneseGreen;
 
   @override
-  Color get textFieldBackColor => AppColors.charlestonGreen;
+  Color get textFieldBackColor => Colors.white;
 
   @override
-  Color get textFieldBorderColor => AppColors.gunmetal500;
+  Color get textFieldBorderColor => AppColors.lightGray;
+  
+  @override
+  Color get cursorColor => Colors.black;
 }

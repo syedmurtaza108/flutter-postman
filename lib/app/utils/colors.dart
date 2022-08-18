@@ -7,6 +7,8 @@ class AppColors {
   static const black400 = Color(0xff1b1a1d);
   static const blue200 = Color(0xff34e1e2);
   static const blue400 = Color(0xff26a5a6);
+  static const cultured = Color(0xfff3f3f9);
+  static const onyx = Color(0xff33373a);
   static const darkGunmetal = Color(0xff212529);
   static const cadet = Color(0xff5e6a75);
   static const lightGray = Color(0xffced4da);
