@@ -35,6 +35,12 @@ class DarkTheme extends ThemeColors {
       fontSize: 14,
       fontWeight: FontWeight.normal,
     ),
+    bodyText2: TextStyle(
+      fontFamily: AppFonts.roboto,
+      color: Colors.white,
+      fontSize: 12,
+      fontWeight: FontWeight.normal,
+    ),
     caption: TextStyle(
       fontFamily: AppFonts.roboto,
       color: Colors.white,
