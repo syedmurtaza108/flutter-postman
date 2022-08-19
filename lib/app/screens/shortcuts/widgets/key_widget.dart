@@ -12,8 +12,10 @@ class KeyWidget extends StatelessWidget {
     return Container(
       padding: 16.padding,
       decoration: BoxDecoration(
+        color: themeColors.pageBackColor,
         border: Border.all(color: themeColors.textFieldBorderColor),
         boxShadow: const [BoxShadow(color: Colors.grey)],
+        borderRadius: BorderRadius.circular(4),
       ),
       child: Text(
         name,

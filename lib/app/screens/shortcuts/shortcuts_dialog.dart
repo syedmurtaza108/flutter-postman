@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_postman/app/screens/shortcuts/shortcuts.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
 import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
-import 'package:lottie/lottie.dart';
 
 class ShortcutsDialog extends StatefulWidget {
   const ShortcutsDialog({super.key});
@@ -32,10 +32,12 @@ class _ShortcutsDialogState extends State<ShortcutsDialog> {
               Row(
                 children: [
                   Text(
-                    'Are you sure you want to log out?',
-                    style: context.theme.textTheme.headline3,
+                    'SWITCH CURRENT THEME',
+                    style: context.theme.textTheme.bodyText1,
                     textAlign: TextAlign.center,
                   ),
+                  const Expanded(child: SizedBox.shrink()),
+                  const KeyWidget(name: 'ALT + T'),
                 ],
               ),
               32.height,
