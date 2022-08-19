@@ -8,6 +8,7 @@ import 'package:flutter_postman/app/screens/api/api.dart';
 import 'package:flutter_postman/app/screens/home/home.dart';
 import 'package:flutter_postman/app/screens/login/view/login_page.dart';
 import 'package:flutter_postman/app/screens/logout/logout.dart';
+import 'package:flutter_postman/app/screens/shortcuts/shortcuts.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
 import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
@@ -22,7 +23,25 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final focusNode = FocusNode();
   late final cubit = context.read<HomeCubit>();
+
+  @override
+  void initState() {
+    super.initState();
+    focusNode.requestFocus();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _initFocusListener();
+    });
+  }
+
+  void _initFocusListener() {
+    FocusScope.of(context).addListener(() {
+      if (FocusScope.of(context).focusedChild == null) {
+        focusNode.requestFocus();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +95,20 @@ class _HomePageState extends State<HomePage> {
                               context.theme.brightness == Brightness.light
                                   ? Icons.brightness_medium_rounded
                                   : Icons.brightness_medium_outlined,
+                              color: themeColors.logoutIconColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Material(
+                        color: themeColors.dashboardTopContainerColor,
+                        child: InkWell(
+                          onTap: _openShortcutsDialog,
+                          borderRadius: BorderRadius.circular(24),
+                          child: Padding(
+                            padding: 8.padding,
+                            child: Icon(
+                              Icons.keyboard,
                               color: themeColors.logoutIconColor,
                             ),
                           ),
@@ -165,7 +198,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-                    const ApiView(),
+                    ApiView(focusNode: focusNode),
                   ],
                 ),
               )
@@ -174,6 +207,10 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  void _openShortcutsDialog() {
+    context.showDialog<bool>(const ShortcutsDialog());
   }
 
   void _switchTheme() {
@@ -188,5 +225,11 @@ class _HomePageState extends State<HomePage> {
         cubit.switchToLight();
         break;
     }
+  }
+
+  @override
+  void dispose() {
+    focusNode.dispose();
+    super.dispose();
   }
 }

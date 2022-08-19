@@ -170,6 +170,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
                       'FP',
                       style: context.theme.textTheme.bodyText1?.copyWith(
                         fontSize: 20,
+                        color: Colors.white,
                       ),
                     ),
                     child: const Center(

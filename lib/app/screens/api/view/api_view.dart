@@ -10,7 +10,10 @@ import 'package:json_editor/json_editor.dart';
 class ApiView extends StatefulWidget {
   const ApiView({
     super.key,
+    required this.focusNode,
   });
+
+  final FocusNode focusNode;
 
   @override
   State<ApiView> createState() => _ApiViewState();
@@ -18,13 +21,6 @@ class ApiView extends StatefulWidget {
 
 class _ApiViewState extends State<ApiView> {
   late final cubit = context.read<ApiCubit>();
-  final focusNode = FocusNode();
-
-  @override
-  void dispose() {
-    focusNode.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -138,7 +134,7 @@ class _ApiViewState extends State<ApiView> {
                             topRight: Radius.circular(4),
                             bottomRight: Radius.circular(4),
                           ),
-                          focusNode: focusNode,
+                          focusNode:widget. focusNode,
                         ),
                       ),
                       16.width,
