@@ -31,11 +31,13 @@ class JsonKeyValueState extends State<JsonKeyValue> {
               child: AutoSizeText(
                 'KEY',
                 style: context.theme.textTheme.bodyText1,
+                textAlign: TextAlign.center,
               ),
             ),
             AutoSizeText(
               'VALUE',
               style: context.theme.textTheme.bodyText1,
+              textAlign: TextAlign.center,
             ),
             const SizedBox.shrink(),
           ],
@@ -51,7 +53,7 @@ class JsonKeyValueState extends State<JsonKeyValue> {
                   width: 24,
                   child: Checkbox(
                     value: e.selected,
-                    activeColor: Colors.white,
+                    activeColor: themeColors.checkBoxSelectedColor,
                     onChanged: (_) => _selectKey(e.id),
                     checkColor: themeColors.buttonColor,
                   ),

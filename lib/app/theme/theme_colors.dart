@@ -23,4 +23,6 @@ abstract class ThemeColors {
   Color get sidebarHeadingColor;
   Color get sideBarSelectedTextColor;
   Color get sideBarUnselectedTextColor;
+  Color get buttonIconColor;
+  Color get checkBoxSelectedColor;
 }

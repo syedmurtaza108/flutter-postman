@@ -18,6 +18,13 @@ class ApiView extends StatefulWidget {
 
 class _ApiViewState extends State<ApiView> {
   late final cubit = context.read<ApiCubit>();
+  final focusNode = FocusNode();
+
+  @override
+  void dispose() {
+    focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +54,6 @@ class _ApiViewState extends State<ApiView> {
                         : AutoSizeText(
                             state.name.content,
                             style: context.theme.textTheme.bodyText1,
-                            maxLines: 2,
-                            textAlign: TextAlign.center,
                           ),
                   ),
                   8.width,
@@ -62,7 +67,11 @@ class _ApiViewState extends State<ApiView> {
                         padding: 16.padding,
                         child: Row(
                           children: [
-                            Icon(Icons.edit, color: color, size: 16),
+                            Icon(
+                              Icons.edit,
+                              color: themeColors.buttonIconColor,
+                              size: 16,
+                            ),
                             4.width,
                             AutoSizeText(
                               'EDIT',
@@ -85,7 +94,11 @@ class _ApiViewState extends State<ApiView> {
                         padding: 16.padding,
                         child: Row(
                           children: [
-                            Icon(Icons.save, color: color, size: 16),
+                            Icon(
+                              Icons.save,
+                              color: themeColors.buttonIconColor,
+                              size: 16,
+                            ),
                             4.width,
                             AutoSizeText(
                               'SAVE',
@@ -125,11 +138,13 @@ class _ApiViewState extends State<ApiView> {
                             topRight: Radius.circular(4),
                             bottomRight: Radius.circular(4),
                           ),
+                          focusNode: focusNode,
                         ),
                       ),
                       16.width,
                       SizedBox(
                         width: 100,
+                        height: 48,
                         child: PrimaryButton(
                           text: 'SEND',
                           onPressed: !state.enableSend ? null : cubit.send,

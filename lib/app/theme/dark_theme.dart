@@ -113,7 +113,7 @@ class DarkTheme extends ThemeColors {
   Color get textFieldBorderColor => AppColors.gunmetal500;
 
   @override
-  Color get cursorColor => Colors.black;
+  Color get cursorColor => Colors.white;
 
   @override
   Color get sideBarColor => AppColors.darkGunmetal;
@@ -132,4 +132,10 @@ class DarkTheme extends ThemeColors {
 
   @override
   Color get sideBarUnselectedTextColor => Colors.white;
+  
+  @override
+  Color get buttonIconColor => Colors.white;
+  
+  @override
+  Color get checkBoxSelectedColor => Colors.white;
 }

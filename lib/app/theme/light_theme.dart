@@ -60,7 +60,7 @@ class LightTheme extends ThemeColors {
       brightness: Brightness.light,
       textTheme: _textTheme,
       inputDecorationTheme: _inputDecorationTheme,
-      unselectedWidgetColor: const Color(0xff5a6670),
+      unselectedWidgetColor: AppColors.lightGray,
       textSelectionTheme: TextSelectionThemeData(
         cursorColor: themeColors.cursorColor,
       ),
@@ -71,7 +71,7 @@ class LightTheme extends ThemeColors {
   Color get componentBackColor => Colors.white;
 
   @override
-  Color get textIconButtonBorderColor => AppColors.cadet;
+  Color get textIconButtonBorderColor => AppColors.cultured;
 
   @override
   Color get headingTextColor => AppColors.onyx;
@@ -107,7 +107,7 @@ class LightTheme extends ThemeColors {
   Color get buttonColor => AppColors.paoloVeroneseGreen;
 
   @override
-  Color get textFieldBackColor => Colors.white;
+  Color get textFieldBackColor => AppColors.antiFlashWhite;
 
   @override
   Color get textFieldBorderColor => AppColors.lightGray;
@@ -126,10 +126,16 @@ class LightTheme extends ThemeColors {
 
   @override
   Color get sidebarHeadingColor => AppColors.lightGray;
-  
+
   @override
   Color get sideBarSelectedTextColor => Colors.black;
-  
+
   @override
   Color get sideBarUnselectedTextColor => Colors.white;
+
+  @override
+  Color get buttonIconColor => Colors.black;
+
+  @override
+  Color get checkBoxSelectedColor => AppColors.antiFlashWhite;
 }

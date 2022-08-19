@@ -43,9 +43,9 @@ class _HttpMethodsMenuState extends State<HttpMethodsMenu> {
                 style: context.theme.textTheme.bodyText1,
               ),
               8.width,
-              const Icon(
+              Icon(
                 Icons.arrow_drop_down,
-                color: Colors.white,
+                color: themeColors.buttonIconColor,
               )
             ],
           ),
