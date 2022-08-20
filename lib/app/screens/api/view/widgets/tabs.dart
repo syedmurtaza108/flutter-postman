@@ -6,6 +6,7 @@ import 'package:flutter_postman/app/screens/widgets/widgets.dart';
 import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 import 'package:json_editor/json_editor.dart';
+import 'package:split_view/split_view.dart';
 
 class TabBarAndTabViews extends StatefulWidget {
   const TabBarAndTabViews({super.key});
@@ -119,7 +120,116 @@ class _TabBarAndTabViewsState extends State<TabBarAndTabViews>
                   ],
                 ),
               ),
-              Text('Hello'),
+              Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: SplitView(
+                  viewMode: SplitViewMode.Horizontal,
+                  gripSize: 4,
+                  gripColorActive: themeColors.buttonColor,
+                  gripColor: themeColors.sidebarHeadingColor,
+                  children: [
+                    SingleChildScrollView(
+                      controller: ScrollController(),
+                      padding: const EdgeInsetsDirectional.only(end: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          AutoSizeText(
+                            'RESPONSE',
+                            style: context.theme.textTheme.bodyText1?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: themeColors.headingTextColor,
+                            ),
+                          ),
+                          16.height,
+                          SizedBox(
+                            height: 400,
+                            child: JsonEditorTheme(
+                              themeData: JsonEditorThemeData(
+                                lightTheme: JsonTheme(
+                                  defaultStyle:
+                                      context.theme.textTheme.bodyText1,
+                                  bracketStyle:
+                                      context.theme.textTheme.bodyText1,
+                                  boolStyle: context.theme.textTheme.bodyText1,
+                                  commentStyle:
+                                      context.theme.textTheme.bodyText1,
+                                  numberStyle:
+                                      context.theme.textTheme.bodyText1,
+                                  stringStyle:
+                                      context.theme.textTheme.bodyText1,
+                                  keyStyle: context.theme.textTheme.bodyText1
+                                      ?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  errorStyle: context.theme.textTheme.bodyText1
+                                      ?.copyWith(
+                                    color: themeColors.errorColor,
+                                  ),
+                                ),
+                              ),
+                              child: JsonEditor.string(
+                                enabled: false,
+                                jsonString:
+                                    '{"string":"world", "int": 0, "bool":true}',
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SingleChildScrollView(
+                      controller: ScrollController(),
+                      padding: const EdgeInsetsDirectional.only(start: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          AutoSizeText(
+                            'DART CODE',
+                            style: context.theme.textTheme.bodyText1?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: themeColors.headingTextColor,
+                            ),
+                          ),
+                          16.height,
+                          SizedBox(
+                            height: 400,
+                            child: JsonEditorTheme(
+                              themeData: JsonEditorThemeData(
+                                lightTheme: JsonTheme(
+                                  defaultStyle:
+                                      context.theme.textTheme.bodyText1,
+                                  bracketStyle:
+                                      context.theme.textTheme.bodyText1,
+                                  boolStyle: context.theme.textTheme.bodyText1,
+                                  commentStyle:
+                                      context.theme.textTheme.bodyText1,
+                                  numberStyle:
+                                      context.theme.textTheme.bodyText1,
+                                  stringStyle:
+                                      context.theme.textTheme.bodyText1,
+                                  keyStyle: context.theme.textTheme.bodyText1
+                                      ?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  errorStyle: context.theme.textTheme.bodyText1
+                                      ?.copyWith(
+                                    color: themeColors.errorColor,
+                                  ),
+                                ),
+                              ),
+                              child: JsonEditor.string(
+                                onValueChanged:
+                                    context.read<ApiCubit>().onBodyChanged,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

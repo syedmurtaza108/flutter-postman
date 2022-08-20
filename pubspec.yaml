@@ -24,6 +24,7 @@ dependencies:
   json_editor: ^0.0.8
   lottie: ^1.4.1
   shared_preferences: ^2.0.15
+  split_view: ^3.2.1
   uuid: ^3.0.6
 
 dev_dependencies:

@@ -64,12 +64,14 @@ class JsonKeyValueState extends State<JsonKeyValue> {
                 onChanged: (data) => _onKeyValueChanged(e.id, data),
                 content: '',
                 error: null,
+                borderRadius: BorderRadius.circular(0),
               ),
               AppTextField(
                 hint: 'Value',
                 onChanged: (data) => _onKeyValueChanged(e.id, data),
                 content: '',
                 error: null,
+                borderRadius: BorderRadius.circular(0),
               ),
               if (fields.length > 1)
                 Material(
