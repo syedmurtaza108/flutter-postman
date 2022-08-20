@@ -144,4 +144,7 @@ class LightTheme extends ThemeColors {
 
   @override
   Color get tabUnselectedTextColor => Colors.black;
+  
+  @override
+  Color get codeViewerBackColor => AppColors.cultured;
 }

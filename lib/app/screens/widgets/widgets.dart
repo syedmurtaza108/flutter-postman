@@ -1,6 +1,8 @@
 export './app_logo.dart';
 export './button.dart';
+export './code_viewer/code_viewer.dart';
 export './http_methods_menu.dart';
+export './json_editor.dart';
 export './json_key_value.dart';
 export './loading_dialog.dart';
 export './password_text_field.dart';

@@ -144,4 +144,7 @@ class DarkTheme extends ThemeColors {
 
   @override
   Color get tabUnselectedTextColor => Colors.white;
+
+  @override
+  Color get codeViewerBackColor => AppColors.gunmetal700;
 }

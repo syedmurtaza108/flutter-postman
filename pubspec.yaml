@@ -46,3 +46,12 @@ flutter:
           weight: 700
         - asset: fonts/Roboto-Medium.ttf
           weight: 600
+    - family: SourceCodePro
+      fonts:
+        - asset: fonts/SourceCodePro-Regular.ttf
+        - asset: fonts/SourceCodePro-Black.ttf
+          weight: 800
+        - asset: fonts/SourceCodePro-Bold.ttf
+          weight: 700
+        - asset: fonts/SourceCodePro-Medium.ttf
+          weight: 600

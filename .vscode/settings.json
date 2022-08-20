@@ -26,7 +26,12 @@
         "Bezier",
         "curr",
         "davys",
+        "Diagnosticable",
+        "klass",
+        "lerp",
         "Mergeable",
-        "paolo"
+        "Navigationbar",
+        "paolo",
+        "Punctuational"
     ]
 }

@@ -27,4 +27,5 @@ abstract class ThemeColors {
   Color get checkBoxSelectedColor;
   Color get tabSelectedTextColor;
   Color get tabUnselectedTextColor;
+  Color get codeViewerBackColor;
 }

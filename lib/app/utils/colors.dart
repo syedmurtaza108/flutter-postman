@@ -29,4 +29,5 @@ class AppColors {
   static const japaneseIndigo = Color(0xff2f4047);
   static const blackCoral = Color(0xff5f6270);
   static const azureishWhite = Color(0xffdbecf0);
+  static const gunmetal700 = Color(0xff2E3237);
 }
