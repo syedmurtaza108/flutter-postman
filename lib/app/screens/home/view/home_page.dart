@@ -63,13 +63,29 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
         body: FocusableActionDetector(
-          shortcuts: <LogicalKeySet, Intent>{
-            LogicalKeySet(LogicalKeyboardKey.alt, LogicalKeyboardKey.keyT):
-                ThemeSwitchIntent(),
+          shortcuts: {
+            LogicalKeySet(
+              LogicalKeyboardKey.alt,
+              LogicalKeyboardKey.keyT,
+            ): ThemeSwitchIntent(),
+            LogicalKeySet(
+              LogicalKeyboardKey.alt,
+              LogicalKeyboardKey.keyL,
+            ): LogoutIntent(),
+            LogicalKeySet(
+              LogicalKeyboardKey.alt,
+              LogicalKeyboardKey.keyC,
+            ): ShortcutIntent(),
           },
-          actions: <Type, Action<Intent>>{
+          actions: {
             ThemeSwitchIntent: CallbackAction<ThemeSwitchIntent>(
               onInvoke: (_) => _switchTheme(),
+            ),
+            LogoutIntent: CallbackAction<LogoutIntent>(
+              onInvoke: (_) => _logout(),
+            ),
+            ShortcutIntent: CallbackAction<ShortcutIntent>(
+              onInvoke: (_) => _openShortcutsDialog(),
             ),
           },
           child: CustomScrollView(
@@ -157,18 +173,7 @@ class _HomePageState extends State<HomePage> {
                       Material(
                         color: themeColors.dashboardTopContainerColor,
                         child: InkWell(
-                          onTap: () async {
-                            final logout = await context.showDialog<bool>(
-                              const LogoutDialog(),
-                            );
-
-                            if (logout == true) {
-                              await context.navigator.pushNamedAndRemoveUntil(
-                                LoginPage.route,
-                                (_) => false,
-                              );
-                            }
-                          },
+                          onTap: _logout,
                           borderRadius: BorderRadius.circular(24),
                           child: Padding(
                             padding: 8.padding,
@@ -224,6 +229,19 @@ class _HomePageState extends State<HomePage> {
       case ThemeMode.dark:
         cubit.switchToLight();
         break;
+    }
+  }
+
+  Future<void> _logout() async {
+    final logout = await context.showDialog<bool>(
+      const LogoutDialog(),
+    );
+
+    if (logout == true) {
+      await context.navigator.pushNamedAndRemoveUntil(
+        LoginPage.route,
+        (_) => false,
+      );
     }
   }
 

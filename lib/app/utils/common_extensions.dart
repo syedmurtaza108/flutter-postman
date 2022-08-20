@@ -126,7 +126,6 @@ extension ContextX on BuildContext {
     return showGeneralDialog<T>(
       context: this,
       pageBuilder: (_, __, ___) => widget,
-      barrierDismissible: false,
       transitionBuilder: (_, animation, __, child) {
         return Transform.scale(
           scale: Curves.easeInOut.transform(animation.value),

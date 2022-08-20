@@ -7,12 +7,14 @@ class PrimaryButton extends StatefulWidget {
     required this.text,
     required this.onPressed,
     this.backColor,
+    this.autoFocus = false,
     super.key,
   });
 
   final VoidCallback? onPressed;
   final String text;
   final Color? backColor;
+  final bool autoFocus;
 
   @override
   State<PrimaryButton> createState() => _PrimaryButtonState();
@@ -23,6 +25,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: widget.onPressed,
+      autofocus: widget.autoFocus,
       style: ElevatedButton.styleFrom(
         enabledMouseCursor: SystemMouseCursors.click,
         onPrimary: Colors.white,

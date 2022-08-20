@@ -19,43 +19,47 @@ class _LogoutDialogState extends State<LogoutDialog> {
       onWillPop: () async => false,
       child: AlertDialog(
         backgroundColor: themeColors.componentBackColor,
-        content: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Lottie.asset('assets/logout.json', width: 100, height: 100),
-              16.height,
-              Text(
-                'Logout',
-                style: context.theme.textTheme.headline1,
-                textAlign: TextAlign.center,
-              ),
-              16.height,
-              Text(
-                'Are you sure you want to log out?',
-                style: context.theme.textTheme.headline3,
-                textAlign: TextAlign.center,
-              ),
-              32.height,
-              Row(
-                children: [
-                  Expanded(
-                    child: PrimaryButton(
-                      text: 'No',
-                      backColor: themeColors.noButtonBackColor,
-                      onPressed: _noPressed,
+        content: ConstrainedBox(
+          constraints: const BoxConstraints(minWidth: 400),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Lottie.asset('assets/logout.json', width: 100, height: 100),
+                16.height,
+                Text(
+                  'Logout',
+                  style: context.theme.textTheme.headline1,
+                  textAlign: TextAlign.center,
+                ),
+                16.height,
+                Text(
+                  'Are you sure you want to log out?',
+                  style: context.theme.textTheme.headline3,
+                  textAlign: TextAlign.center,
+                ),
+                32.height,
+                Row(
+                  children: [
+                    Expanded(
+                      child: PrimaryButton(
+                        text: 'No',
+                        backColor: themeColors.noButtonBackColor,
+                        onPressed: _noPressed,
+                        autoFocus: true,
+                      ),
                     ),
-                  ),
-                  16.width,
-                  Expanded(
-                    child: PrimaryButton(
-                      text: 'Yes',
-                      onPressed: _yesPressed,
-                    ),
-                  )
-                ],
-              )
-            ],
+                    16.width,
+                    Expanded(
+                      child: PrimaryButton(
+                        text: 'Yes',
+                        onPressed: _yesPressed,
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 import 'package:lottie/lottie.dart';
 
@@ -10,7 +11,7 @@ class LoadingDialog extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async => false,
       child: AlertDialog(
-        backgroundColor: const Color(0xfff2f2f2),
+        backgroundColor: themeColors.pageBackColor,
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

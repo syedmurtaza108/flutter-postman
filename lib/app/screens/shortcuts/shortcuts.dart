@@ -1,2 +1,2 @@
 export './shortcuts_dialog.dart';
-export './widgets/key_widget.dart';
+export './widgets/shortcut_widget.dart';
