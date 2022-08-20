@@ -12,7 +12,7 @@ class AppTextField extends StatefulWidget {
     required this.error,
     this.borderRadius,
     this.maxLines,
-    this.focusNode,
+    this.autoFocus = false,
     super.key,
   });
 
@@ -23,7 +23,7 @@ class AppTextField extends StatefulWidget {
   final String? error;
   final BorderRadius? borderRadius;
   final int? maxLines;
-  final FocusNode? focusNode;
+  final bool autoFocus;
 
   @override
   State<AppTextField> createState() => AppTextFieldState();
@@ -42,9 +42,9 @@ class AppTextFieldState extends State<AppTextField> {
           ),
         if (widget.title.isNotEmpty) 16.height,
         TextFormField(
-          focusNode: widget.focusNode,
+          autofocus: widget.autoFocus,
           initialValue: widget.content,
-          style: Theme.of(context).textTheme.bodyText1,
+          style: context.theme.textTheme.bodyText1,
           cursorColor: themeColors.cursorColor,
           onChanged: widget.onChanged,
           maxLines: widget.maxLines,

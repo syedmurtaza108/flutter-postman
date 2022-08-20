@@ -15,13 +15,17 @@ class LoadingDialog extends StatelessWidget {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Lottie.asset('assets/loading.json', width: 100, height: 100),
+            Lottie.asset(
+              context.theme.brightness == Brightness.dark
+                  ? 'assets/loading_light.json'
+                  : 'assets/loading.json',
+              width: 100,
+              height: 100,
+            ),
             const SizedBox(height: 16),
             Text(
               'Your request is being processed',
-              style: context.theme.textTheme.bodyText1!.copyWith(
-                color: AppColors.black300,
-              ),
+              style: context.theme.textTheme.bodyText1,
               textAlign: TextAlign.center,
             ),
           ],

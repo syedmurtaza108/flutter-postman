@@ -57,7 +57,7 @@ class DarkTheme extends ThemeColors {
 
   static ThemeData get theme {
     return ThemeData(
-      brightness: Brightness.light,
+      brightness: Brightness.dark,
       textTheme: _textTheme,
       inputDecorationTheme: _inputDecorationTheme,
       unselectedWidgetColor: const Color(0xff5a6670),
@@ -132,10 +132,10 @@ class DarkTheme extends ThemeColors {
 
   @override
   Color get sideBarUnselectedTextColor => Colors.white;
-  
+
   @override
   Color get buttonIconColor => Colors.white;
-  
+
   @override
   Color get checkBoxSelectedColor => Colors.white;
 }

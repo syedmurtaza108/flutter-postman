@@ -134,7 +134,6 @@ class _ApiViewState extends State<ApiView> {
                             topRight: Radius.circular(4),
                             bottomRight: Radius.circular(4),
                           ),
-                          focusNode:widget. focusNode,
                         ),
                       ),
                       16.width,

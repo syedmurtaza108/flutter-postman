@@ -244,8 +244,8 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
         onTap: () {
           // if (item.isSelected) return;
           item.onPressed();
-          item.isSelected = true;
           widget.items[_selectedItemIndex].isSelected = false;
+          item.isSelected = true;
           setState(() => _selectedItemIndex = index);
         },
       );

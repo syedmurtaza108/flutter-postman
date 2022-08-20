@@ -25,7 +25,13 @@ class _LogoutDialogState extends State<LogoutDialog> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Lottie.asset('assets/logout.json', width: 100, height: 100),
+                Lottie.asset(
+                  context.theme.brightness == Brightness.light
+                      ? 'assets/logout_light.json'
+                      : 'assets/logout.json',
+                  width: 100,
+                  height: 100,
+                ),
                 16.height,
                 Text(
                   'Logout',
