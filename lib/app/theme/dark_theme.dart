@@ -138,4 +138,10 @@ class DarkTheme extends ThemeColors {
 
   @override
   Color get checkBoxSelectedColor => Colors.white;
+  
+  @override
+  Color get tabSelectedTextColor => Colors.white;
+
+  @override
+  Color get tabUnselectedTextColor => Colors.white;
 }

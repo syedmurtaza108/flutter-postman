@@ -138,4 +138,10 @@ class LightTheme extends ThemeColors {
 
   @override
   Color get checkBoxSelectedColor => AppColors.antiFlashWhite;
+
+  @override
+  Color get tabSelectedTextColor => Colors.white;
+
+  @override
+  Color get tabUnselectedTextColor => Colors.black;
 }

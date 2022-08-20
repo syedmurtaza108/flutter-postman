@@ -5,7 +5,6 @@ import 'package:flutter_postman/app/screens/api/api.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
 import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
-import 'package:json_editor/json_editor.dart';
 
 class ApiView extends StatefulWidget {
   const ApiView({
@@ -24,7 +23,6 @@ class _ApiViewState extends State<ApiView> {
 
   @override
   Widget build(BuildContext context) {
-    final color = themeColors.headingTextColor;
     return BlocBuilder<ApiCubit, ApiState>(
       builder: (context, state) {
         return Column(
@@ -149,58 +147,9 @@ class _ApiViewState extends State<ApiView> {
                     ],
                   ),
                   16.height,
-                  AutoSizeText(
-                    'HEADERS',
-                    style: context.theme.textTheme.bodyText1?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: color,
-                    ),
-                  ),
-                  16.height,
-                  const JsonKeyValue(),
-                  16.height,
-                  AutoSizeText(
-                    'QUERY PARAMS',
-                    style: context.theme.textTheme.bodyText1?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: color,
-                    ),
-                  ),
-                  16.height,
-                  const JsonKeyValue(),
-                  16.height,
-                  AutoSizeText(
-                    'REQUEST BODY',
-                    style: context.theme.textTheme.bodyText1?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: color,
-                    ),
-                  ),
-                  16.height,
                   SizedBox(
-                    height: 300,
-                    child: JsonEditorTheme(
-                      themeData: JsonEditorThemeData(
-                        lightTheme: JsonTheme(
-                          defaultStyle: context.theme.textTheme.bodyText1,
-                          bracketStyle: context.theme.textTheme.bodyText1,
-                          boolStyle: context.theme.textTheme.bodyText1,
-                          commentStyle: context.theme.textTheme.bodyText1,
-                          numberStyle: context.theme.textTheme.bodyText1,
-                          stringStyle: context.theme.textTheme.bodyText1,
-                          keyStyle: context.theme.textTheme.bodyText1?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                          errorStyle:
-                              context.theme.textTheme.bodyText1?.copyWith(
-                            color: themeColors.errorColor,
-                          ),
-                        ),
-                      ),
-                      child: JsonEditor.string(
-                        onValueChanged: cubit.onBodyChanged,
-                      ),
-                    ),
+                    height: context.mediaQuery.size.height * 0.7,
+                    child: const TabBarAndTabViews(),
                   ),
                 ],
               ),

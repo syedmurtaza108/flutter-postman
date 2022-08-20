@@ -25,4 +25,6 @@ abstract class ThemeColors {
   Color get sideBarUnselectedTextColor;
   Color get buttonIconColor;
   Color get checkBoxSelectedColor;
+  Color get tabSelectedTextColor;
+  Color get tabUnselectedTextColor;
 }
