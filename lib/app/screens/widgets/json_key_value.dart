@@ -71,9 +71,8 @@ class JsonKeyValueState extends State<JsonKeyValue> {
                 content: '',
                 error: null,
               ),
-              Visibility(
-                visible: fields.length > 1,
-                child: Material(
+              if (fields.length > 1)
+                Material(
                   borderRadius: BorderRadius.circular(24),
                   color: themeColors.componentBackColor,
                   child: Padding(
@@ -91,8 +90,9 @@ class JsonKeyValueState extends State<JsonKeyValue> {
                       ),
                     ),
                   ),
-                ),
-              ),
+                )
+              else
+                const SizedBox.shrink(),
             ],
           ),
         ),
