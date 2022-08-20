@@ -125,7 +125,6 @@ class _LoginPageState extends State<LoginPage> with Loading, Message {
                                         onChanged: cubit.onEmailChanged,
                                         content: state.email.content,
                                         error: state.email.error,
-                                        autoFocus: true,
                                       ),
                                       16.height,
                                       PasswordTextField(

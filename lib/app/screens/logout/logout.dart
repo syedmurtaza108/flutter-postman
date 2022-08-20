@@ -26,9 +26,9 @@ class _LogoutDialogState extends State<LogoutDialog> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Lottie.asset(
-                  context.theme.brightness == Brightness.light
-                      ? 'assets/logout_light.json'
-                      : 'assets/logout.json',
+                  context.theme.brightness == Brightness.dark
+                      ? 'assets/logout.json'
+                      : 'assets/logout_light.json',
                   width: 100,
                   height: 100,
                 ),
