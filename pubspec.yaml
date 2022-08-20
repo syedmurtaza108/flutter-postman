@@ -10,12 +10,17 @@ environment:
 
 dependencies:
   auto_size_text: ^3.0.0
+  dart_style: ^2.2.3
   firebase_auth: ^3.6.2
   firebase_core: ^1.20.0
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
   http: ^0.13.5
+  json_ast:
+    git:
+      url: https://github.com/matnex-mix/json_ast.git
+      ref: master
   json_editor: ^0.0.8
   lottie: ^1.4.1
   shared_preferences: ^2.0.15
