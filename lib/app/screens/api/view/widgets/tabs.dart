@@ -73,7 +73,9 @@ class _TabBarAndTabViewsState extends State<TabBarAndTabViews>
                       ),
                     ),
                     16.height,
-                    const JsonKeyValue(),
+                    JsonKeyValue(
+                      onChange: context.read<ApiCubit>().onHeadersChanged,
+                    ),
                     16.height,
                     AutoSizeText(
                       'QUERY PARAMS',
@@ -83,7 +85,9 @@ class _TabBarAndTabViewsState extends State<TabBarAndTabViews>
                       ),
                     ),
                     16.height,
-                    const JsonKeyValue(),
+                    JsonKeyValue(
+                      onChange: context.read<ApiCubit>().onParamsChanged,
+                    ),
                     16.height,
                     AutoSizeText(
                       'REQUEST BODY',

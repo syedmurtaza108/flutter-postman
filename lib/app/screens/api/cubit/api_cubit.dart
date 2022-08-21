@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_postman/app/screens/api/api.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
@@ -36,7 +37,15 @@ class ApiCubit extends Cubit<ApiState> {
   }
 
   void onBodyChanged(dynamic body) {
-    emit(state.copyWith(body: body));
+    emit(state.copyWith(body: body.toString()));
+  }
+
+  void onHeadersChanged(Map<String,String> headers) {
+    emit(state.copyWith(headers: headers));
+  }
+
+  void onParamsChanged(Map<String,String> params) {
+    emit(state.copyWith(params: params));
   }
 
   void _enableSend({bool isLoading = false}) {
@@ -62,6 +71,13 @@ class ApiCubit extends Cubit<ApiState> {
     } catch (e) {
       log(e.toString());
     }
+  }
+
+  Future<void> save() async {
+    final response = await FirebaseFirestore.instance.collection('apis').add(
+          state.toMap(),
+        );
+    print(response.id);
   }
 }
 

@@ -83,7 +83,7 @@ class _ApiViewState extends State<ApiView> {
                     borderRadius: BorderRadius.circular(2),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(2),
-                      onTap: cubit.hideNameEdit,
+                      onTap: cubit.save,
                       child: Padding(
                         padding: 16.padding,
                         child: Row(
