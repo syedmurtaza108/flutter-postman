@@ -48,7 +48,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: themeColors.pageBackColor,
       body: Sidebar(
-        isCollapsed: MediaQuery.of(context).size.width <= 800,
+        isCollapsed: context.mediaQuery.size.width <= 800,
+        allowCollapse: context.mediaQuery.size.width > 800,
         items: [
           CollapsibleItem(
             text: 'NEW REQUEST',

@@ -53,6 +53,7 @@ class AppJsonEditor extends StatelessWidget {
             errorStyle: context.theme.textTheme.bodyText1?.copyWith(
               color: themeColors.errorColor,
               fontFamily: AppFonts.sourceCode,
+              fontSize: 0,
             ),
           ),
         ),

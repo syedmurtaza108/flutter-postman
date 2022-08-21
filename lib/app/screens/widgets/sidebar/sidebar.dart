@@ -17,11 +17,13 @@ class Sidebar extends StatefulWidget {
     required this.items,
     required this.body,
     this.isCollapsed = true,
+    this.allowCollapse = true,
   });
 
   final Widget body;
   final bool isCollapsed;
   final List<CollapsibleItem> items;
+  final bool allowCollapse;
 
   @override
   State<Sidebar> createState() => _SidebarState();
@@ -115,31 +117,6 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
       ..forward();
   }
 
-  void _onHorizontalDragUpdate(DragUpdateDetails details) {
-    if (details.primaryDelta != null) {
-      _currWidth += details.primaryDelta!;
-      if (_currWidth > tempWidth) {
-        _currWidth = tempWidth;
-      } else if (_currWidth < minWidth) {
-        _currWidth = minWidth;
-      } else {
-        setState(() {});
-      }
-    }
-  }
-
-  void _onHorizontalDragEnd(DragEndDetails _) {
-    if (_currWidth == tempWidth) {
-      setState(() => _isCollapsed = false);
-    } else if (_currWidth == minWidth) {
-      setState(() => _isCollapsed = true);
-    } else {
-      final threshold = _isCollapsed ? _delta1By4 : _delta3by4;
-      final endWidth = _currWidth - minWidth > threshold ? tempWidth : minWidth;
-      _animateTo(endWidth);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -150,8 +127,14 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
           child: widget.body,
         ),
         GestureDetector(
-          onHorizontalDragUpdate: _onHorizontalDragUpdate,
-          onHorizontalDragEnd: _onHorizontalDragEnd,
+          onDoubleTap: () {
+            if (!widget.allowCollapse) {
+              return;
+            }
+            _isCollapsed = !_isCollapsed;
+            final endWidth = _isCollapsed ? minWidth : tempWidth;
+            _animateTo(endWidth);
+          },
           child: Container(
             height: height,
             width: _currWidth,
@@ -211,7 +194,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
                   ),
                 ),
                 bottomPadding.height,
-                _toggleButton,
+                if (widget.allowCollapse) _toggleButton,
               ],
             ),
           ),
@@ -269,6 +252,9 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
       title: '',
       textStyle: context.theme.textTheme.bodyText1!,
       onTap: () {
+        if (!widget.allowCollapse) {
+          return;
+        }
         _isCollapsed = !_isCollapsed;
         final endWidth = _isCollapsed ? minWidth : tempWidth;
         _animateTo(endWidth);

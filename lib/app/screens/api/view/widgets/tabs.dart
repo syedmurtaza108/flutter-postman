@@ -20,7 +20,7 @@ class _TabBarAndTabViewsState extends State<TabBarAndTabViews>
 
   @override
   void initState() {
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
     super.initState();
   }
 
@@ -48,7 +48,11 @@ class _TabBarAndTabViewsState extends State<TabBarAndTabViews>
             ),
             labelColor: themeColors.tabSelectedTextColor,
             unselectedLabelColor: themeColors.tabUnselectedTextColor,
-            tabs: const [Tab(text: 'REQUEST'), Tab(text: 'RESPONSE')],
+            tabs: const [
+              Tab(text: 'REQUEST'),
+              Tab(text: 'RESPONSE'),
+              Tab(text: 'DETAILS'),
+            ],
           ),
         ),
         Expanded(
@@ -95,7 +99,8 @@ class _TabBarAndTabViewsState extends State<TabBarAndTabViews>
                   ],
                 ),
               ),
-              Padding(
+              Container(
+                height: 400,
                 padding: const EdgeInsets.only(top: 16),
                 child: SplitView(
                   viewMode: SplitViewMode.Horizontal,
@@ -117,8 +122,8 @@ class _TabBarAndTabViewsState extends State<TabBarAndTabViews>
                             ),
                           ),
                           16.height,
-                          const AppJsonEditor(
-                            height: 400,
+                          AppJsonEditor(
+                            height: context.mediaQuery.size.height,
                             enabled: false,
                             jsonText:
                                 '{"string":"world", "int": 0, "bool":true}',
@@ -141,7 +146,6 @@ class _TabBarAndTabViewsState extends State<TabBarAndTabViews>
                           ),
                           16.height,
                           const CodeViewer(
-                            height: 380,
                             code: '''
 void main() {
   runApp(MyApp());
@@ -154,6 +158,7 @@ void main() {
                   ],
                 ),
               ),
+              const Text('DETAILS'),
             ],
           ),
         ),
