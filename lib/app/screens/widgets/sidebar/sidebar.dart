@@ -48,8 +48,6 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
   bool _isCollapsed = false;
   late double _currWidth,
       _delta,
-      _delta1By4,
-      _delta3by4,
       _maxOffsetX,
       _maxOffsetY;
   late int _selectedItemIndex;
@@ -62,8 +60,6 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
 
     _currWidth = minWidth;
     _delta = tempWidth - minWidth;
-    _delta1By4 = _delta * 0.25;
-    _delta3by4 = _delta * 0.75;
     _maxOffsetX = padding * 2 + iconSize;
     _maxOffsetY = 16 + iconSize;
     for (var i = 0; i < widget.items.length; i++) {
