@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_postman/app/mixins/mixins.dart';
 import 'package:flutter_postman/app/screens/api/api.dart';
 import 'package:flutter_postman/app/screens/widgets/widgets.dart';
 import 'package:flutter_postman/app/theme/theme.dart';
@@ -13,8 +14,16 @@ class ApiView extends StatefulWidget {
   State<ApiView> createState() => _ApiViewState();
 }
 
-class _ApiViewState extends State<ApiView> {
+class _ApiViewState extends State<ApiView> with Loading, Message {
   late final cubit = context.read<ApiCubit>();
+
+  @override
+  void initState() {
+    super.initState();
+
+    initLoadingListener(cubit.loader, context);
+    initMessageListener(cubit.message, context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +152,7 @@ class _ApiViewState extends State<ApiView> {
                   16.height,
                   SizedBox(
                     height: context.mediaQuery.size.height * 0.7,
-                    child: const TabBarAndTabViews(),
+                    child: TabBarAndTabViews(response: state.response),
                   ),
                 ],
               ),

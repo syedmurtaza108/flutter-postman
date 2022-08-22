@@ -8,7 +8,9 @@ import 'package:flutter_postman/app/utils/utils.dart';
 import 'package:split_view/split_view.dart';
 
 class TabBarAndTabViews extends StatefulWidget {
-  const TabBarAndTabViews({super.key});
+  const TabBarAndTabViews({required this.response, super.key});
+
+  final String? response;
 
   @override
   State<TabBarAndTabViews> createState() => _TabBarAndTabViewsState();
@@ -129,8 +131,7 @@ class _TabBarAndTabViewsState extends State<TabBarAndTabViews>
                           AppJsonEditor(
                             height: context.mediaQuery.size.height,
                             enabled: false,
-                            jsonText:
-                                '{"string":"world", "int": 0, "bool":true}',
+                            jsonText: widget.response,
                           ),
                         ],
                       ),

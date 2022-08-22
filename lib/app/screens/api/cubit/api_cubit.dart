@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
@@ -9,6 +10,12 @@ import 'package:http/http.dart' as http;
 
 class ApiCubit extends Cubit<ApiState> {
   ApiCubit() : super(ApiState());
+
+  final _loader = StreamController<bool>.broadcast();
+  Stream<bool> get loader => _loader.stream;
+
+  final _message = StreamController<String>.broadcast();
+  Stream<String> get message => _message.stream;
 
   final _httpClient = CustomHttpClient(http.Client());
 
@@ -65,20 +72,27 @@ class ApiCubit extends Cubit<ApiState> {
   }
 
   Future<void> send() async {
+    _loader.add(true);
     try {
       final url = Uri.parse(state.url.content);
-      dynamic body = state.body;
-      if (state.body != null) {
-        body = jsonDecode(state.body.toString());
-      }
-      await _httpClient.post(url, body: body);
+      final response = await _httpClient.post(url, body: state.body);
+      emit(state.copyWith(response: response.body));
     } catch (e) {
       log(e.toString());
+      _message.add(e.toString());
     }
+    _loader.add(false);
   }
 
   Future<void> save() async {
     await FirebaseFirestore.instance.collection('apis').add(state.toMap());
+  }
+
+  @override
+  Future<void> close() {
+    _loader.close();
+    _message.close();
+    return super.close();
   }
 }
 

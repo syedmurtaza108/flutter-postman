@@ -62,8 +62,10 @@ class ApiState {
 
   Map<String, dynamic> toMap() {
     var bodyStr = body;
+    dynamic responseStr = response;
     try {
       bodyStr = jsonDecode(body.toString());
+      responseStr = jsonDecode(response);
     } catch (e) {
       log(e.toString());
     }
@@ -74,7 +76,7 @@ class ApiState {
       'headers': headers,
       'params': params,
       'body': bodyStr,
-      'response': response,
+      'response': responseStr,
       'code': dartCode,
       'userId': FirebaseAuth.instance.currentUser?.uid,
     };
