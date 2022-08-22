@@ -40,11 +40,11 @@ class ApiCubit extends Cubit<ApiState> {
     emit(state.copyWith(body: body.toString()));
   }
 
-  void onHeadersChanged(Map<String,String> headers) {
+  void onHeadersChanged(Map<String, String> headers) {
     emit(state.copyWith(headers: headers));
   }
 
-  void onParamsChanged(Map<String,String> params) {
+  void onParamsChanged(Map<String, String> params) {
     emit(state.copyWith(params: params));
   }
 
@@ -74,10 +74,7 @@ class ApiCubit extends Cubit<ApiState> {
   }
 
   Future<void> save() async {
-    final response = await FirebaseFirestore.instance.collection('apis').add(
-          state.toMap(),
-        );
-    print(response.id);
+    await FirebaseFirestore.instance.collection('apis').add(state.toMap());
   }
 }
 

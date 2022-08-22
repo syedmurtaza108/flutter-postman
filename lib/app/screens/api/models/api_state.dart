@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_postman/app/models/models.dart';
 
 class ApiState {
@@ -74,6 +75,7 @@ class ApiState {
       'body': bodyStr,
       'response': response,
       'code': dartCode,
+      'userId': FirebaseAuth.instance.currentUser?.uid,
     };
   }
 }

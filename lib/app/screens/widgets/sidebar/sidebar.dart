@@ -18,12 +18,14 @@ class Sidebar extends StatefulWidget {
     required this.body,
     this.isCollapsed = true,
     this.allowCollapse = true,
+    required this.focusNode,
   });
 
   final Widget body;
   final bool isCollapsed;
   final List<CollapsibleItem> items;
   final bool allowCollapse;
+  final FocusNode focusNode;
 
   @override
   State<Sidebar> createState() => _SidebarState();
@@ -46,10 +48,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
   final screenPadding = 4.0;
 
   bool _isCollapsed = false;
-  late double _currWidth,
-      _delta,
-      _maxOffsetX,
-      _maxOffsetY;
+  late double _currWidth, _delta, _maxOffsetX, _maxOffsetY;
   late int _selectedItemIndex;
 
   @override
@@ -141,6 +140,14 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
                   : CrossAxisAlignment.start,
               children: [
                 topPadding.height,
+                SizedBox(
+                  height: 0,
+                  child: ElevatedButton(
+                    focusNode: widget.focusNode,
+                    onPressed: () {},
+                    child: const Text('data'),
+                  ),
+                ),
                 SizedBox(
                   height: 40,
                   child: Visibility(

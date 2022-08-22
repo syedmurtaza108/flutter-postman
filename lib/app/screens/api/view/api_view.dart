@@ -7,12 +7,7 @@ import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 
 class ApiView extends StatefulWidget {
-  const ApiView({
-    super.key,
-    required this.focusNode,
-  });
-
-  final FocusNode focusNode;
+  const ApiView({super.key});
 
   @override
   State<ApiView> createState() => _ApiViewState();
@@ -132,7 +127,6 @@ class _ApiViewState extends State<ApiView> {
                             topRight: Radius.circular(4),
                             bottomRight: Radius.circular(4),
                           ),
-                          focusNode: widget.focusNode,
                         ),
                       ),
                       16.width,

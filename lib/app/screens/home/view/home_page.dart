@@ -25,6 +25,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final focusNode = FocusNode();
   late final cubit = context.read<HomeCubit>();
+  var _selectedItemIndex = 0;
 
   @override
   void initState() {
@@ -47,169 +48,181 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: themeColors.pageBackColor,
-      body: Sidebar(
-        isCollapsed: context.mediaQuery.size.width <= 800,
-        allowCollapse: context.mediaQuery.size.width > 800,
-        items: [
-          CollapsibleItem(
-            text: 'NEW REQUEST',
-            icon: Icons.add,
-            onPressed: () {},
-            isSelected: true,
+      body: FocusableActionDetector(
+        shortcuts: {
+          LogicalKeySet(
+            LogicalKeyboardKey.alt,
+            LogicalKeyboardKey.keyT,
+          ): ThemeSwitchIntent(),
+          LogicalKeySet(
+            LogicalKeyboardKey.alt,
+            LogicalKeyboardKey.keyL,
+          ): LogoutIntent(),
+          LogicalKeySet(
+            LogicalKeyboardKey.alt,
+            LogicalKeyboardKey.keyC,
+          ): ShortcutIntent(),
+        },
+        actions: {
+          ThemeSwitchIntent: CallbackAction<ThemeSwitchIntent>(
+            onInvoke: (_) => _switchTheme(),
           ),
-          CollapsibleItem(
-            text: 'ALL REQUESTS',
-            icon: Icons.list,
-            onPressed: () {},
+          LogoutIntent: CallbackAction<LogoutIntent>(
+            onInvoke: (_) => _logout(),
           ),
-        ],
-        body: FocusableActionDetector(
-          shortcuts: {
-            LogicalKeySet(
-              LogicalKeyboardKey.alt,
-              LogicalKeyboardKey.keyT,
-            ): ThemeSwitchIntent(),
-            LogicalKeySet(
-              LogicalKeyboardKey.alt,
-              LogicalKeyboardKey.keyL,
-            ): LogoutIntent(),
-            LogicalKeySet(
-              LogicalKeyboardKey.alt,
-              LogicalKeyboardKey.keyC,
-            ): ShortcutIntent(),
-          },
-          actions: {
-            ThemeSwitchIntent: CallbackAction<ThemeSwitchIntent>(
-              onInvoke: (_) => _switchTheme(),
+          ShortcutIntent: CallbackAction<ShortcutIntent>(
+            onInvoke: (_) => _openShortcutsDialog(),
+          ),
+        },
+        child: Sidebar(
+          isCollapsed: context.mediaQuery.size.width <= 800,
+          allowCollapse: context.mediaQuery.size.width > 800,
+          focusNode: focusNode,
+          items: [
+            CollapsibleItem(
+              text: 'NEW REQUEST',
+              icon: Icons.add,
+              onPressed: () {
+                setState(() => _selectedItemIndex = 0);
+              },
+              isSelected: _selectedItemIndex == 0,
             ),
-            LogoutIntent: CallbackAction<LogoutIntent>(
-              onInvoke: (_) => _logout(),
+            CollapsibleItem(
+              text: 'ALL REQUESTS',
+              icon: Icons.list,
+              onPressed: () {
+                setState(() => _selectedItemIndex = 1);
+              },
+              isSelected: _selectedItemIndex == 1,
             ),
-            ShortcutIntent: CallbackAction<ShortcutIntent>(
-              onInvoke: (_) => _openShortcutsDialog(),
-            ),
-          },
-          child: CustomScrollView(
-            controller: ScrollController(),
-            slivers: [
-              SliverAppBar(
-                snap: true,
-                floating: true,
-                backgroundColor: themeColors.dashboardTopContainerColor,
-                title: Container(
-                  color: themeColors.dashboardTopContainerColor,
-                  height: 100,
-                  child: Row(
-                    children: [
-                      Material(
+          ],
+          body: _selectedItemIndex == 0
+              ? CustomScrollView(
+                  controller: ScrollController(),
+                  slivers: [
+                    SliverAppBar(
+                      snap: true,
+                      floating: true,
+                      backgroundColor: themeColors.dashboardTopContainerColor,
+                      title: Container(
                         color: themeColors.dashboardTopContainerColor,
-                        child: InkWell(
-                          onTap: _switchTheme,
-                          borderRadius: BorderRadius.circular(24),
-                          child: Padding(
-                            padding: 8.padding,
-                            child: Icon(
-                              context.theme.brightness == Brightness.light
-                                  ? Icons.brightness_medium_rounded
-                                  : Icons.brightness_medium_outlined,
-                              color: themeColors.logoutIconColor,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Material(
-                        color: themeColors.dashboardTopContainerColor,
-                        child: InkWell(
-                          onTap: _openShortcutsDialog,
-                          borderRadius: BorderRadius.circular(24),
-                          child: Padding(
-                            padding: 8.padding,
-                            child: Icon(
-                              Icons.keyboard,
-                              color: themeColors.logoutIconColor,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const Expanded(child: SizedBox.shrink()),
-                      Container(
-                        color: themeColors.userNameBackColor,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 32,
-                        ),
-                        alignment: Alignment.center,
+                        height: 100,
                         child: Row(
                           children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(24),
-                              child: const ColoredBox(
-                                color: Color(0xfffecd66),
-                                child: Icon(
-                                  Icons.person,
-                                  size: 32,
+                            Material(
+                              color: themeColors.dashboardTopContainerColor,
+                              child: InkWell(
+                                onTap: _switchTheme,
+                                borderRadius: BorderRadius.circular(24),
+                                child: Padding(
+                                  padding: 8.padding,
+                                  child: Icon(
+                                    context.theme.brightness == Brightness.light
+                                        ? Icons.brightness_medium_rounded
+                                        : Icons.brightness_medium_outlined,
+                                    color: themeColors.logoutIconColor,
+                                  ),
                                 ),
                               ),
                             ),
-                            8.width,
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                AutoSizeText(
-                                  'Syed Murtaza',
-                                  style: context.theme.textTheme.bodyText1,
+                            Material(
+                              color: themeColors.dashboardTopContainerColor,
+                              child: InkWell(
+                                onTap: _openShortcutsDialog,
+                                borderRadius: BorderRadius.circular(24),
+                                child: Padding(
+                                  padding: 8.padding,
+                                  child: Icon(
+                                    Icons.keyboard,
+                                    color: themeColors.logoutIconColor,
+                                  ),
                                 ),
-                                4.height,
-                                AutoSizeText(
-                                  'User',
-                                  style: context.theme.textTheme.bodyText2,
+                              ),
+                            ),
+                            const Expanded(child: SizedBox.shrink()),
+                            Container(
+                              color: themeColors.userNameBackColor,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 32,
+                              ),
+                              alignment: Alignment.center,
+                              child: Row(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(24),
+                                    child: const ColoredBox(
+                                      color: Color(0xfffecd66),
+                                      child: Icon(
+                                        Icons.person,
+                                        size: 32,
+                                      ),
+                                    ),
+                                  ),
+                                  8.width,
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      AutoSizeText(
+                                        'Syed Murtaza',
+                                        style:
+                                            context.theme.textTheme.bodyText1,
+                                      ),
+                                      4.height,
+                                      AutoSizeText(
+                                        'User',
+                                        style:
+                                            context.theme.textTheme.bodyText2,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            16.width,
+                            Material(
+                              color: themeColors.dashboardTopContainerColor,
+                              child: InkWell(
+                                onTap: _logout,
+                                borderRadius: BorderRadius.circular(24),
+                                child: Padding(
+                                  padding: 8.padding,
+                                  child: Icon(
+                                    Icons.logout,
+                                    color: themeColors.logoutIconColor,
+                                  ),
                                 ),
-                              ],
+                              ),
                             ),
                           ],
                         ),
                       ),
-                      16.width,
-                      Material(
-                        color: themeColors.dashboardTopContainerColor,
-                        child: InkWell(
-                          onTap: _logout,
-                          borderRadius: BorderRadius.circular(24),
-                          child: Padding(
-                            padding: 8.padding,
-                            child: Icon(
-                              Icons.logout,
-                              color: themeColors.logoutIconColor,
+                    ),
+                    SliverList(
+                      delegate: SliverChildListDelegate.fixed(
+                        [
+                          Container(
+                            color: themeColors.componentBackColor,
+                            width: double.maxFinite,
+                            padding: 16.padding,
+                            child: AutoSizeText(
+                              'Dashboard',
+                              style:
+                                  context.theme.textTheme.bodyText1?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: themeColors.headingTextColor,
+                              ),
                             ),
                           ),
-                        ),
+                          const ApiView(),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-              ),
-              SliverList(
-                delegate: SliverChildListDelegate.fixed(
-                  [
-                    Container(
-                      color: themeColors.componentBackColor,
-                      width: double.maxFinite,
-                      padding: 16.padding,
-                      child: AutoSizeText(
-                        'Dashboard',
-                        style: context.theme.textTheme.bodyText1?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: themeColors.headingTextColor,
-                        ),
-                      ),
-                    ),
-                    ApiView(focusNode: focusNode),
+                    )
                   ],
-                ),
-              )
-            ],
-          ),
+                )
+              : Text('Hello'),
         ),
       ),
     );
