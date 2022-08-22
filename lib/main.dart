@@ -18,7 +18,7 @@ void main() async {
 
   runApp(
     MyApp(
-      userSignedIn: firebaseAuth.currentUser.isNotNull,
+      userSignedIn: firebaseAuth.authStateChanges().first.isNotNull,
     ),
   );
 }
