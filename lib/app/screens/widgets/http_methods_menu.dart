@@ -27,6 +27,7 @@ class _HttpMethodsMenuState extends State<HttpMethodsMenu> {
       child: Container(
         height: 48,
         decoration: BoxDecoration(
+          color: methodColor,
           border: Border.all(color: themeColors.textFieldBorderColor),
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(4),
@@ -40,13 +41,12 @@ class _HttpMethodsMenuState extends State<HttpMethodsMenu> {
             children: [
               AutoSizeText(
                 methodName,
-                style: context.theme.textTheme.bodyText1,
+                style: context.theme.textTheme.bodyText1?.copyWith(
+                  color: Colors.white,
+                ),
               ),
               8.width,
-              Icon(
-                Icons.arrow_drop_down,
-                color: themeColors.buttonIconColor,
-              )
+              const Icon(Icons.arrow_drop_down, color: Colors.white)
             ],
           ),
         ),
@@ -75,7 +75,10 @@ class _HttpMethodsMenuState extends State<HttpMethodsMenu> {
         contentPadding: const EdgeInsets.all(8),
         dense: true,
         tileColor: themeColors.textFieldBackColor,
-        title: Text(text, style: context.theme.textTheme.bodyText1),
+        title: Text(
+          text,
+          style: context.theme.textTheme.bodyText1,
+        ),
       ),
     );
   }
@@ -93,5 +96,21 @@ class _HttpMethodsMenuState extends State<HttpMethodsMenu> {
       case HttpMethod.delete:
         return 'DELETE';
     }
+  }
+
+  Color get methodColor {
+    final lMethod = methodName.toLowerCase();
+    if (lMethod.contains('get')) {
+      return Colors.brown[600]!;
+    } else if (lMethod.contains('put')) {
+      return Colors.blue[900]!;
+    } else if (lMethod.contains('post')) {
+      return Colors.teal[700]!;
+    } else if (lMethod.contains('patch')) {
+      return Colors.black;
+    } else if (lMethod.contains('delete')) {
+      return Colors.red;
+    }
+    return Colors.orangeAccent;
   }
 }

@@ -114,8 +114,8 @@ class _ApiViewState extends State<ApiView> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       HttpMethodsMenu(
-                        httpMethod: HttpMethod.get,
-                        onFilter: (_) {},
+                        httpMethod: state.type,
+                        onFilter: cubit.onMethodChanged,
                       ),
                       Expanded(
                         child: AppTextField(

@@ -3,11 +3,12 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_postman/app/models/models.dart';
+import 'package:flutter_postman/app/utils/http_methods.dart';
 
 class ApiState {
   ApiState({
     this.name = const FormField(content: 'UNTITLED REQUEST'),
-    this.type = 'GET',
+    this.type = HttpMethod.get,
     this.url = const FormField(),
     this.params = const <String, String>{},
     this.headers = const <String, String>{},
@@ -19,7 +20,7 @@ class ApiState {
   });
 
   final FormField name;
-  final String type;
+  final HttpMethod type;
   final FormField url;
   final Map<String, String> headers;
   final Map<String, String> params;
@@ -35,7 +36,7 @@ class ApiState {
 
   ApiState copyWith({
     FormField? name,
-    String? type,
+    HttpMethod? type,
     FormField? url,
     Map<String, String>? params,
     Map<String, String>? headers,
@@ -68,7 +69,7 @@ class ApiState {
     }
     return {
       'name': name.content,
-      'type': type,
+      'type': type.name,
       'url': url.content,
       'headers': headers,
       'params': params,

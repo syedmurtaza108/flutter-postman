@@ -36,6 +36,10 @@ class ApiCubit extends Cubit<ApiState> {
     _enableSend();
   }
 
+  void onMethodChanged(HttpMethod method) {
+    emit(state.copyWith(type: method));
+  }
+
   void onBodyChanged(dynamic body) {
     emit(state.copyWith(body: body.toString()));
   }
