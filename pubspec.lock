@@ -270,6 +270,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.8"
+  json_to_dart:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: master
+      resolved-ref: "2d6f7b1c9522fb143cf511fcbf82d6e844df0851"
+      url: "https://github.com/syedmurtaza108/json_to_dart.git"
+    source: git
+    version: "1.0.5"
   logger:
     dependency: transitive
     description:

@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_postman/app/screens/api/api.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 import 'package:http/http.dart' as http;
+import 'package:json_to_dart/json_to_dart.dart';
 
 class ApiCubit extends Cubit<ApiState> {
   ApiCubit() : super(ApiState());
@@ -76,7 +77,18 @@ class ApiCubit extends Cubit<ApiState> {
     try {
       final url = Uri.parse(state.url.content);
       final response = await _httpClient.post(url, body: state.body);
-      emit(state.copyWith(response: response.body));
+      emit(
+        state.copyWith(
+          response: response.body,
+          dartCode: response.body.isNotEmpty
+              ? ModelGenerator('ApiResponse')
+                  .generateDartClasses(
+                    response.body.isEmpty ? '{"":""}' : response.body,
+                  )
+                  .code
+              : '',
+        ),
+      );
     } catch (e) {
       log(e.toString());
       _message.add(e.toString());

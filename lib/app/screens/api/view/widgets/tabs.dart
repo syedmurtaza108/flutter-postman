@@ -8,9 +8,14 @@ import 'package:flutter_postman/app/utils/utils.dart';
 import 'package:split_view/split_view.dart';
 
 class TabBarAndTabViews extends StatefulWidget {
-  const TabBarAndTabViews({required this.response, super.key});
+  const TabBarAndTabViews({
+    required this.response,
+    required this.code,
+    super.key,
+  });
 
-  final String? response;
+  final String response;
+  final String code;
 
   @override
   State<TabBarAndTabViews> createState() => _TabBarAndTabViewsState();
@@ -150,12 +155,8 @@ class _TabBarAndTabViewsState extends State<TabBarAndTabViews>
                             ),
                           ),
                           16.height,
-                          const CodeViewer(
-                            code: '''
-void main() {
-  runApp(MyApp());
-}
-''',
+                          CodeViewer(
+                            code: widget.code,
                           ),
                         ],
                       ),

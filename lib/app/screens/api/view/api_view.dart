@@ -152,7 +152,10 @@ class _ApiViewState extends State<ApiView> with Loading, Message {
                   16.height,
                   SizedBox(
                     height: context.mediaQuery.size.height * 0.7,
-                    child: TabBarAndTabViews(response: state.response),
+                    child: TabBarAndTabViews(
+                      response: state.response,
+                      code: state.dartCode,
+                    ),
                   ),
                 ],
               ),
