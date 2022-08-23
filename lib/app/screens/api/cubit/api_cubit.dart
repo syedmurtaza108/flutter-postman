@@ -75,15 +75,37 @@ class ApiCubit extends Cubit<ApiState> {
   Future<void> send() async {
     _loader.add(true);
     try {
-      final url = Uri.parse(state.url.content);
-      final response = await _httpClient.post(url, body: state.body);
+      final url = Uri.parse(state.url.content).replace(
+        queryParameters: state.params,
+      );
+      final http.Response response;
+
+      switch (state.type) {
+        case HttpMethod.get:
+          response = await _httpClient.get(url);
+          break;
+        case HttpMethod.post:
+          response = await _httpClient.post(url, body: state.body);
+          break;
+        case HttpMethod.put:
+          response = await _httpClient.put(url, body: state.body);
+          break;
+        case HttpMethod.patch:
+          response = await _httpClient.patch(url, body: state.body);
+          break;
+        case HttpMethod.delete:
+          response = await _httpClient.delete(url);
+          break;
+      }
       emit(
         state.copyWith(
           response: response.body,
           dartCode: response.body.isNotEmpty
               ? ModelGenerator('ApiResponse')
                   .generateDartClasses(
-                    response.body.isEmpty ? '{"":""}' : response.body,
+                    response.body.isEmpty || response.body.trim() == '{}'
+                        ? '{"Name":""}'
+                        : response.body,
                   )
                   .code
               : '',
