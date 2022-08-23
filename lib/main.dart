@@ -16,9 +16,5 @@ void main() async {
   const themeMode = ThemeMode.light;
   setThemeColors(themeMode == ThemeMode.light ? LightTheme() : DarkTheme());
 
-  runApp(
-    MyApp(
-      userSignedIn: firebaseAuth.authStateChanges().first.isNotNull,
-    ),
-  );
+  runApp(MyApp(userSignedIn: firebaseAuth.authStateChanges().first.isNotNull));
 }
