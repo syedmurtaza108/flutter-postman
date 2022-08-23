@@ -35,32 +35,19 @@ class _ApisListingState extends State<ApisListing> {
           minWidth: 600,
           columns: const [
             DataColumn2(
-              label: Text('Column A'),
+              label: Text('Time'),
               size: ColumnSize.L,
             ),
             DataColumn(
-              label: Text('Column B'),
-            ),
-            DataColumn(
-              label: Text('Column C'),
-            ),
-            DataColumn(
-              label: Text('Column D'),
-            ),
-            DataColumn(
-              label: Text('Column NUMBERS'),
-              numeric: true,
+              label: Text('URL'),
             ),
           ],
           rows: List<DataRow>.generate(
             items.length,
             (index) => DataRow(
               cells: [
-                DataCell(Text('A' * (10 - index % 10))),
-                DataCell(Text('B' * (10 - (index + 5) % 10))),
-                DataCell(Text('C' * (15 - (index + 5) % 10))),
-                DataCell(Text('D' * (15 - (index + 10) % 10))),
-                DataCell(Text(((index + 0.1) * 25.4).toString()))
+                DataCell(Text(items[index].time)),
+                DataCell(Text(items[index].url)),
               ],
             ),
           ),

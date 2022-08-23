@@ -21,10 +21,14 @@ class ApiListItem {
     final data = snapshot.data();
     return ApiListItem(
       name: (data?['name'] ?? '').toString(),
-      method: (data?['name'] ?? '').toString(),
+      method: (data?['method'] ?? '').toString(),
       url: (data?['url'] ?? '').toString(),
-      params: {},
-      headers: {},
+      params: data?['params'] is Map<String, String>
+          ? data!['params'] as Map<String, String>
+          : <String, String>{},
+      headers: data?['headers'] is Map<String, String>
+          ? data!['headers'] as Map<String, String>
+          : <String, String>{},
       body: data?['body'],
       dartCode: (data?['code'] ?? '').toString(),
       response: (data?['response'] ?? '').toString(),
