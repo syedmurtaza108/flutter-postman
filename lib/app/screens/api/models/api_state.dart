@@ -79,6 +79,7 @@ class ApiState {
       'response': responseStr,
       'code': dartCode,
       'userId': FirebaseAuth.instance.currentUser?.uid,
+      'createdAt': DateTime.now().millisecondsSinceEpoch,
     };
   }
 }

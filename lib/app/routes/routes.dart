@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_postman/app/screens/api/api.dart';
+import 'package:flutter_postman/app/screens/apis_listing/apis_listing.dart';
 import 'package:flutter_postman/app/screens/home/home.dart';
 import 'package:flutter_postman/app/screens/login/login.dart';
 import 'package:flutter_postman/app/screens/signup/signup.dart';
@@ -29,6 +30,7 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
           providers: [
             BlocProvider(create: (context) => HomeCubit()),
             BlocProvider(create: (context) => ApiCubit()),
+            BlocProvider(create: (context) => ApisListingCubit()),
           ],
           child: const HomePage(),
         ),

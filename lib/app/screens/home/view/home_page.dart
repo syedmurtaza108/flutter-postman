@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_postman/app/app.dart';
 import 'package:flutter_postman/app/intents/intents.dart';
 import 'package:flutter_postman/app/screens/api/api.dart';
+import 'package:flutter_postman/app/screens/apis_listing/apis_listing.dart';
 import 'package:flutter_postman/app/screens/home/home.dart';
 import 'package:flutter_postman/app/screens/login/view/login_page.dart';
 import 'package:flutter_postman/app/screens/logout/logout.dart';
@@ -222,7 +223,7 @@ class _HomePageState extends State<HomePage> {
                     )
                   ],
                 )
-              : Text('Hello'),
+              : const ApisListing(),
         ),
       ),
     );

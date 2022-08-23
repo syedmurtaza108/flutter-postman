@@ -12,6 +12,7 @@ dependencies:
   auto_size_text: ^3.0.0
   cloud_firestore: ^3.4.5
   dart_style: ^2.2.3
+  data_table_2: ^2.3.6
   firebase_auth: ^3.6.2
   firebase_core: ^1.20.0
   flutter:
