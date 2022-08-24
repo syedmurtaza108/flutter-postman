@@ -7,16 +7,21 @@ import 'package:flutter_postman/app/utils/utils.dart';
 import 'package:uuid/uuid.dart';
 
 class JsonKeyValue extends StatefulWidget {
-  const JsonKeyValue({required this.onChange, super.key});
+  const JsonKeyValue({
+    required this.initialValue,
+    required this.onChange,
+    super.key,
+  });
 
   final void Function(Map<String, String>) onChange;
+  final List<JsonFieldState> initialValue;
 
   @override
   State<JsonKeyValue> createState() => JsonKeyValueState();
 }
 
 class JsonKeyValueState extends State<JsonKeyValue> {
-  var fields = <_JsonFieldState>[_JsonFieldState(id: '1')];
+  late List<JsonFieldState> fields = widget.initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -64,14 +69,14 @@ class JsonKeyValueState extends State<JsonKeyValue> {
               AppTextField(
                 hint: 'Key',
                 onChanged: (data) => _onKeyValueChanged(e.id, data, e.value),
-                content: '',
+                content: e.key,
                 error: null,
                 borderRadius: BorderRadius.circular(0),
               ),
               AppTextField(
                 hint: 'Value',
                 onChanged: (data) => _onKeyValueChanged(e.id, e.key, data),
-                content: '',
+                content: e.value,
                 error: null,
                 borderRadius: BorderRadius.circular(0),
               ),
@@ -112,7 +117,7 @@ class JsonKeyValueState extends State<JsonKeyValue> {
 
     if (index == fields.length - 1) {
       fields.add(
-        _JsonFieldState(
+        JsonFieldState(
           id: const Uuid().v1(
             options: {
               'mSecs': DateTime.now().millisecondsSinceEpoch,
@@ -125,7 +130,7 @@ class JsonKeyValueState extends State<JsonKeyValue> {
     final data = <String, String>{}..addEntries(
         fields
             .where(
-              (e) => e.selected && e.key.isNotEmpty && e.value.isNotEmpty,
+              (e) => e.selected && (e.key.isNotEmpty || e.value.isNotEmpty),
             )
             .map((e) => MapEntry(e.key, e.value)),
       );
@@ -137,6 +142,14 @@ class JsonKeyValueState extends State<JsonKeyValue> {
     final index = fields.indexWhere((item) => item.id == id);
 
     fields.removeAt(index);
+    final data = <String, String>{}..addEntries(
+        fields
+            .where(
+              (e) => e.selected && (e.key.isNotEmpty || e.value.isNotEmpty),
+            )
+            .map((e) => MapEntry(e.key, e.value)),
+      );
+    widget.onChange(data);
     setState(() {});
   }
 
@@ -148,7 +161,7 @@ class JsonKeyValueState extends State<JsonKeyValue> {
     final data = <String, String>{}..addEntries(
         fields
             .where(
-              (e) => e.selected && e.key.isNotEmpty && e.value.isNotEmpty,
+              (e) => e.selected && (e.key.isNotEmpty || e.value.isNotEmpty),
             )
             .map((e) => MapEntry(e.key, e.value)),
       );
@@ -157,8 +170,8 @@ class JsonKeyValueState extends State<JsonKeyValue> {
   }
 }
 
-class _JsonFieldState {
-  _JsonFieldState({
+class JsonFieldState {
+  JsonFieldState({
     required this.id,
     this.selected = true,
     this.key = '',
@@ -169,12 +182,12 @@ class _JsonFieldState {
   final String key;
   final String value;
 
-  _JsonFieldState copyWith({
+  JsonFieldState copyWith({
     bool? selected,
     String? key,
     String? value,
   }) {
-    return _JsonFieldState(
+    return JsonFieldState(
       id: id,
       selected: selected ?? this.selected,
       key: key ?? this.key,

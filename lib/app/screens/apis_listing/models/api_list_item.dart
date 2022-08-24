@@ -21,7 +21,7 @@ class ApiListItem {
     final data = snapshot.data();
     return ApiListItem(
       name: (data?['name'] ?? '').toString(),
-      method: (data?['method'] ?? '').toString(),
+      method: (data?['type'] ?? '').toString().toUpperCase(),
       url: (data?['url'] ?? '').toString(),
       params: data?['params'] is Map<String, String>
           ? data!['params'] as Map<String, String>
@@ -33,7 +33,7 @@ class ApiListItem {
       dartCode: (data?['code'] ?? '').toString(),
       response: (data?['response'] ?? '').toString(),
       time: DateTime.fromMillisecondsSinceEpoch(data?['createdAt'] as int? ?? 0)
-          .toIso8601String(),
+          .toString(),
     );
   }
 

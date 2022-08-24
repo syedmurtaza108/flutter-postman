@@ -5,9 +5,11 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_postman/app/screens/api/api.dart';
+import 'package:flutter_postman/app/screens/widgets/widgets.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:json_to_dart/json_to_dart.dart';
+import 'package:uuid/uuid.dart';
 
 class ApiCubit extends Cubit<ApiState> {
   ApiCubit() : super(ApiState());
@@ -120,6 +122,65 @@ class ApiCubit extends Cubit<ApiState> {
 
   Future<void> save() async {
     await FirebaseFirestore.instance.collection('apis').add(state.toMap());
+  }
+
+  List<JsonFieldState> get headers {
+    final list = <JsonFieldState>[];
+    state.headers.forEach(
+      (key, value) {
+        list.add(
+          JsonFieldState(
+            id: const Uuid().v1(
+              options: {
+                'mSecs': DateTime.now().millisecondsSinceEpoch,
+              },
+            ),
+            key: key,
+            value: value,
+          ),
+        );
+      },
+    );
+      list.add(
+        JsonFieldState(
+          id: const Uuid().v1(
+            options: {
+              'mSecs': DateTime.now().millisecondsSinceEpoch,
+            },
+          ),
+        ),
+      );
+    
+    return list;
+  }
+
+  List<JsonFieldState> get params {
+    final list = <JsonFieldState>[];
+    state.params.forEach(
+      (key, value) {
+        list.add(
+          JsonFieldState(
+            id: const Uuid().v1(
+              options: {
+                'mSecs': DateTime.now().millisecondsSinceEpoch,
+              },
+            ),
+            key: key,
+            value: value,
+          ),
+        );
+      },
+    );
+    list.add(
+        JsonFieldState(
+          id: const Uuid().v1(
+            options: {
+              'mSecs': DateTime.now().millisecondsSinceEpoch,
+            },
+          ),
+        ),
+      );
+    return list;
   }
 
   @override

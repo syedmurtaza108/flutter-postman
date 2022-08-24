@@ -82,6 +82,7 @@ class _TabBarAndTabViewsState extends State<TabBarAndTabViews>
                     16.height,
                     JsonKeyValue(
                       onChange: context.read<ApiCubit>().onHeadersChanged,
+                      initialValue: context.read<ApiCubit>().headers,
                     ),
                     16.height,
                     AutoSizeText(
@@ -94,6 +95,7 @@ class _TabBarAndTabViewsState extends State<TabBarAndTabViews>
                     16.height,
                     JsonKeyValue(
                       onChange: context.read<ApiCubit>().onParamsChanged,
+                      initialValue: context.read<ApiCubit>().params,
                     ),
                     16.height,
                     AutoSizeText(
@@ -106,6 +108,7 @@ class _TabBarAndTabViewsState extends State<TabBarAndTabViews>
                     16.height,
                     AppJsonEditor(
                       onChanged: context.read<ApiCubit>().onBodyChanged,
+                      jsonText: context.read<ApiCubit>().state.body?.toString(),
                     ),
                   ],
                 ),

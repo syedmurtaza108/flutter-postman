@@ -27,7 +27,7 @@ class _HttpMethodsMenuState extends State<HttpMethodsMenu> {
       child: Container(
         height: 48,
         decoration: BoxDecoration(
-          color: methodColor,
+          color: methodColor(methodName),
           border: Border.all(color: themeColors.textFieldBorderColor),
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(4),
@@ -98,7 +98,9 @@ class _HttpMethodsMenuState extends State<HttpMethodsMenu> {
     }
   }
 
-  Color get methodColor {
+}
+
+ Color methodColor(String methodName) {
     final lMethod = methodName.toLowerCase();
     if (lMethod.contains('get')) {
       return Colors.brown[600]!;
@@ -113,4 +115,3 @@ class _HttpMethodsMenuState extends State<HttpMethodsMenu> {
     }
     return Colors.orangeAccent;
   }
-}
