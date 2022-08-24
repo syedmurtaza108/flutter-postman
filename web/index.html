@@ -18,19 +18,64 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="Flutter Postman is a platform that developed using Flutter for inspecting and using APIs. It can automatically create Dart code from JSON response.">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="flutter_postman">
+  <meta name="apple-mobile-web-app-title" content="Flutter Postman">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>flutter_postman</title>
+  <title>Flutter Postman</title>
   <link rel="manifest" href="manifest.json">
+
+  <style>
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+    
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 128px;
+      border-top: 8px solid #405189;
+      border-right: 8px solid #f3f3f3;
+      border-bottom: 8px solid #405189;
+      border-left: 8px solid #f3f3f3;
+      width: 64px;
+      height: 64px;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+    }
+    
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+    
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 
   <script>
     // The value below is injected by flutter build, do not touch.
@@ -40,9 +85,14 @@
   <script src="flutter.js" defer></script>
 </head>
 <body>
+  <div class="loading">
+    <div class="loader"></div>
+  </div>
+  <div class="loading" style="font-family:Verdana, Geneva, Tahoma, sans-serif;margin-top: 80px;" id="loadingText"></div>
   <script>
     window.addEventListener('load', function(ev) {
-      // Download main.dart.js
+      var loading = document.querySelector('#loadingText');
+      loading.textContent = "Getting everything ready...";
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
