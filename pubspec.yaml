@@ -30,6 +30,7 @@ dependencies:
       url: https://github.com/syedmurtaza108/json_to_dart.git
       ref: master
   lottie: ^1.4.1
+  lottie_player: ^0.0.5
   shared_preferences: ^2.0.15
   split_view: ^3.2.1
   uuid: ^3.0.6

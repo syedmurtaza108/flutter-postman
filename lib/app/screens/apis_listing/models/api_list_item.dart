@@ -1,4 +1,9 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_postman/app/screens/widgets/widgets.dart';
+import 'package:uuid/uuid.dart';
 
 class ApiListItem {
   ApiListItem({
@@ -19,22 +24,82 @@ class ApiListItem {
     SnapshotOptions? options,
   ) {
     final data = snapshot.data();
+    var body = data?['body'];
+    try {
+      if (body != null) {
+        body = jsonEncode(body);
+      }
+    } catch (e) {
+      log(e.toString());
+    }
     return ApiListItem(
       name: (data?['name'] ?? '').toString(),
       method: (data?['type'] ?? '').toString().toUpperCase(),
       url: (data?['url'] ?? '').toString(),
-      params: data?['params'] is Map<String, String>
-          ? data!['params'] as Map<String, String>
+      params: data?['params'] is Map
+          ? (data!['params'] as Map).map(
+              (key, value) => MapEntry(
+                key.toString(),
+                value.toString(),
+              ),
+            )
           : <String, String>{},
-      headers: data?['headers'] is Map<String, String>
-          ? data!['headers'] as Map<String, String>
+      headers: data?['headers'] is Map
+          ? (data!['headers'] as Map).map(
+              (key, value) => MapEntry(
+                key.toString(),
+                value.toString(),
+              ),
+            )
           : <String, String>{},
-      body: data?['body'],
+      body: body,
       dartCode: (data?['code'] ?? '').toString(),
       response: (data?['response'] ?? '').toString(),
       time: DateTime.fromMillisecondsSinceEpoch(data?['createdAt'] as int? ?? 0)
           .toString(),
     );
+  }
+
+  List<JsonFieldState> getParams() {
+    final list = <JsonFieldState>[];
+    params.forEach(
+      (key, value) {
+        list.add(
+          JsonFieldState(
+            id: const Uuid().v1(
+              options: {
+                'mSecs': DateTime.now().millisecondsSinceEpoch,
+              },
+            ),
+            key: key,
+            value: value,
+          ),
+        );
+      },
+    );
+
+    return list;
+  }
+
+  List<JsonFieldState> getHeaders() {
+    final list = <JsonFieldState>[];
+    headers.forEach(
+      (key, value) {
+        list.add(
+          JsonFieldState(
+            id: const Uuid().v1(
+              options: {
+                'mSecs': DateTime.now().millisecondsSinceEpoch,
+              },
+            ),
+            key: key,
+            value: value,
+          ),
+        );
+      },
+    );
+
+    return list;
   }
 
   final String name;

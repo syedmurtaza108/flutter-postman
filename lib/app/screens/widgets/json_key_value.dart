@@ -9,11 +9,11 @@ import 'package:uuid/uuid.dart';
 class JsonKeyValue extends StatefulWidget {
   const JsonKeyValue({
     required this.initialValue,
-    required this.onChange,
+    this.onChange,
     super.key,
   });
 
-  final void Function(Map<String, String>) onChange;
+  final void Function(Map<String, String>)? onChange;
   final List<JsonFieldState> initialValue;
 
   @override
@@ -25,14 +25,17 @@ class JsonKeyValueState extends State<JsonKeyValue> {
 
   @override
   Widget build(BuildContext context) {
+    final isEditable = widget.onChange != null;
     return Table(
       border: TableBorder.all(color: themeColors.textFieldBorderColor),
       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-      columnWidths: const {0: FixedColumnWidth(100), 3: FixedColumnWidth(50)},
+      columnWidths: isEditable
+          ? const {0: FixedColumnWidth(100), 3: FixedColumnWidth(50)}
+          : null,
       children: [
         TableRow(
           children: [
-            const SizedBox.shrink(),
+            if (isEditable) const SizedBox.shrink(),
             Padding(
               padding: 12.vertical,
               child: AutoSizeText(
@@ -46,41 +49,48 @@ class JsonKeyValueState extends State<JsonKeyValue> {
               style: context.theme.textTheme.bodyText1,
               textAlign: TextAlign.center,
             ),
-            const SizedBox.shrink(),
+            if (isEditable) const SizedBox.shrink(),
           ],
         ),
         ...fields.map(
           (e) => TableRow(
             key: ValueKey(e.id),
             children: [
-              Padding(
-                padding: 8.padding,
-                child: SizedBox(
-                  height: 24,
-                  width: 24,
-                  child: Checkbox(
-                    value: e.selected,
-                    activeColor: themeColors.checkBoxSelectedColor,
-                    onChanged: (_) => _selectKey(e.id),
-                    checkColor: themeColors.buttonColor,
+              if (isEditable)
+                Padding(
+                  padding: 8.padding,
+                  child: SizedBox(
+                    height: 24,
+                    width: 24,
+                    child: Checkbox(
+                      value: e.selected,
+                      activeColor: themeColors.checkBoxSelectedColor,
+                      onChanged: (_) => _selectKey(e.id),
+                      checkColor: themeColors.buttonColor,
+                    ),
                   ),
                 ),
-              ),
               AppTextField(
                 hint: 'Key',
-                onChanged: (data) => _onKeyValueChanged(e.id, data, e.value),
+                onChanged: isEditable
+                    ? (data) => _onKeyValueChanged(e.id, data, e.value)
+                    : null,
                 content: e.key,
                 error: null,
                 borderRadius: BorderRadius.circular(0),
+                readonly: !isEditable,
               ),
               AppTextField(
                 hint: 'Value',
-                onChanged: (data) => _onKeyValueChanged(e.id, e.key, data),
+                onChanged: isEditable
+                    ? (data) => _onKeyValueChanged(e.id, e.key, data)
+                    : null,
                 content: e.value,
                 error: null,
                 borderRadius: BorderRadius.circular(0),
+                readonly: !isEditable,
               ),
-              if (fields.length > 1)
+              if (fields.length > 1 && isEditable)
                 Material(
                   borderRadius: BorderRadius.circular(24),
                   color: themeColors.componentBackColor,
@@ -100,7 +110,7 @@ class JsonKeyValueState extends State<JsonKeyValue> {
                     ),
                   ),
                 )
-              else
+              else if (isEditable)
                 const SizedBox.shrink(),
             ],
           ),
@@ -134,7 +144,7 @@ class JsonKeyValueState extends State<JsonKeyValue> {
             )
             .map((e) => MapEntry(e.key, e.value)),
       );
-    widget.onChange(data);
+    widget.onChange!(data);
     setState(() {});
   }
 
@@ -149,7 +159,7 @@ class JsonKeyValueState extends State<JsonKeyValue> {
             )
             .map((e) => MapEntry(e.key, e.value)),
       );
-    widget.onChange(data);
+    widget.onChange!(data);
     setState(() {});
   }
 
@@ -165,7 +175,7 @@ class JsonKeyValueState extends State<JsonKeyValue> {
             )
             .map((e) => MapEntry(e.key, e.value)),
       );
-    widget.onChange(data);
+    widget.onChange!(data);
     setState(() {});
   }
 }

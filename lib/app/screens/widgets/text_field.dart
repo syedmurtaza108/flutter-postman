@@ -13,17 +13,19 @@ class AppTextField extends StatefulWidget {
     this.borderRadius,
     this.maxLines,
     this.focusNode,
+    this.readonly = false,
     super.key,
   });
 
   final String title;
   final String hint;
-  final void Function(String) onChanged;
+  final void Function(String)? onChanged;
   final String content;
   final String? error;
   final BorderRadius? borderRadius;
   final int? maxLines;
   final FocusNode? focusNode;
+  final bool readonly;
 
   @override
   State<AppTextField> createState() => AppTextFieldState();
@@ -42,6 +44,7 @@ class AppTextFieldState extends State<AppTextField> {
           ),
         if (widget.title.isNotEmpty) 16.height,
         TextFormField(
+          readOnly: widget.readonly,
           focusNode: widget.focusNode,
           initialValue: widget.content,
           style: context.theme.textTheme.bodyText1,

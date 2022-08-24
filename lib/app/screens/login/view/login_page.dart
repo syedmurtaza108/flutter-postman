@@ -9,6 +9,7 @@ import 'package:flutter_postman/app/screens/widgets/widgets.dart';
 import 'package:flutter_postman/app/theme/theme.dart';
 import 'package:flutter_postman/app/utils/utils.dart';
 import 'package:lottie/lottie.dart';
+import 'package:lottie_player/lottie_player.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -58,8 +59,8 @@ class _LoginPageState extends State<LoginPage> with Loading, Message {
                       decoration: BoxDecoration(
                         color: themeColors.authCardBackColor.withOpacity(0.7),
                       ),
-                      child: Lottie.asset(
-                        'assets/snow.json',
+                      child: LottiePlayer(
+                        networkUrl: 'snow.json',
                         width: context.mediaQuery.size.width,
                         height: context.mediaQuery.size.height * 0.5,
                       ),

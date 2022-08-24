@@ -64,6 +64,9 @@ class DarkTheme extends ThemeColors {
       textSelectionTheme: TextSelectionThemeData(
         cursorColor: themeColors.cursorColor,
       ),
+      progressIndicatorTheme: const ProgressIndicatorThemeData(
+        color: Colors.white,
+      ),
     );
   }
 
@@ -138,7 +141,7 @@ class DarkTheme extends ThemeColors {
 
   @override
   Color get checkBoxSelectedColor => Colors.white;
-  
+
   @override
   Color get tabSelectedTextColor => Colors.white;
 
