@@ -36,28 +36,24 @@ class _ApisListingState extends State<ApisListing> {
           return const Center(child: Text("DAta error"));
         }
         final items = (state as ApisListingData).items;
-        return ListView.builder(
-          padding: 16.padding,
-          itemBuilder: (_, i) {
-            final params = items[i].getParams();
-            final headers = items[i].getHeaders();
-            return Accordion(
-              paddingListBottom: 0,
-              paddingListTop: 0,
-              paddingListHorizontal: 0,
-              contentVerticalPadding: 0,
-              scaleWhenAnimating: true,
-              openAndCloseAnimation: true,
-              sectionOpeningHapticFeedback: SectionHapticFeedback.heavy,
-              sectionClosingHapticFeedback: SectionHapticFeedback.light,
-              children: [
-                AccordionSection(
+        return Accordion(
+          paddingListBottom: 0,
+          paddingListTop: 0,
+          paddingListHorizontal: 0,
+          contentVerticalPadding: 0,
+          scaleWhenAnimating: true,
+          openAndCloseAnimation: true,
+          sectionOpeningHapticFeedback: SectionHapticFeedback.heavy,
+          sectionClosingHapticFeedback: SectionHapticFeedback.light,
+          children: items
+              .map(
+                (e) => AccordionSection(
                   headerBackgroundColor: themeColors.sideBarSelectedColor,
                   contentBackgroundColor: themeColors.componentBackColor,
                   leftIcon: Chip(
-                    backgroundColor: methodColor(items[i].method),
+                    backgroundColor: methodColor(e.method),
                     label: Text(
-                      items[i].method,
+                      e.method,
                       style: context.theme.textTheme.bodyText1?.copyWith(
                         color: Colors.white,
                       ),
@@ -68,13 +64,13 @@ class _ApisListingState extends State<ApisListing> {
                       Expanded(
                         child: RichText(
                           text: TextSpan(
-                            text: '${items[i].name} ',
+                            text: '${e.name} ',
                             style: context.theme.textTheme.bodyText1?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
                             children: [
                               TextSpan(
-                                text: items[i].url,
+                                text: e.url,
                                 style: context.theme.textTheme.bodyText1,
                               ),
                             ],
@@ -84,7 +80,7 @@ class _ApisListingState extends State<ApisListing> {
                       8.width,
                       Expanded(
                         child: Text(
-                          items[i].time,
+                          e.time,
                           style: context.theme.textTheme.bodyText1,
                           textAlign: TextAlign.end,
                         ),
@@ -93,95 +89,11 @@ class _ApisListingState extends State<ApisListing> {
                   ),
                   contentBorderColor: themeColors.textFieldBorderColor,
                   headerBackgroundColorOpened: Colors.amber,
-                  content: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      if (headers.isNotEmpty) 16.height,
-                      if (headers.isNotEmpty)
-                        AutoSizeText(
-                          'HEADERS',
-                          style: context.theme.textTheme.bodyText1?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: themeColors.headingTextColor,
-                          ),
-                        ),
-                      if (headers.isNotEmpty) 16.height,
-                      if (headers.isNotEmpty)
-                        JsonKeyValue(
-                          initialValue: headers,
-                        ),
-                      if (params.isNotEmpty) 16.height,
-                      if (params.isNotEmpty)
-                        AutoSizeText(
-                          'QUERY PARAMS',
-                          style: context.theme.textTheme.bodyText1?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: themeColors.headingTextColor,
-                          ),
-                        ),
-                      if (params.isNotEmpty) 16.height,
-                      if (params.isNotEmpty) JsonKeyValue(initialValue: params),
-                      if (items[i].body != null) 16.height,
-                      if (items[i].body != null)
-                        AutoSizeText(
-                          'REQUEST BODY',
-                          style: context.theme.textTheme.bodyText1?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: themeColors.headingTextColor,
-                          ),
-                        ),
-                      if (items[i].body != null) 16.height,
-                      if (items[i].body != null)
-                        AppJsonEditor(
-                          jsonText: items[i].body?.toString(),
-                          enabled: false,
-                        ),
-                    ],
-                  ),
+                  content: ApiDetailsTabViews(item: e),
                 ),
-              ],
-            );
-          },
-          itemCount: items.length,
+              )
+              .toList(),
         );
-        // return DataTable2(
-        //   columnSpacing: 12,
-        //   horizontalMargin: 12,
-        //   minWidth: 600,
-        //   columns: [
-        //     DataColumn2(
-        //       label: Text(
-        //         'TIME',
-        //         style: context.theme.textTheme.headline1,
-        //       ),
-        //     ),
-        //     DataColumn(
-        //       label: Text(
-        //         'URL',
-        //         style: context.theme.textTheme.headline1,
-        //       ),
-        //     ),
-        //   ],
-        //   rows: List<DataRow>.generate(
-        //     items.length,
-        //     (index) => DataRow(
-        //       cells: [
-        //         DataCell(
-        //           SelectableText(
-        //             items[index].time,
-        //             style: context.theme.textTheme.bodyText1,
-        //           ),
-        //         ),
-        //         DataCell(
-        //           SelectableText(
-        //             items[index].url,
-        //             style: context.theme.textTheme.bodyText1,
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        // );
       },
     );
   }
