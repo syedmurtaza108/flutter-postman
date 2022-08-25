@@ -34,6 +34,7 @@ class _MyAppView extends StatelessWidget {
     return BlocBuilder<ThemeCubit, ThemeMode>(
       builder: (context, state) {
         return MaterialApp(
+          title: 'Flutter Postman',
           theme: state == ThemeMode.light ? LightTheme.theme : DarkTheme.theme,
           initialRoute: userSignedIn ? HomePage.route : LoginPage.route,
           onGenerateRoute: onGenerateRoute,
